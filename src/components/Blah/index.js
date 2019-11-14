@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function index(props) {
     return (
-        <button onClick={props.onClick}>
-            {props.name}
-        </button>
+        <div className='blah'>
+            {props.children}
+        </div>
     )
 }

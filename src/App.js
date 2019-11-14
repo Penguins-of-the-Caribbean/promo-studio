@@ -1,19 +1,33 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import View from './components/View';
 import Footer from './components/Footer';
-import Button from './components/Button';
-
-function poop(){
-  console.log('POOP!!!!');
-}
+import Blah from './components/Blah';
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <Button onClick={poop} name={'PICKLE RICK!!!'}></Button>
-      <Footer></Footer>
+      <Router>
+        <Navbar>
+          <ul>
+            <li><NavLink className='ge_promo-studio-link-a' to='/blah1'>blah1</NavLink></li>
+            <li><NavLink className='ge_promo-studio-link-a' to='/blah2'>blah2</NavLink></li>
+            <li><NavLink className='ge_promo-studio-link-a' to='/blah3'>blah3</NavLink></li>
+            <li><NavLink className='ge_promo-studio-link-a' to='/blah4'>blah4</NavLink></li>
+          </ul>
+        </Navbar>
+        <View>
+          <Switch>
+            <Route exact path='/blah1' component={()=><Blah>BLAH-1</Blah>} />
+            <Route exact path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
+            <Route exact path='/blah3' component={()=><Blah>BLAH-3</Blah>} />
+            <Route exact path='/blah4' component={()=><Blah>BLAH-4</Blah>} />
+          </Switch>
+        </View>
+        <Footer></Footer>
+      </Router>
     </div>
   );
 }

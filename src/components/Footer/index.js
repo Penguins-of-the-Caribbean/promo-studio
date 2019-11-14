@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './footer.css'
 
 export default function index() {
     return (
-        <div>
-            <h1>THIS IS MOOMUNGA!!!</h1>
+        <div className='ge_promo-studio-footer'>
+            <figure>&copy; 2019, International Team. </figure>
         </div>
     )
 }
