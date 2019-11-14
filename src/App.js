@@ -1,10 +1,25 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import View from './components/View';
 import Footer from './components/Footer';
 import Blah from './components/Blah';
+
+let myAuth = {isAuth: false};
+
+console.log(myAuth);
+
+const PrivateRoute = ({ component: Component, ...props }) => {
+  return (
+    <Route
+      {...props}
+      render={innerProps =>
+        myAuth.isAuth ? <Component {...innerProps} /> : <Redirect to="/" />
+      }
+    />
+  );
+};
 
 function App() {
   return (
@@ -21,7 +36,7 @@ function App() {
         <View>
           <Switch>
             <Route exact path='/blah1' component={()=><Blah>BLAH-1</Blah>} />
-            <Route exact path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
+            <PrivateRoute path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
             <Route exact path='/blah3' component={()=><Blah>BLAH-3</Blah>} />
             <Route exact path='/blah4' component={()=><Blah>BLAH-4</Blah>} />
           </Switch>
