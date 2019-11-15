@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import View from './components/View';
 import Footer from './components/Footer';
 import Taskbar from './components/Taskbar';
+import List from './components/List/';
 import AddButton from './components/AddButton';
 import ComponentSelector from './components/ComponentSelector';
 
@@ -46,7 +47,9 @@ function App() {
             </NavLink>
           </Taskbar>
           <Switch>
-          <Route exact path='/blah1' component={()=><ComponentSelector/>} />
+            <List>
+              <Route exact path='/blah1' component={()=><ComponentSelector/>} />
+            </List>
             {/* <PrivateRoute path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
             <Route exact path='/blah3' component={()=><Blah>BLAH-3</Blah>} />
             <Route exact path='/blah4' component={()=><Blah>BLAH-4</Blah>} /> */}
