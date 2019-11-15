@@ -1,9 +1,10 @@
 .ge_promo-studio-navbar{
     background: #15264C;
     width: 100%;
-    height: 75px;
+    height: 125px;
     float: left;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -22,4 +23,25 @@
     height: 35px;
     margin: 2px 0px 0px 0px;
     padding: 0px 5px 0px 5px
+}
+
+.ge_promo-studio-links{
+    width: 100%;
+    height: auto;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.ge_promo-studio-links ul{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.ge_promo-studio-links ul li{
+    list-style: none;
+    text-decoration: none;
+    margin: 0px 10px 0px 10px;
 }
