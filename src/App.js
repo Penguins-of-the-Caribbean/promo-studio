@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from 
 import Navbar from './components/Navbar';
 import View from './components/View';
 import Footer from './components/Footer';
-import Blah from './components/Blah';
+import Taskbar from './components/Taskbar';
+import AddButton from './components/AddButton';
+import ComponentSelector from './components/ComponentSelector';
 
 let myAuth = {isAuth: false};
 
@@ -21,6 +23,10 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   );
 };
 
+const logit = () => {
+  console.log('Log it!!!');
+};
+
 function App() {
   return (
     <div className="App">
@@ -34,11 +40,16 @@ function App() {
           </ul>
         </Navbar>
         <View>
+          <Taskbar>
+            <NavLink className='ge_promo-studio-link-a' to='/blah1'>
+              <AddButton></AddButton>
+            </NavLink>
+          </Taskbar>
           <Switch>
-            <Route exact path='/blah1' component={()=><Blah>BLAH-1</Blah>} />
-            <PrivateRoute path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
+          <Route exact path='/blah1' component={()=><ComponentSelector/>} />
+            {/* <PrivateRoute path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
             <Route exact path='/blah3' component={()=><Blah>BLAH-3</Blah>} />
-            <Route exact path='/blah4' component={()=><Blah>BLAH-4</Blah>} />
+            <Route exact path='/blah4' component={()=><Blah>BLAH-4</Blah>} /> */}
           </Switch>
         </View>
         <Footer></Footer>

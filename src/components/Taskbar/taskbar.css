@@ -1,0 +1,8 @@
+.ge_taskbar{
+    /* background: green; */
+    width: 90%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
