@@ -19,3 +19,8 @@
     height: 20px;
     margin: 0px 0px 0px 0px;
 }
+
+.ge_add-button:active{
+    background: #15264C;
+    transform: scale3d(0.95, 0.95, 0.95);
+}

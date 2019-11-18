@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import View from './components/View';
 import Footer from './components/Footer';
@@ -8,30 +8,75 @@ import Taskbar from './components/Taskbar';
 import List from './components/List/';
 import AddButton from './components/AddButton';
 import ComponentSelector from './components/ComponentSelector';
+import ExpComp from './components/ExperienceComponent';
+import Button from './components/Button';
 
-let myAuth = {isAuth: false};
 
-console.log(myAuth);
+export default class App extends Component {
 
-const PrivateRoute = ({ component: Component, ...props }) => {
-  return (
-    <Route
-      {...props}
-      render={innerProps =>
-        myAuth.isAuth ? <Component {...innerProps} /> : <Redirect to="/" />
-      }
-    />
-  );
-};
+  constructor() {
+    super();
+    this.state = {
+      components: [
+        {
+          name: 'Hero Banner',
+        },
+        {
+          name: 'Count Down',
+        },
+        {
+          name: 'Pills',
+        },
+        {
+          name: 'People Watching',
+        },
+        {
+          name: 'Exit Popup',
+        },
+        {
+          name: 'Kids Sail Free',
+        },
+        {
+          name: 'Promo Code',
+        },
+        {
+          name: 'IOBD',
+        },
+      ],
+      selectedComponents: [],
+    };
+  }
 
-const logit = () => {
-  console.log('Log it!!!');
-};
+  populateComponentSelector(components){
+    return components.map((component, i)=>{
+      return (
+        <ExpComp key={i} check={(e)=>{this.addSelectedComponents(e, i)}}>{component.name}</ExpComp>
+      );
+    });
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
+  componentSelectorSubmit(){
+    console.log('poop');
+  }
+
+  addSelectedComponents(e, i){
+
+    let selected = [...this.state.selectedComponents];
+
+    if(e.target.checked === true){
+      selected.push(this.state.components[i].name);
+    }else if(e.target.checked === false){
+      selected.splice(i, 1);
+    }
+    
+    this.setState({selectedComponents: selected});
+    console.log(this.state.selectedComponents);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Router>
         <Navbar>
           <ul>
             <li><NavLink className='ge_promo-studio-link-a' to='/blah1'>blah1</NavLink></li>
@@ -48,7 +93,16 @@ function App() {
           </Taskbar>
           <Switch>
             <List>
-              <Route exact path='/blah1' component={()=><ComponentSelector/>} />
+              <Route  exact path='/blah1' 
+                      component={()=>
+                                  <ComponentSelector>
+                                    {this.populateComponentSelector(this.state.components)}
+                                    <div className="ge_submit-button">
+                                      <Button click={this.componentSelectorSubmit}>create experience</Button>
+                                    </div>
+                                  </ComponentSelector>
+                                } 
+              />
             </List>
             {/* <PrivateRoute path='/blah2' component={()=><Blah>BLAH-2</Blah>} />
             <Route exact path='/blah3' component={()=><Blah>BLAH-3</Blah>} />
@@ -57,8 +111,11 @@ function App() {
         </View>
         <Footer></Footer>
       </Router>
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
-export default App;
+
+
+
