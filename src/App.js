@@ -20,57 +20,79 @@ export default class App extends Component {
       components: [
         {
           name: 'Hero Banner',
+          selected: true,
         },
         {
           name: 'Count Down',
+          selected: false,
         },
         {
           name: 'Pills',
+          selected: false,
         },
         {
           name: 'People Watching',
+          selected: false,
         },
         {
           name: 'Exit Popup',
+          selected: false,
         },
         {
           name: 'Kids Sail Free',
+          selected: false,
         },
         {
           name: 'Promo Code',
+          selected: false,
         },
         {
           name: 'IOBD',
+          selected: false,
         },
-      ],
-      selectedComponents: [],
+      ]
     };
   }
 
   populateComponentSelector(components){
     return components.map((component, i)=>{
       return (
-        <ExpComp key={i} check={(e)=>{this.addSelectedComponents(e, i)}}>{component.name}</ExpComp>
+        <ExpComp 
+          key={i} 
+          check={(e)=>{this.addSelectedComponents(e, i)}} 
+          isChecked={this.checkSelectedComponent(this.state.components[i])}
+        >
+          {component.name}
+        </ExpComp>
       );
     });
   }
 
   componentSelectorSubmit(){
-    console.log('poop');
+    let state = this.state.components;
+    console.log(state);
   }
 
   addSelectedComponents(e, i){
 
-    let selected = [...this.state.selectedComponents];
+    let cloneComponents = [...this.state.components];
 
     if(e.target.checked === true){
-      selected.push(this.state.components[i].name);
-    }else if(e.target.checked === false){
-      selected.splice(i, 1);
+      cloneComponents[i].selected = true;
+    }else if(e.target.checked ===  false){
+      cloneComponents[i].selected = false;
     }
-    
-    this.setState({selectedComponents: selected});
-    console.log(this.state.selectedComponents);
+
+    this.setState({components: cloneComponents});
+   
+  }
+
+  checkSelectedComponent(component){
+    if(component.selected === true){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   render() {
@@ -98,7 +120,7 @@ export default class App extends Component {
                                   <ComponentSelector>
                                     {this.populateComponentSelector(this.state.components)}
                                     <div className="ge_submit-button">
-                                      <Button click={this.componentSelectorSubmit}>create experience</Button>
+                                      <Button click={()=>{this.componentSelectorSubmit(this.state)}}>create experience</Button>
                                     </div>
                                   </ComponentSelector>
                                 } 

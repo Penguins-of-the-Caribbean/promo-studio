@@ -5,7 +5,7 @@ export default function index(props) {
     return (
         <div className='ge_experience-component'>
             {props.children}
-            <input type='checkbox' onChange={props.check}></input>
+            <input type='checkbox' onChange={props.check} checked={props.isChecked}></input>
         </div>
     )
 }
