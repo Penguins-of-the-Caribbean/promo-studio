@@ -6,7 +6,7 @@
 .ge_promo-studio-link-a{
   text-decoration: none;
   color: white;
-  font-size: 18px;
+  font-size: 12px;
   text-transform: uppercase;
 }
 
@@ -18,4 +18,9 @@
 .ge_view-container{
   width: 90%;
   height: 100%;
+}
+
+.blag{
+  background: purple;
+  height: 40px;
 }

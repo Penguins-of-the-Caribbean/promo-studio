@@ -1,3 +1,7 @@
+.ge_component-selector-container{
+    background: red;
+}
+
 .ge_component-selector{
     background: #fff;
     width: 300px;
