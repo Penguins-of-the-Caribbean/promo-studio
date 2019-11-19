@@ -1,0 +1,9 @@
+.ge_list{
+    /* background: blue; */
+    width: 90%;
+    height: auto;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

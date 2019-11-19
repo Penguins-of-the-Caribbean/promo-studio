@@ -1,0 +1,26 @@
+.ge_add-button{
+    background: #005edc;
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ge_add-button img{
+    width: 20px;
+    height: 20px;
+    margin: 0px 0px 0px 0px;
+}
+
+.ge_add-button:active{
+    background: #15264C;
+    transform: scale3d(0.95, 0.95, 0.95);
+}

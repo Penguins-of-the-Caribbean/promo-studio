@@ -9,3 +9,13 @@
   font-size: 18px;
   text-transform: uppercase;
 }
+
+.ge_promo-studio-switch{
+  background: red;
+  width: 90%;
+}
+
+.ge_view-container{
+  width: 90%;
+  height: 100%;
+}
