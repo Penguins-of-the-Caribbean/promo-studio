@@ -52,7 +52,6 @@ export default class App extends Component {
         },
       ]
     };
-    this.auth = true;
   }
 
   populateComponentSelector(components){
@@ -92,7 +91,7 @@ export default class App extends Component {
   }
   
   componentSelectorSubmit(){
-    console.log(this.state.components);
+    return true;
   }
 
   render() {
@@ -110,8 +109,8 @@ export default class App extends Component {
             <List>
               <Route
                 path='/selector' 
-                component={()=>
-                  <ComponentSelector>
+                component={(props)=>
+                  <ComponentSelector {...props} auth={this.componentSelectorSubmit()}>
                     {this.populateComponentSelector(this.state.components)}
                   </ComponentSelector>}>
               </Route>

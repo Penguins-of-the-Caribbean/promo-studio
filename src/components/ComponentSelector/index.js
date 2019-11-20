@@ -3,9 +3,7 @@ import './component-selector.css';
 import { NavLink } from 'react-router-dom';
 import Button from '../Button';
 
-
 export default function index(props) {
-    console.log(props);
     return (
         <div className="ge_component-selector-container">
             <div className='ge_component-selector'>
@@ -16,7 +14,7 @@ export default function index(props) {
                     {props.children}
                 </div>
                 <div className="ge_submit-button">
-                    <Button click={()=>console.log('button click')}>
+                    <Button click={()=> props.auth ? props.history.push('/builder') : props.history.push('/')}>
                         create experience
                     </Button>
                 </div>
