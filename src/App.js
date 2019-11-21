@@ -111,10 +111,6 @@ export default class App extends Component {
 
   }
 
-  setAuth(value){
-    this.setState({auth: value});
-  }
-
   componentSelectorData(){
 
     let components = {};
