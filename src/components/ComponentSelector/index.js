@@ -14,7 +14,7 @@ export default function index(props) {
                     {props.children}
                 </div>
                 <div className="ge_submit-button">
-                    <Button click={()=> props.auth ? props.history.push('/builder') : props.history.push('/')}>
+                    <Button click={()=>props.auth ? props.history.push('/builder') : props.history.push('/')}>
                         create experience
                     </Button>
                 </div>

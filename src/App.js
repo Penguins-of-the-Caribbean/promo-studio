@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import View from './components/View';
 import Footer from './components/Footer';
@@ -19,34 +19,42 @@ export default class App extends Component {
     this.state = {
       components: [
         {
+          id: 'heroBanner',
           name: 'Hero Banner',
           selected: false,
         },
         {
+          id: 'countDown',
           name: 'Count Down',
           selected: false,
         },
         {
+          id: 'pills',
           name: 'Pills',
           selected: false,
         },
         {
+          id: 'peopleWatching',
           name: 'People Watching',
           selected: false,
         },
         {
+          id: 'exitPopup',
           name: 'Exit Popup',
           selected: false,
         },
         {
+          id: 'ksf',
           name: 'Kids Sail Free',
           selected: false,
         },
         {
+          id: 'promoCode',
           name: 'Promo Code',
           selected: false,
         },
         {
+          id: 'iobd',
           name: 'IOBD',
           selected: false,
         },
@@ -90,15 +98,42 @@ export default class App extends Component {
     }
   }
   
-  componentSelectorSubmit(){
-    return true;
+  componentSelectorAuth(){
+    let values = this.state.components.map((comp)=>{
+      return comp.selected;
+    });
+
+    if(values.indexOf(true) !== -1){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+
+  setAuth(value){
+    this.setState({auth: value});
+  }
+
+  componentSelectorData(){
+
+    let components = {};
+
+    this.state.components.forEach((comp)=>{
+      if(comp.selected === true){
+        Object.assign(components[comp.id] = true);
+      }
+    });
+
+    return components;
+
   }
 
   render() {
     return (
       <div className="App">
         <Router>
-        <Navbar></Navbar>
+        <Navbar/>
         <View>
           <Taskbar>
               <NavLink className='ge_promo-studio-link-a' to='/selector'>
@@ -110,25 +145,26 @@ export default class App extends Component {
               <Route
                 path='/selector' 
                 component={(props)=>
-                  <ComponentSelector {...props} auth={this.componentSelectorSubmit()}>
+                  <ComponentSelector {...props} auth={()=>this.componentSelectorAuth()}>
                     {this.populateComponentSelector(this.state.components)}
                   </ComponentSelector>}>
               </Route>
-              <Route 
+              <Route
                 path='/builder'
-                component={ComponentBuilder}
+                component={()=> 
+                    Object.values(this.componentSelectorData()).length !== 0 ? 
+                    <ComponentBuilder data={this.componentSelectorData()}/> : 
+                    <Redirect to='/'/>
+                  }
               >
               </Route>
             </List>
           </Switch>
         </View>
-        <Footer></Footer>
+        <Footer/>
       </Router>
       </div>
     )
   }
 }
-
-
-
 
