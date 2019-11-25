@@ -5,8 +5,8 @@ import {HeroBanner, CountDown} from '../Components/';
 export default function index(props) {
     return (
         <div className='ge_component-builder-container'>
-            {props.data.heroBanner === true ? <HeroBanner/> : null}
-            {props.data.countDown === true ? <CountDown/> : null}
+            {props.data.heroBanner === true ? <HeroBanner {...props}/> : null}
+            {props.data.countDown === true ? <CountDown {...props} /> : null}
             {props.data.pills === true ? <div>Pills</div> : null}
             {props.data.peopleWatching === true ? <div>People Watchig</div> : null}
             {props.data.exitPopup === true ? <div>Exit Popup</div> : null}

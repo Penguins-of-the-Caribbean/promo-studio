@@ -22,6 +22,18 @@ export default class App extends Component {
           id: 'heroBanner',
           name: 'Hero Banner',
           selected: false,
+          data: {
+            hb_parent: 'dfgdfg',
+            hb_header: '',
+            hb_subtext: '',
+            hb_textAlignment: '',
+            hb_desktopImage: '',
+            hb_mobileImage: '',
+            hb_hShift: '4px',
+            hb_vShift: '4px',
+            hb_blur: '5px',
+            hb_color: 'rgba(0, 0, 135, 0.75)'
+          }
         },
         {
           id: 'countDown',
@@ -60,6 +72,14 @@ export default class App extends Component {
         },
       ]
     };
+  }
+
+  updateComponentData(e, state){
+    let cloneComponents = Object.assign(state.components);
+
+    let cd = {...cloneComponents[0].data};
+    console.log(cd[e.target.id] = e.target.value);//its return the value which is an empty string
+
   }
 
   populateComponentSelector(components){
@@ -149,7 +169,7 @@ export default class App extends Component {
                 path='/builder'
                 component={()=> 
                     Object.values(this.componentSelectorData()).length !== 0 ? 
-                    <ComponentBuilder data={this.componentSelectorData()}/> : 
+                    <ComponentBuilder data={this.componentSelectorData()} set={this.updateComponentData} state={this.state}/> : 
                     <Redirect to='/'/>
                   }
               >

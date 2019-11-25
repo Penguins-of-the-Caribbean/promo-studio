@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './ComponentStyles/hero-banner.css';
 import './ComponentStyles/count-down.css';
 
-function HeroBanner() {
+function HeroBanner(props) {
 
     const [toggle, setToggle] = useState(false);
 
@@ -11,21 +11,21 @@ function HeroBanner() {
             <h1>Hero Banner</h1>
             <form>
                 <label>Parent element</label>
-                <input type="text" required></input>
+                <input type="text" id="hb_parent" onChange={(e)=>props.set(e, props.state)} required></input>
                 <label>Header text</label>
-                <input type="text" required/>
+                <input type="text" id="hb_header" onChange={(e)=>props.set(e, props.state)} required/>
                 <label>Subtext</label>
-                <input type="text" required></input>
+                <input type="text" id="hb_subtext" onChange={(e)=>props.set(e, props.state)} required></input>
                 <label>Text alignment</label>
-                <select required>
+                <select id="hb_textAlignment" onChange={(e)=>props.set(e, props.state)} required >
                     <option value="center">center(Default)</option>
                     <option value="left">Left</option>
                     <option value="right">Right</option>
                 </select>
                 <label>Add desktop image</label>
-                <input type="url" required/>
+                <input type="url" id="hb_desktopImage" onChange={(e)=>props.set(e, props.state)} required/>
                 <label>Add mobile image</label>
-                <input type="url"/>
+                <input type="url" id="hb_mobileImage" onChange={(e)=>props.set(e, props.state)} />
                 <div className='ge_hb-drop-shadow-widget'>
                     <label>Add Shadow</label>
                     <input type="checkbox" onChange={(e)=>setToggle(e.target.checked)}/>
@@ -34,11 +34,13 @@ function HeroBanner() {
                         <div className="ge_hb-drop-shadow-widget-container">
                             <h3>Shadow Editor</h3>
                             <label>Horizontal Shift</label>
-                            <input type="range" min="-10" max="10" step="1" onChange={(e)=>console.log(e.target.value)}/>
+                            <input type="range" min="-10" max="10" step="1" id="hb_hShift" onChange={(e)=>props.set(e, props.state)}/>
                             <label>Vertical Shift</label>
-                            <input type="range" min="-10" max="10" step="1" onChange={(e)=>console.log(e.target.value)}/>
+                            <input type="range" min="-10" max="10" step="1" id="hb_vShift" onChange={(e)=>props.set(e, props.state)}/>
                             <label>Blur Offset</label>
-                            <input type="range" min="-10" max="10" step="1" onChange={(e)=>console.log(e.target.value)}/>
+                            <input type="range" min="-10" max="10" step="1" id="hb_blur" onChange={(e)=>props.set(e, props.state)}/>
+                            <label>Color</label>
+                            <input type="color" id="hb_color" onChange={(e)=>props.set(e, props.state)} />
                         </div> : null
                     }
                 </div>
