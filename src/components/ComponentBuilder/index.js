@@ -1,6 +1,7 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './component-builder.css';
-import {HeroBanner, CountDown} from '../Components/';
+import {HeroBanner, CountDown, Submit} from '../Components/';
 
 export default function index(props) {
     return (
@@ -13,6 +14,9 @@ export default function index(props) {
             {props.data.ksf === true ? <div>Kids Sail Free</div> : null}
             {props.data.promoCode === true ? <div>Promo Code</div> : null}
             {props.data.iobd === true ? <div>IOBD</div> : null}
+            <Submit>
+                <NavLink to='/code'>create</NavLink>
+            </Submit>
         </div>
     )
 }
