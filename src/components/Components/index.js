@@ -12,6 +12,7 @@ function HeroBanner(props) {
             <h1>Hero Banner</h1>
             <form>
                 <label>Parent element</label>
+                <p>{props.hb_setValues('hb_parent') !== '' ? props.hb_setValues('hb_parent') : 'Enter Value'}</p>
                 <input 
                     type="text" 
                     id="hb_parent" 
@@ -19,6 +20,7 @@ function HeroBanner(props) {
                     required
                 />
                 <label>Header text</label>
+                <p>{props.hb_setValues('hb_header') !== '' ? props.hb_setValues('hb_header') : 'Enter Value'}</p>
                 <input 
                     type="text" 
                     id="hb_header" 
@@ -26,6 +28,7 @@ function HeroBanner(props) {
                     required
                 />
                 <label>Subtext</label>
+                <p>{props.hb_setValues('hb_subtext') !== '' ? props.hb_setValues('hb_subtext') : 'Enter Value'}</p>
                 <input 
                     type="text" 
                     id="hb_subtext" 
@@ -39,6 +42,7 @@ function HeroBanner(props) {
                     <option value="right">Right</option>
                 </select>
                 <label>Add desktop image</label>
+                <p>{props.hb_setValues('hb_desktopImage') !== '' ? props.hb_setValues('hb_desktopImage') : 'Enter Value'}</p>
                 <input 
                     type="url" 
                     id="hb_desktopImage" 
@@ -46,6 +50,7 @@ function HeroBanner(props) {
                     required
                 />
                 <label>Add mobile image</label>
+                <p>{props.hb_setValues('hb_mobileImage') !== '' ? props.hb_setValues('hb_mobileImage') : 'Enter Value'}</p>
                 <input 
                     type="url" 
                     id="hb_mobileImage"
@@ -62,36 +67,44 @@ function HeroBanner(props) {
                         <div className="ge_hb-drop-shadow-widget-container">
                             <h3>Shadow Editor</h3>
                             <label>Horizontal Shift</label>
+                            <p>{props.hb_setValues('hb_hShift') !== '' ? props.hb_setValues('hb_hShift')+'px' : 'Enter Value'}</p>
                             <input 
                                 type="range" 
                                 min="-10" 
                                 max="10" 
                                 step="1" 
                                 id="hb_hShift" 
+                                value={props.hb_setShadow('hb_hShift')}
                                 onChange={(e)=>props.hb_setState(e)}
                             />
                             <label>Vertical Shift</label>
+                            <p>{props.hb_setValues('hb_vShift') !== '' ? props.hb_setValues('hb_vShift')+'px' : 'Enter Value'}</p>
                             <input 
                                 type="range" 
                                 min="-10" 
                                 max="10" 
                                 step="1" 
                                 id="hb_vShift" 
+                                value={props.hb_setShadow('hb_hvShift')}
                                 onChange={(e)=>props.hb_setState(e)}
                             />
                             <label>Blur Offset</label>
+                            <p>{props.hb_setValues('hb_blur') !== '' ? props.hb_setValues('hb_blur')+'px' : 'Enter Value'}</p>
                             <input 
                                 type="range" 
                                 min="-10" 
                                 max="10" 
                                 step="1" 
-                                id="hb_blur"   
+                                id="hb_blur" 
+                                value={props.hb_setShadow('hb_hblur')}
                                 onChange={(e)=>props.hb_setState(e)}
                             />
                             <label>Color</label>
+                            <p>{props.hb_setValues('hb_color') !== '' ? props.hb_setValues('hb_color') : 'Enter Value'}</p>
                             <input 
                                 type="color" 
-                                id="hb_color" 
+                                id="hb_color"
+                                value={props.hb_setShadow('hb_color')} 
                                 onChange={(e)=>props.hb_setState(e)}
                             />
                         </div> : null
@@ -284,7 +297,8 @@ function CountDown(props) {
 function Pills() {
     return (
         <div className='ge_pills-container'>
-            
+            <h1>Pill</h1>
+            <div></div>
         </div>
     )
 }

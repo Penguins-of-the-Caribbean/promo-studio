@@ -30,10 +30,10 @@ export default class App extends Component {
             hb_textAlignment: 'center',
             hb_desktopImage: '',
             hb_mobileImage: '',
-            hb_hShift: '',
-            hb_vShift: '',
-            hb_blur: '',
-            hb_color: ''
+            hb_hShift: '0',
+            hb_vShift: '0',
+            hb_blur: '0',
+            hb_color: '#1c0c45'
           }
         },
         {
@@ -49,6 +49,7 @@ export default class App extends Component {
             cd_offer: '',
             cd_text: '',
             cd_subText: '',
+            cd_timerText: '',
             cd_market: {
               aus: false,
               deu: false,
@@ -71,7 +72,29 @@ export default class App extends Component {
           id: 'pills',
           name: 'Pills',
           selected: false,
-          data: {}
+          pills:[],
+          data: {
+            pillDetails: {
+              color: '',
+              text: '',
+              class: ''
+            },
+            pillCriteria: {
+              shipCodes:[],
+              promoDates: [],
+              sailingDates: [],
+              numberOfNights: [],
+              departurePorts: [],
+            },
+            pillExclusions: {
+              shipCodes: [],
+              numberOfNights: [],
+              departurePorts: [],
+              destinationPorts: [],
+              departureDates: [],
+              otherPills: []
+            }
+          }
         },
         {
           id: 'peopleWatching',
@@ -106,6 +129,8 @@ export default class App extends Component {
       ]
     };
     this.updateHeroBannerData = this.updateHeroBannerData.bind(this);
+    this.updateHeroBannerDataFields = this.updateHeroBannerDataFields.bind(this);
+    this.updateHeroBannerShadowValues = this.updateHeroBannerShadowValues.bind(this);
     this.updateCountDownData = this.updateCountDownData.bind(this);
     this.updateCountDownMarkets = this.updateCountDownMarkets.bind(this);
     this.updateCountDownMarketCheckBoxes = this.updateCountDownMarketCheckBoxes.bind(this);
@@ -113,10 +138,21 @@ export default class App extends Component {
 
   //HERO BANNER DATA HANDLER
   updateHeroBannerData(e){
-    let cloneComponents = this.state.components;
+    let cloneComponents = [...this.state.components];
     let comp =  cloneComponents[0];
 
     comp.data[e.target.id] = e.target.value;
+
+    this.setState({components: cloneComponents});
+
+  }
+  
+  updateHeroBannerDataFields(target){
+    return this.state.components[0].data[target];
+  }
+
+  updateHeroBannerShadowValues(target){
+    return this.state.components[0].data[target];
   }
 
   updateCountDownData(e){
@@ -216,7 +252,8 @@ export default class App extends Component {
     let code = '';
     
     let codeSnippets = {
-      heroBanner: `heroBanner(
+      heroBanner: `
+      heroBanner(
           '${this.state.components[0].data.hb_parent}',
           '${this.state.components[0].data.hb_header}',
           '${this.state.components[0].data.hb_subtext}', 
@@ -226,6 +263,7 @@ export default class App extends Component {
             '${this.state.components[0].data.hb_mobileImage}'
           ],
           {
+
               hShift: '${this.state.components[0].data.hb_hShift}px',
               vShift: '${this.state.components[0].data.hb_vShift}px',
               blur:   '${this.state.components[0].data.hb_blur}px',
@@ -238,9 +276,11 @@ export default class App extends Component {
               color:  '${this.state.components[0].data.hb_color}',
           }
       );`,
-      countDown: `countDown( ${this.state.components[1].data.cd_parent},
-          '${this.state.components[1].data.cd_startDate +' '+ this.state.components[1].data.cd_startTime + ':00'}', // month-day-year-hours-minutes-seconds
-          '${this.state.components[1].data.cd_endDate +' '+ this.state.components[1].data.cd_endTime + ':00'}', // month-day-year-hours-minutes-seconds
+      countDown: `
+      countDown( 
+          '${this.state.components[1].data.cd_parent}',
+          '${this.state.components[1].data.cd_startDate +' '+ this.state.components[1].data.cd_startTime + ':00'}',
+          '${this.state.components[1].data.cd_endDate +' '+ this.state.components[1].data.cd_endTime + ':00'}',
           {
               offer:     '${this.state.components[1].data.cd_offer}',
               text:      '${this.state.components[1].data.cd_text}',
@@ -298,6 +338,8 @@ export default class App extends Component {
                     <ComponentBuilder
                                       data={this.componentSelectorData()} 
                                       hb_setState={this.updateHeroBannerData}
+                                      hb_setValues={this.updateHeroBannerDataFields}
+                                      hb_setShadow={this.updateHeroBannerShadowValues}
                                       cd_setState={this.updateCountDownData}
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
