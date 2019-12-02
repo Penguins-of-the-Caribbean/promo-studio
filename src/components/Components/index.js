@@ -298,10 +298,12 @@ function CountDown(props) {
 function Pills(props) {
     return (
         <div className='ge_pills-container'>
+
             <div className='ge_pills-header'>
                 <h1 className='ge_pills-title'>Pills</h1>
                 <div className='ge_pills-added-counter'>Pill Count: {props.pl_amount}</div>
             </div>
+
             <div className='ge_pills-details-container'>
                 <h3>Pill Details:</h3>
                 <div className='ge_pills-details-inputs'>
@@ -313,7 +315,8 @@ function Pills(props) {
                     <input type="text"/>
                 </div>
             </div>
-            <div>
+
+            <div className='ge_pills-criteria-container'>
                 <h3>Pill Criteria</h3>
                 <h4>Ships</h4>
                 <ul>
@@ -426,40 +429,32 @@ function Pills(props) {
                         <input type="checkbox" value='VY'/>
                     </li>
                 </ul>
-            </div>
-            <div>
-                <h3>Add Promo Dates</h3>
                 <div>
-                    <label>Start Date</label>
-                    <input type="date"/>
-                    <label>End Date</label>
-                    <input type="date"/>
+                    <h3>Add Sailing Dates</h3>
+                    <div>
+                        <label>Start Date</label>
+                        <input type="date"/>
+                        <label>End Date</label>
+                        <input type="date"/>
+                        <button onClick={()=> props.pl_addSailingCriteria()}>Add</button>
+                    </div>
+                </div>
+                <div>
+                    <h3>Number of Night</h3>
+                    <label>From</label>
+                    <input type="number"/>
+                    <label>To</label>
+                    <input type="number"/>
+                </div>
+                <div>
+                    <h3>Departure Ports</h3>
+                    <label>Enter Port Name</label>
+                    <input type="text"/>
+                    <button>Add Port</button>
                 </div>
             </div>
-            <div>
-                <h3>Add Sailing Dates</h3>
-                <div>
-                    <label>Start Date</label>
-                    <input type="date"/>
-                    <label>End Date</label>
-                    <input type="date"/>
-                    <button onClick={()=> props.pl_addSailingCriteria()}>Add</button>
-                </div>
-            </div>
-            <div>
-                <h3>Number of Night</h3>
-                <label>From</label>
-                <input type="number"/>
-                <label>To</label>
-                <input type="number"/>
-            </div>
-            <div>
-                <h3>Departure Ports</h3>
-                <label>Enter Port Name</label>
-                <input type="text"/>
-                <button>Add Port</button>
-            </div>
-            <div>
+
+            <div className='ge_pills-exclusions-containers'>
                 <h3>Pill Exclusions</h3>
                 <div>
                     <h4>Ships</h4>
@@ -614,6 +609,7 @@ function Pills(props) {
                     <button>CREATE PILL</button>
                 </div>
             </div>
+
         </div>
     )
 }
