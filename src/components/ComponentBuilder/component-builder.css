@@ -1,4 +1,6 @@
 .ge_component-builder-container{
-    background: green;
-    width: 100%
+    background: lightgray;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0px 0px 75px 0px;
 }

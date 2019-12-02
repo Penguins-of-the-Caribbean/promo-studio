@@ -185,6 +185,14 @@ export default class App extends Component {
       return this.state.components[1].data.cd_market[target];
   }
 
+  updatePillAmount(){
+    return this.state.components[2].pills.length;
+  }
+
+  updatePillSailingCriteria(){
+    console.log('sailing added');
+  }
+
   populateComponentSelector(components){
     return components.map((component, i)=>{
       return (
@@ -343,6 +351,8 @@ export default class App extends Component {
                                       cd_setState={this.updateCountDownData}
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
+                                      pl_amount={this.updatePillAmount()}
+                                      pl_addSailingCriteria={this.updatePillSailingCriteria}
                     /> : <Redirect to='/' />
                   }
               >
