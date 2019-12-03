@@ -311,12 +311,31 @@ function Pills(props) {
             <div className='ge_pills-details-container'>
                 <h3>Pill Details:</h3>
                 <div className='ge_pills-details-inputs'>
-                    <label>Pill Color: {props.pl_colorValue !== '' ? props.pl_colorValue : 'select color'}</label>
-                    <input type="color" onChange={(e)=>props.pl_setColor(e)} id='pl_color'/>
-                    <label>Pill Text: {props.pl_textValue}</label>
-                    <input type="text" onChange={(e)=>props.pl_setColor(e)} id='pl_text'/>
-                    <label>Pill Class Name: {props.pl_classValue}</label>
-                    <input type="text" onChange={(e)=>props.pl_setColor(e)} id='pl_class'/>
+
+                    <label>
+                        {'Pill Color: '} 
+                        {props.pl_updateDetailValue('pl_color') !== '' ? 
+                        props.pl_updateDetailValue('pl_color') : 
+                        'Select color'}
+                    </label>
+                    <input type="color" id='pl_color' onChange={(e)=>props.pl_setPillDetails(e)} />
+
+                    <label>
+                        {'Pill Text: '} 
+                        {props.pl_updateDetailValue('pl_text') !== '' ? 
+                        props.pl_updateDetailValue('pl_text') : 
+                        'Enter text'}
+                    </label>
+                    <input type="text" id='pl_text' onChange={(e)=>props.pl_setPillDetails(e)} />
+
+                    <label>
+                        {'Pill Class Name: '} 
+                        {props.pl_updateDetailValue('pl_class') !== '' ? 
+                        props.pl_updateDetailValue('pl_class') : 
+                        'Enter class name'}
+                    </label>
+                    <input type="text" id='pl_class' onChange={(e)=>props.pl_setPillDetails(e)} />
+
                 </div>
             </div>
 
@@ -330,111 +349,111 @@ function Pills(props) {
                         <ul>
                             <li>
                                 <label>AD - Adventure of the Seas</label>
-                                <input type="checkbox" value='AD'/>
+                                <input type="checkbox" id='AD' checked={props.pl_setShipCheckBoxes('AD')} onChange={(e)=> props.pl_setShips(e)} />
                             </li>
                             <li>
                                 <label>AL - Allure of the Seas</label>
-                                <input type="checkbox" value='AL'/>
+                                <input type="checkbox" id='AL'/>
                             </li>
                             <li>
                                 <label>AN - Anthem of the Seas</label>
-                                <input type="checkbox" value='AN'/>
+                                <input type="checkbox" id='AN'/>
                             </li>
                             <li>
                                 <label>BR - Brilliance of the Seas</label>
-                                <input type="checkbox" value='BR'/>
+                                <input type="checkbox" id='BR'/>
                             </li>
                             <li>
                                 <label>EN - Enchantment of the Seas</label>
-                                <input type="checkbox" value='EN'/>
+                                <input type="checkbox" id='EN'/>
                             </li>
                             <li>
                                 <label>EX - Explorer of the Seas</label>
-                                <input type="checkbox" value='EX'/>
+                                <input type="checkbox" id='EX'/>
                             </li>
                             <li>
                                 <label>FR - Freedom of the Seas</label>
-                                <input type="checkbox" value='FR'/>
+                                <input type="checkbox" id='FR'/>
                             </li>
                             <li>
                                 <label>GR - Grandeur of the Seas</label>
-                                <input type="checkbox" value='GR'/>
+                                <input type="checkbox" id='GR'/>
                             </li>
                             <li>
                                 <label>HM - Harmony of the Seas</label>
-                                <input type="checkbox" value='HM'/>
+                                <input type="checkbox" id='HM'/>
                             </li>
                             <li>
                                 <label>ID - Independence of the Seas</label>
-                                <input type="checkbox" value='ID'/>
+                                <input type="checkbox" id='ID'/>
                             </li>
                             <li>
                                 <label>JW - Jewel of the Seas</label>
-                                <input type="checkbox" value='JW'/>
+                                <input type="checkbox" id='JW'/>
                             </li>
                             <li>
                                 <label>LB - Liberty of the Seas</label>
-                                <input type="checkbox" value='LB'/>
+                                <input type="checkbox" id='LB'/>
                             </li>
                             <li>
                                 <label>LG - Legend of the Seas</label>
-                                <input type="checkbox" value='LG'/>
+                                <input type="checkbox" id='LG'/>
                             </li>
                             <li>
                                 <label>MA - Mariner of the Seas</label>
-                                <input type="checkbox" value='MA'/>
+                                <input type="checkbox" id='MA'/>
                             </li>
                             <li>
                                 <label>MJ - Majesty of the Seas</label>
-                                <input type="checkbox" value='MJ'/>
+                                <input type="checkbox" id='MJ'/>
                             </li>
                             <li>
                                 <label>NE - Empress of the Seas</label>
-                                <input type="checkbox" value='NE'/>
+                                <input type="checkbox" id='NE'/>
                             </li>
                             <li>
                                 <label>NV - Navigator of the Seas</label>
-                                <input type="checkbox" value='NV'/>
+                                <input type="checkbox" id='NV'/>
                             </li>
                             <li>
                                 <label>OA - Oasis of the Seas</label>
-                                <input type="checkbox" value='OA'/>
+                                <input type="checkbox" id='OA'/>
                             </li>
                             <li>
                                 <label>OV - Ovation of the Seas</label>
-                                <input type="checkbox" value='OV'/>
+                                <input type="checkbox" id='OV'/>
                             </li>
                             <li>
                                 <label>OY - Odyssey of the Seas</label>
-                                <input type="checkbox" value='OY'/>
+                                <input type="checkbox" id='OY'/>
                             </li>
                             <li>
                                 <label>QN - Quantum of the Seas</label>
-                                <input type="checkbox" value='QN'/>
+                                <input type="checkbox" id='QN'/>
                             </li>
                             <li>
                                 <label>RD - Radiance of the Seas</label>
-                                <input type="checkbox" value='RD'/>
+                                <input type="checkbox" id='RD'/>
                             </li>
                             <li>
                                 <label>RH - Rhapsody of the Seas</label>
-                                <input type="checkbox" value='RH'/>
+                                <input type="checkbox" id='RH'/>
                             </li>
                             <li>
                                 <label>SR - Serenade of the Seas</label>
-                                <input type="checkbox" value='SR'/>
+                                <input type="checkbox" id='SR'/>
                             </li>
                             <li>
                                 <label>SY - Symphony of the Seas</label>
-                                <input type="checkbox" value='SY'/>
+                                <input type="checkbox" id='SY'/>
                             </li>
                             <li>
                                 <label>VI - Vision of the Seas</label>
-                                <input type="checkbox" value='VI'/>
+                                <input type="checkbox" id='VI'/>
                             </li>
                             <li>
                                 <label>VY - Voyager of the Seas</label>
-                                <input type="checkbox" value='VY'/>
+                                <input type="checkbox" id='VY'/>
                             </li>
                         </ul>
                     </div>
@@ -444,9 +463,9 @@ function Pills(props) {
                         <input type="date"/>
                         <label>End Date</label>
                         <input type="date"/>
-                        <button onClick={()=> props.pl_addSailingCriteria()}>Add</button>
+                        <button>Add</button>
                         <div>
-                            {props.pl_currentSailings()}
+                            {/* {props.pl_currentSailings()} */}
                         </div>
                     </div>
                     <div className='ge_pills-criteria-nights'>

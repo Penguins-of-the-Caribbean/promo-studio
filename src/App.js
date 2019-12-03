@@ -80,7 +80,36 @@ export default class App extends Component {
               pl_class: ''
             },
             pillCriteria: {
-              pl_shipCodes:[],
+              pl_shipCodes:{
+                AD: false,
+                AL: false,
+                AN: false,
+                BR: false,
+                EN: false,
+                EX: false,
+                FR: false,
+                GR: false,
+                HM: false,
+                ID: false,
+                JW: false, 
+                LB: false,
+                LG: false,
+                MA: false,
+                MJ: false,
+                NE: false,
+                NV: false,
+                OA: false,
+                OV: false,
+                OY: false,
+                QN: false,
+                RD: false,
+                RH: false,
+                SR: false,
+                SY: false,
+                VI: false,
+                VY: false,
+                value:[]
+              },
               pl_promoDates: [],
               pl_sailingDates: [],
               pl_numberOfNights: [],
@@ -139,8 +168,10 @@ export default class App extends Component {
     this.updateCountDownMarketCheckBoxes = this.updateCountDownMarketCheckBoxes.bind(this);
 
     //PILLS
-    this.setPillColor = this.setPillColor.bind(this);
-    this.updatePillColor = this.updatePillColor.bind(this);
+    this.setPillDetails = this.setPillDetails.bind(this);
+    this.updatePillDetailsValue = this.updatePillDetailsValue.bind(this);
+    this.setPillCriteria = this.setPillCriteria.bind(this);
+    this.updatePillShips = this.updatePillShips.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -183,8 +214,6 @@ export default class App extends Component {
     }
 
     this.setState({components: cloneComponents});
-    console.log(this.state.components[1].data);
-    console.log(this.state.components[1].data.cd_market);
   }
   
   updateCountDownMarketCheckBoxes(target){
@@ -196,7 +225,7 @@ export default class App extends Component {
     return this.state.components[2].pills.length;
   }
 
-  setPillColor(e){
+  setPillDetails(e){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
@@ -205,17 +234,31 @@ export default class App extends Component {
     this.setState({components: cloneComponents});
   }
 
-  updatePillColor(){
-    return this.state.components[2].data.pillDetails.color;
+  updatePillDetailsValue(target){
+    return this.state.components[2].data.pillDetails[target];
   }
 
-  updatePillSailingCriteria(){
-    console.log('sailing added');
+  setPillCriteria(e){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+    
+    if(e.target.checked  === true){
+      comp.data.pillCriteria.pl_shipCodes[e.target.id] = true;
+      if(comp.data.pillCriteria.pl_shipCodes.value.indexOf(e.target.id) === -1){
+        comp.data.pillCriteria.pl_shipCodes.value.push(`'${e.target.id}'`);
+      }
+    }else if(e.target.checked === false){
+      comp.data.pillCriteria.pl_shipCodes[e.target.id] = false;
+      comp.data.pillCriteria.pl_shipCodes.value.splice(comp.data.pillCriteria.pl_shipCodes.value.indexOf(`'${e.target.id}'`), 1);
+    }
+
+    this.setState({components: cloneComponents});
   }
 
-  renderPillSailingDates(){
-    console.log('Sailing Date!');
+  updatePillShips(target){
+    return this.state.components[2].data.pillCriteria.pl_shipCodes[target];
   }
+  
   //
 
   populateComponentSelector(components){
@@ -377,10 +420,10 @@ export default class App extends Component {
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
                                       pl_amount={this.updatePillAmount()}
-                                      pl_setColor={this.setPillColor}
-                                      pl_colorValue={this.updatePillColor()}
-                                      pl_addSailingCriteria={this.updatePillSailingCriteria}
-                                      pl_currentSailings={this.renderPillSailingDates}
+                                      pl_setPillDetails={this.setPillDetails}
+                                      pl_updateDetailValue={this.updatePillDetailsValue}
+                                      pl_setShips={this.setPillCriteria}
+                                      pl_setShipCheckBoxes={this.updatePillShips}
                     /> : <Redirect to='/' />
                   }
               >
