@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './ComponentStyles/hero-banner.css';
 import './ComponentStyles/count-down.css';
 import './ComponentStyles/pills.css';
+import './ComponentStyles/submit.css';
 import Button from '../Button/';
 
 function HeroBanner(props) {
@@ -296,6 +297,9 @@ function CountDown(props) {
 }
 
 function Pills(props) {
+
+    const [toggle, setToggle] = useState(false);
+
     return (
         <div className='ge_pills-container'>
 
@@ -307,307 +311,328 @@ function Pills(props) {
             <div className='ge_pills-details-container'>
                 <h3>Pill Details:</h3>
                 <div className='ge_pills-details-inputs'>
-                    <label>Pill Color</label>
-                    <input type="color" />
-                    <label>Pill Text</label>
-                    <input type="text"/>
-                    <label>Pill Class Name</label>
-                    <input type="text"/>
+                    <label>Pill Color: {props.pl_colorValue !== '' ? props.pl_colorValue : 'select color'}</label>
+                    <input type="color" onChange={(e)=>props.pl_setColor(e)} id='pl_color'/>
+                    <label>Pill Text: {props.pl_textValue}</label>
+                    <input type="text" onChange={(e)=>props.pl_setColor(e)} id='pl_text'/>
+                    <label>Pill Class Name: {props.pl_classValue}</label>
+                    <input type="text" onChange={(e)=>props.pl_setColor(e)} id='pl_class'/>
                 </div>
             </div>
 
             <div className='ge_pills-criteria-container'>
-                <h3>Pill Criteria</h3>
-                <h4>Ships</h4>
-                <ul>
-                    <li>
-                        <label>AD - Adventure of the Seas</label>
-                        <input type="checkbox" value='AD'/>
-                    </li>
-                    <li>
-                        <label>AL - Allure of the Seas</label>
-                        <input type="checkbox" value='AL'/>
-                    </li>
-                    <li>
-                        <label>AN - Anthem of the Seas</label>
-                        <input type="checkbox" value='AN'/>
-                    </li>
-                    <li>
-                        <label>BR - Brilliance of the Seas</label>
-                        <input type="checkbox" value='BR'/>
-                    </li>
-                    <li>
-                        <label>EN - Enchantment of the Seas</label>
-                        <input type="checkbox" value='EN'/>
-                    </li>
-                    <li>
-                        <label>EX - Explorer of the Seas</label>
-                        <input type="checkbox" value='EX'/>
-                    </li>
-                    <li>
-                        <label>FR - Freedom of the Seas</label>
-                        <input type="checkbox" value='FR'/>
-                    </li>
-                    <li>
-                        <label>GR - Grandeur of the Seas</label>
-                        <input type="checkbox" value='GR'/>
-                    </li>
-                    <li>
-                        <label>HM - Harmony of the Seas</label>
-                        <input type="checkbox" value='HM'/>
-                    </li>
-                    <li>
-                        <label>ID - Independence of the Seas</label>
-                        <input type="checkbox" value='ID'/>
-                    </li>
-                    <li>
-                        <label>JW - Jewel of the Seas</label>
-                        <input type="checkbox" value='JW'/>
-                    </li>
-                    <li>
-                        <label>LB - Liberty of the Seas</label>
-                        <input type="checkbox" value='LB'/>
-                    </li>
-                    <li>
-                        <label>LG - Legend of the Seas</label>
-                        <input type="checkbox" value='LG'/>
-                    </li>
-                    <li>
-                        <label>MA - Mariner of the Seas</label>
-                        <input type="checkbox" value='MA'/>
-                    </li>
-                    <li>
-                        <label>MJ - Majesty of the Seas</label>
-                        <input type="checkbox" value='MJ'/>
-                    </li>
-                    <li>
-                        <label>NE - Empress of the Seas</label>
-                        <input type="checkbox" value='NE'/>
-                    </li>
-                    <li>
-                        <label>NV - Navigator of the Seas</label>
-                        <input type="checkbox" value='NV'/>
-                    </li>
-                    <li>
-                        <label>OA - Oasis of the Seas</label>
-                        <input type="checkbox" value='OA'/>
-                    </li>
-                    <li>
-                        <label>OV - Ovation of the Seas</label>
-                        <input type="checkbox" value='OV'/>
-                    </li>
-                    <li>
-                        <label>OY - Odyssey of the Seas</label>
-                        <input type="checkbox" value='OY'/>
-                    </li>
-                    <li>
-                        <label>QN - Quantum of the Seas</label>
-                        <input type="checkbox" value='QN'/>
-                    </li>
-                    <li>
-                        <label>RD - Radiance of the Seas</label>
-                        <input type="checkbox" value='RD'/>
-                    </li>
-                    <li>
-                        <label>RH - Rhapsody of the Seas</label>
-                        <input type="checkbox" value='RH'/>
-                    </li>
-                    <li>
-                        <label>SR - Serenade of the Seas</label>
-                        <input type="checkbox" value='SR'/>
-                    </li>
-                    <li>
-                        <label>SY - Symphony of the Seas</label>
-                        <input type="checkbox" value='SY'/>
-                    </li>
-                    <li>
-                        <label>VI - Vision of the Seas</label>
-                        <input type="checkbox" value='VI'/>
-                    </li>
-                    <li>
-                        <label>VY - Voyager of the Seas</label>
-                        <input type="checkbox" value='VY'/>
-                    </li>
-                </ul>
-                <div>
-                    <h3>Add Sailing Dates</h3>
-                    <div>
+                <div className='ge_pills-criteria-header'>
+                    <h3>Pill Criteria</h3>
+                </div>
+                <div className='ge_pills-criteria-inputs'>
+                    <div className='ge_pills-criteria-ships'>
+                        <h3>Ships</h3>
+                        <ul>
+                            <li>
+                                <label>AD - Adventure of the Seas</label>
+                                <input type="checkbox" value='AD'/>
+                            </li>
+                            <li>
+                                <label>AL - Allure of the Seas</label>
+                                <input type="checkbox" value='AL'/>
+                            </li>
+                            <li>
+                                <label>AN - Anthem of the Seas</label>
+                                <input type="checkbox" value='AN'/>
+                            </li>
+                            <li>
+                                <label>BR - Brilliance of the Seas</label>
+                                <input type="checkbox" value='BR'/>
+                            </li>
+                            <li>
+                                <label>EN - Enchantment of the Seas</label>
+                                <input type="checkbox" value='EN'/>
+                            </li>
+                            <li>
+                                <label>EX - Explorer of the Seas</label>
+                                <input type="checkbox" value='EX'/>
+                            </li>
+                            <li>
+                                <label>FR - Freedom of the Seas</label>
+                                <input type="checkbox" value='FR'/>
+                            </li>
+                            <li>
+                                <label>GR - Grandeur of the Seas</label>
+                                <input type="checkbox" value='GR'/>
+                            </li>
+                            <li>
+                                <label>HM - Harmony of the Seas</label>
+                                <input type="checkbox" value='HM'/>
+                            </li>
+                            <li>
+                                <label>ID - Independence of the Seas</label>
+                                <input type="checkbox" value='ID'/>
+                            </li>
+                            <li>
+                                <label>JW - Jewel of the Seas</label>
+                                <input type="checkbox" value='JW'/>
+                            </li>
+                            <li>
+                                <label>LB - Liberty of the Seas</label>
+                                <input type="checkbox" value='LB'/>
+                            </li>
+                            <li>
+                                <label>LG - Legend of the Seas</label>
+                                <input type="checkbox" value='LG'/>
+                            </li>
+                            <li>
+                                <label>MA - Mariner of the Seas</label>
+                                <input type="checkbox" value='MA'/>
+                            </li>
+                            <li>
+                                <label>MJ - Majesty of the Seas</label>
+                                <input type="checkbox" value='MJ'/>
+                            </li>
+                            <li>
+                                <label>NE - Empress of the Seas</label>
+                                <input type="checkbox" value='NE'/>
+                            </li>
+                            <li>
+                                <label>NV - Navigator of the Seas</label>
+                                <input type="checkbox" value='NV'/>
+                            </li>
+                            <li>
+                                <label>OA - Oasis of the Seas</label>
+                                <input type="checkbox" value='OA'/>
+                            </li>
+                            <li>
+                                <label>OV - Ovation of the Seas</label>
+                                <input type="checkbox" value='OV'/>
+                            </li>
+                            <li>
+                                <label>OY - Odyssey of the Seas</label>
+                                <input type="checkbox" value='OY'/>
+                            </li>
+                            <li>
+                                <label>QN - Quantum of the Seas</label>
+                                <input type="checkbox" value='QN'/>
+                            </li>
+                            <li>
+                                <label>RD - Radiance of the Seas</label>
+                                <input type="checkbox" value='RD'/>
+                            </li>
+                            <li>
+                                <label>RH - Rhapsody of the Seas</label>
+                                <input type="checkbox" value='RH'/>
+                            </li>
+                            <li>
+                                <label>SR - Serenade of the Seas</label>
+                                <input type="checkbox" value='SR'/>
+                            </li>
+                            <li>
+                                <label>SY - Symphony of the Seas</label>
+                                <input type="checkbox" value='SY'/>
+                            </li>
+                            <li>
+                                <label>VI - Vision of the Seas</label>
+                                <input type="checkbox" value='VI'/>
+                            </li>
+                            <li>
+                                <label>VY - Voyager of the Seas</label>
+                                <input type="checkbox" value='VY'/>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='ge_pills-criteria-sailings'>
+                        <h3>Add Sailing Dates</h3>
                         <label>Start Date</label>
                         <input type="date"/>
                         <label>End Date</label>
                         <input type="date"/>
                         <button onClick={()=> props.pl_addSailingCriteria()}>Add</button>
+                        <div>
+                            {props.pl_currentSailings()}
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h3>Number of Night</h3>
-                    <label>From</label>
-                    <input type="number"/>
-                    <label>To</label>
-                    <input type="number"/>
-                </div>
-                <div>
-                    <h3>Departure Ports</h3>
-                    <label>Enter Port Name</label>
-                    <input type="text"/>
-                    <button>Add Port</button>
+                    <div className='ge_pills-criteria-nights'>
+                        <h3>Number of Night</h3>
+                        <label>From</label>
+                        <input type="number"/>
+                        <label>To</label>
+                        <input type="number"/>
+                    </div>
+                    <div className='ge_pills-criteria-ports'>
+                        <h3>Departure Ports</h3>
+                        <label>Enter Port Name</label>
+                        <input type="text"/>
+                        <button>Add Port</button>
+                    </div>
                 </div>
             </div>
 
+            <div className='ge_pills-exclusions-toggle'>
+                <h3>Exlusions</h3>
+                <input type="checkbox" onChange={(e)=>setToggle(e.target.checked)}/>
+            </div>
+
             <div className='ge_pills-exclusions-containers'>
-                <h3>Pill Exclusions</h3>
-                <div>
-                    <h4>Ships</h4>
-                    <ul>  
-                        <li>
-                            <label>AD - Adventure of the Seas</label>
-                            <input type="checkbox" value='AD'/>
-                        </li>
-                        <li>
-                            <label>AL - Allure of the Seas</label>
-                            <input type="checkbox" value='AL'/>
-                        </li>
-                        <li>
-                            <label>AN - Anthem of the Seas</label>
-                            <input type="checkbox" value='AN'/>
-                        </li>
-                        <li>
-                            <label>BR - Brilliance of the Seas</label>
-                            <input type="checkbox" value='BR'/>
-                        </li>
-                        <li>
-                            <label>EN - Enchantment of the Seas</label>
-                            <input type="checkbox" value='EN'/>
-                        </li>
-                        <li>
-                            <label>EX - Explorer of the Seas</label>
-                            <input type="checkbox" value='EX'/>
-                        </li>
-                        <li>
-                            <label>FR - Freedom of the Seas</label>
-                            <input type="checkbox" value='FR'/>
-                        </li>
-                        <li>
-                            <label>GR - Grandeur of the Seas</label>
-                            <input type="checkbox" value='GR'/>
-                        </li>
-                        <li>
-                            <label>HM - Harmony of the Seas</label>
-                            <input type="checkbox" value='HM'/>
-                        </li>
-                        <li>
-                            <label>ID - Independence of the Seas</label>
-                            <input type="checkbox" value='ID'/>
-                        </li>
-                        <li>
-                            <label>JW - Jewel of the Seas</label>
-                            <input type="checkbox" value='JW'/>
-                        </li>
-                        <li>
-                            <label>LB - Liberty of the Seas</label>
-                            <input type="checkbox" value='LB'/>
-                        </li>
-                        <li>
-                            <label>LG - Legend of the Seas</label>
-                            <input type="checkbox" value='LG'/>
-                        </li>
-                        <li>
-                            <label>MA - Mariner of the Seas</label>
-                            <input type="checkbox" value='MA'/>
-                        </li>
-                        <li>
-                            <label>MJ - Majesty of the Seas</label>
-                            <input type="checkbox" value='MJ'/>
-                        </li>
-                        <li>
-                            <label>NE - Empress of the Seas</label>
-                            <input type="checkbox" value='NE'/>
-                        </li>
-                        <li>
-                            <label>NV - Navigator of the Seas</label>
-                            <input type="checkbox" value='NV'/>
-                        </li>
-                        <li>
-                            <label>OA - Oasis of the Seas</label>
-                            <input type="checkbox" value='OA'/>
-                        </li>
-                        <li>
-                            <label>OV - Ovation of the Seas</label>
-                            <input type="checkbox" value='OV'/>
-                        </li>
-                        <li>
-                            <label>OY - Odyssey of the Seas</label>
-                            <input type="checkbox" value='OY'/>
-                        </li>
-                        <li>
-                            <label>QN - Quantum of the Seas</label>
-                            <input type="checkbox" value='QN'/>
-                        </li>
-                        <li>
-                            <label>RD - Radiance of the Seas</label>
-                            <input type="checkbox" value='RD'/>
-                        </li>
-                        <li>
-                            <label>RH - Rhapsody of the Seas</label>
-                            <input type="checkbox" value='RH'/>
-                        </li>
-                        <li>
-                            <label>SR - Serenade of the Seas</label>
-                            <input type="checkbox" value='SR'/>
-                        </li>
-                        <li>
-                            <label>SY - Symphony of the Seas</label>
-                            <input type="checkbox" value='SY'/>
-                        </li>
-                        <li>
-                            <label>VI - Vision of the Seas</label>
-                            <input type="checkbox" value='VI'/>
-                        </li>
-                        <li>
-                            <label>VY - Voyager of the Seas</label>
-                            <input type="checkbox" value='VY'/>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Number of Night</h3>
-                    <label>From</label>
-                    <input type="number"/>
-                    <label>To</label>
-                    <input type="number"/>
-                </div>
-                <div>
-                    <h3>Departure Ports</h3>
-                    <label>Enter Port Name</label>
-                    <input type="text"/>
-                    <button>Exclude Port</button>
-                </div>
-                <div>
-                    <h3>Destination Ports</h3>
-                    <label>Enter Port Name</label>
-                    <input type="text"/>
-                    <button>Exclude Port</button>
-                </div>
-                <div>
-                    <h3>Exclude Departure Dates</h3>
-                    <div>
-                        <label>Start Date</label>
-                        <input type="date"/>
-                        <label>End Date</label>
-                        <input type="date"/>
-                        <button>Exclude</button>
-                    </div>
-                </div>
-                <div>
-                    <h3>Exclude Other Pills</h3>
-                    <div>
-                        <label>Pill Class Name</label>
-                        <input type="text"/>
-                    </div>
-                </div>
-                <div>
-                    <button>CREATE PILL</button>
-                </div>
+                {
+                    toggle === true ? 
+                    <div className='ge_pills-exclusions-panel'>
+                        <h3>Pill Exclusions</h3>
+                        <div className='ge_pills-exclusions-panel-container'>
+                            <div className='ge_pills-exclusions-ships'>
+                                <h3>Ships</h3>
+                                <ul>  
+                                    <li>
+                                        <label>AD - Adventure of the Seas</label>
+                                        <input type="checkbox" value='AD'/>
+                                    </li>
+                                    <li>
+                                        <label>AL - Allure of the Seas</label>
+                                        <input type="checkbox" value='AL'/>
+                                    </li>
+                                    <li>
+                                        <label>AN - Anthem of the Seas</label>
+                                        <input type="checkbox" value='AN'/>
+                                    </li>
+                                    <li>
+                                        <label>BR - Brilliance of the Seas</label>
+                                        <input type="checkbox" value='BR'/>
+                                    </li>
+                                    <li>
+                                        <label>EN - Enchantment of the Seas</label>
+                                        <input type="checkbox" value='EN'/>
+                                    </li>
+                                    <li>
+                                        <label>EX - Explorer of the Seas</label>
+                                        <input type="checkbox" value='EX'/>
+                                    </li>
+                                    <li>
+                                        <label>FR - Freedom of the Seas</label>
+                                        <input type="checkbox" value='FR'/>
+                                    </li>
+                                    <li>
+                                        <label>GR - Grandeur of the Seas</label>
+                                        <input type="checkbox" value='GR'/>
+                                    </li>
+                                    <li>
+                                        <label>HM - Harmony of the Seas</label>
+                                        <input type="checkbox" value='HM'/>
+                                    </li>
+                                    <li>
+                                        <label>ID - Independence of the Seas</label>
+                                        <input type="checkbox" value='ID'/>
+                                    </li>
+                                    <li>
+                                        <label>JW - Jewel of the Seas</label>
+                                        <input type="checkbox" value='JW'/>
+                                    </li>
+                                    <li>
+                                        <label>LB - Liberty of the Seas</label>
+                                        <input type="checkbox" value='LB'/>
+                                    </li>
+                                    <li>
+                                        <label>LG - Legend of the Seas</label>
+                                        <input type="checkbox" value='LG'/>
+                                    </li>
+                                    <li>
+                                        <label>MA - Mariner of the Seas</label>
+                                        <input type="checkbox" value='MA'/>
+                                    </li>
+                                    <li>
+                                        <label>MJ - Majesty of the Seas</label>
+                                        <input type="checkbox" value='MJ'/>
+                                    </li>
+                                    <li>
+                                        <label>NE - Empress of the Seas</label>
+                                        <input type="checkbox" value='NE'/>
+                                    </li>
+                                    <li>
+                                        <label>NV - Navigator of the Seas</label>
+                                        <input type="checkbox" value='NV'/>
+                                    </li>
+                                    <li>
+                                        <label>OA - Oasis of the Seas</label>
+                                        <input type="checkbox" value='OA'/>
+                                    </li>
+                                    <li>
+                                        <label>OV - Ovation of the Seas</label>
+                                        <input type="checkbox" value='OV'/>
+                                    </li>
+                                    <li>
+                                        <label>OY - Odyssey of the Seas</label>
+                                        <input type="checkbox" value='OY'/>
+                                    </li>
+                                    <li>
+                                        <label>QN - Quantum of the Seas</label>
+                                        <input type="checkbox" value='QN'/>
+                                    </li>
+                                    <li>
+                                        <label>RD - Radiance of the Seas</label>
+                                        <input type="checkbox" value='RD'/>
+                                    </li>
+                                    <li>
+                                        <label>RH - Rhapsody of the Seas</label>
+                                        <input type="checkbox" value='RH'/>
+                                    </li>
+                                    <li>
+                                        <label>SR - Serenade of the Seas</label>
+                                        <input type="checkbox" value='SR'/>
+                                    </li>
+                                    <li>
+                                        <label>SY - Symphony of the Seas</label>
+                                        <input type="checkbox" value='SY'/>
+                                    </li>
+                                    <li>
+                                        <label>VI - Vision of the Seas</label>
+                                        <input type="checkbox" value='VI'/>
+                                    </li>
+                                    <li>
+                                        <label>VY - Voyager of the Seas</label>
+                                        <input type="checkbox" value='VY'/>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className='ge_pills-exclusions-nights'>
+                                <h3>Number of Night</h3>
+                                <label>From</label>
+                                <input type="number"/>
+                                <label>To</label>
+                                <input type="number"/>
+                            </div>
+                            <div className='ge_pills-exclusions-departure-port'>
+                                <h3>Departure Ports</h3>
+                                <label>Enter Port Name</label>
+                                <input type="text"/>
+                                <button>Exclude Port</button>
+                            </div>
+                            <div className='ge_pills-exclusions-destination-port'>
+                                <h3>Destination Ports</h3>
+                                <label>Enter Port Name</label>
+                                <input type="text"/>
+                                <button>Exclude Port</button>
+                            </div>
+                            <div className='ge_pills-exclusions-departure-dates'>
+                                <h3>Exclude Departure Dates</h3>
+                                <div>
+                                    <label>Start Date</label>
+                                    <input type="date"/>
+                                    <label>End Date</label>
+                                    <input type="date"/>
+                                    <button>Exclude</button>
+                                </div>
+                            </div>
+                            <div className='ge_pills-exclusions-pills'>
+                                <h3>Exclude Other Pills</h3>
+                                <div>
+                                    <label>Pill Class Name</label>
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div> : null
+                }
+            </div>
+            
+            <div className='ge_pills-create-pill-btn'>
+                <button id='ge_pill-create'>create pill</button>
+                <button id='ge_pill-delete'>delete pill</button>
             </div>
 
         </div>
@@ -656,7 +681,7 @@ function IOBD(){
 
 function Submit(props) {
     return (
-        <div>
+        <div className='ge_submit-container'>
             <Button click={()=>{console.log('hello motto')}} >{props.children}</Button>
         </div>
     )

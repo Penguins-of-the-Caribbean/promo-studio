@@ -29,7 +29,7 @@
 
 .ge_pills-details-container{
     background: green;
-    margin: 10px 0px 0px 0px;   
+    margin: 10px 0px 20px 0px;   
 }
 
 .ge_pills-details-container > h3{
@@ -54,4 +54,169 @@
     border-radius: 5px;
     border: solid 1px gray;
     padding: 5px;
+}
+
+.ge_pills-criteria-container{
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.ge_pills-criteria-header{
+    background: lightyellow;
+}
+
+.ge_pills-criteria-inputs{
+    background: pink;
+    display: flex;
+    justify-content: left;
+}
+
+.ge_pills-criteria-ships{
+    background : magenta;
+    width: 270px;
+}
+
+.ge_pills-criteria-ships ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_pills-criteria-ships ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ge_pills-criteria-sailings{
+    background: cyan;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-criteria-nights{
+    background: greenyellow;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-criteria-ports{
+    background: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-exclusions-toggle{
+    background: yellow;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.ge_pills-exclusions-toggle input{
+    margin: 5px 0px 0px 10px;
+}
+
+.ge_pills-exclusions-panel{
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ge_pills-exclusions-panel-container{
+    background: pink;
+    display: flex;
+    justify-content: left;
+}
+
+.ge_pills-exclusions-ships{
+    background: magenta;
+}
+
+.ge_pills-exclusions-ships ul{
+    width: 270px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_pills-exclusions-ships ul li{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ge_pills-exclusions-nights{
+    background: cyan;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-exclusions-departure-port{
+    background: purple;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-exclusions-destination-port{
+    background: orange;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-exclusions-departure-dates{
+    background: midnightblue;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-exclusions-pills{
+    background: hotpink;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-create-pill-btn{
+    margin: 20px 0px 5px 0px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#ge_pill-create{
+    background: rgb(114, 61, 218);
+    width: 115px;
+    height: 30px;
+    margin: 0px 5px 0px 0px;
+    border: none;
+    border-radius: 4px;
+    color:rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#ge_pill-create:active{
+    background: rgb(90, 48, 174);
+    transform: scale3d(0.95, 0.95, 0.95);
+}
+
+#ge_pill-delete{
+    background: rgb(218, 61, 213);
+    width: 115px;
+    height: 30px;
+    margin: 0px 5px 0px 0px;
+    border: none;
+    border-radius: 4px;
+    color:rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#ge_pill-delete:active{
+    background: rgb(155, 42, 151);
+    transform: scale3d(0.95, 0.95, 0.95);
 }

@@ -75,24 +75,24 @@ export default class App extends Component {
           pills:[],
           data: {
             pillDetails: {
-              color: '',
-              text: '',
-              class: ''
+              pl_color: '',
+              pl_text: '',
+              pl_class: ''
             },
             pillCriteria: {
-              shipCodes:[],
-              promoDates: [],
-              sailingDates: [],
-              numberOfNights: [],
-              departurePorts: [],
+              pl_shipCodes:[],
+              pl_promoDates: [],
+              pl_sailingDates: [],
+              pl_numberOfNights: [],
+              pl_departurePorts: [],
             },
             pillExclusions: {
-              shipCodes: [],
-              numberOfNights: [],
-              departurePorts: [],
-              destinationPorts: [],
-              departureDates: [],
-              otherPills: []
+              pl_shipCodes: [],
+              pl_numberOfNights: [],
+              pl_departurePorts: [],
+              pl_destinationPorts: [],
+              pl_departureDates: [],
+              pl_otherPills: []
             }
           }
         },
@@ -128,12 +128,19 @@ export default class App extends Component {
         },
       ]
     };
+    //HERO BANNER
     this.updateHeroBannerData = this.updateHeroBannerData.bind(this);
     this.updateHeroBannerDataFields = this.updateHeroBannerDataFields.bind(this);
     this.updateHeroBannerShadowValues = this.updateHeroBannerShadowValues.bind(this);
+
+    //COUNT-DOWN
     this.updateCountDownData = this.updateCountDownData.bind(this);
     this.updateCountDownMarkets = this.updateCountDownMarkets.bind(this);
     this.updateCountDownMarketCheckBoxes = this.updateCountDownMarketCheckBoxes.bind(this);
+
+    //PILLS
+    this.setPillColor = this.setPillColor.bind(this);
+    this.updatePillColor = this.updatePillColor.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -144,7 +151,6 @@ export default class App extends Component {
     comp.data[e.target.id] = e.target.value;
 
     this.setState({components: cloneComponents});
-
   }
   
   updateHeroBannerDataFields(target){
@@ -185,13 +191,32 @@ export default class App extends Component {
       return this.state.components[1].data.cd_market[target];
   }
 
+  //PILLS
   updatePillAmount(){
     return this.state.components[2].pills.length;
+  }
+
+  setPillColor(e){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillDetails[e.target.id] = e.target.value;
+
+    this.setState({components: cloneComponents});
+  }
+
+  updatePillColor(){
+    return this.state.components[2].data.pillDetails.color;
   }
 
   updatePillSailingCriteria(){
     console.log('sailing added');
   }
+
+  renderPillSailingDates(){
+    console.log('Sailing Date!');
+  }
+  //
 
   populateComponentSelector(components){
     return components.map((component, i)=>{
@@ -352,7 +377,10 @@ export default class App extends Component {
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
                                       pl_amount={this.updatePillAmount()}
+                                      pl_setColor={this.setPillColor}
+                                      pl_colorValue={this.updatePillColor()}
                                       pl_addSailingCriteria={this.updatePillSailingCriteria}
+                                      pl_currentSailings={this.renderPillSailingDates}
                     /> : <Redirect to='/' />
                   }
               >
