@@ -11,6 +11,7 @@ import ComponentSelector from './components/ComponentSelector';
 import ComponentBuilder from './components/ComponentBuilder';
 import ExpComp from './components/ExperienceComponent';
 import SailingDate from './components/SailingDate';
+import DeparturePort from './components/DeparturePort';
 import { CodeBlock } from './components/Components';
 
 
@@ -113,12 +114,41 @@ export default class App extends Component {
               },
               pl_promoDates: [],
               pl_sailingDates: [],
-              pl_numberOfNights: [],
+              pl_numberOfNights: [0, 0],
               pl_departurePorts: [],
             },
             pillExclusions: {
-              pl_shipCodes: [],
-              pl_numberOfNights: [],
+              pl_shipCodes: {
+                AD: false,
+                AL: false,
+                AN: false,
+                BR: false,
+                EN: false,
+                EX: false,
+                FR: false,
+                GR: false,
+                HM: false,
+                ID: false,
+                JW: false, 
+                LB: false,
+                LG: false,
+                MA: false,
+                MJ: false,
+                NE: false,
+                NV: false,
+                OA: false,
+                OV: false,
+                OY: false,
+                QN: false,
+                RD: false,
+                RH: false,
+                SR: false,
+                SY: false,
+                VI: false,
+                VY: false,
+                value:[]
+              },
+              pl_numberOfNights: [0, 0],
               pl_departurePorts: [],
               pl_destinationPorts: [],
               pl_departureDates: [],
@@ -175,6 +205,11 @@ export default class App extends Component {
     this.updatePillShips = this.updatePillShips.bind(this);
     this.addPillCriteriaDates = this.addPillCriteriaDates.bind(this);
     this.updatePillCriteriaDates = this.updatePillCriteriaDates.bind(this);
+    this.deletePillCriteriaDates = this.deletePillCriteriaDates.bind(this);
+    this.setPillNumberOfNights = this.setPillNumberOfNights.bind(this);
+    this.setPillDeparturePorts = this.setPillDeparturePorts.bind(this);
+    this.updatePillCriteriaDeparturePorts = this.updatePillCriteriaDeparturePorts.bind(this);
+    this.deletePillDeparturePort = this.deletePillDeparturePort.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -246,20 +281,20 @@ export default class App extends Component {
     let comp = cloneComponents[2];
     
     if(e.target.checked  === true){
-      comp.data.pillCriteria.pl_shipCodes[e.target.id] = true;
-      if(comp.data.pillCriteria.pl_shipCodes.value.indexOf(e.target.id) === -1){
-        comp.data.pillCriteria.pl_shipCodes.value.push(`'${e.target.id}'`);
+      comp.data[e.target.dataset.type].pl_shipCodes[e.target.id] = true;
+      if(comp.data[e.target.dataset.type].pl_shipCodes.value.indexOf(e.target.id) === -1){
+        comp.data[e.target.dataset.type].pl_shipCodes.value.push(`'${e.target.id}'`);
       }
     }else if(e.target.checked === false){
-      comp.data.pillCriteria.pl_shipCodes[e.target.id] = false;
-      comp.data.pillCriteria.pl_shipCodes.value.splice(comp.data.pillCriteria.pl_shipCodes.value.indexOf(`'${e.target.id}'`), 1);
+      comp.data[e.target.dataset.type].pl_shipCodes[e.target.id] = false;
+      comp.data[e.target.dataset.type].pl_shipCodes.value.splice(comp.data[e.target.dataset.type].pl_shipCodes.value.indexOf(`'${e.target.id}'`), 1);
     }
 
     this.setState({components: cloneComponents});
   }
 
-  updatePillShips(target){
-    return this.state.components[2].data.pillCriteria.pl_shipCodes[target];
+  updatePillShips(type, target){
+    return this.state.components[2].data[type].pl_shipCodes[target];
   }
 
   addPillCriteriaDates(target, date){
@@ -275,16 +310,64 @@ export default class App extends Component {
   updatePillCriteriaDates(target){
     return(
       this.state.components[2].data.pillCriteria[target].map((comp, i)=>{
-        return <SailingDate key={i} startDate={comp.start} endDate={comp.end}></SailingDate>
+        return  <SailingDate 
+                  key={i} 
+                  startDate={comp.start} 
+                  endDate={comp.end} 
+                  delete={this.deletePillCriteriaDates} 
+                  target={target}>
+                </SailingDate>
       })
     );
   }
 
-  deletePillCriteriaDates(){
-    //code here
+  deletePillCriteriaDates(i, target){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillCriteria[target].splice(i, 1);
+    this.setState({components: cloneComponents});
+    console.log(this.state.components[2].data.pillCriteria[target]);
   }
-  
+
+  setPillNumberOfNights(e){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillCriteria[e.target.className][Number(e.target.id)] = Number(e.target.value);
+    this.setState({components: cloneComponents});
+  }
+
+  setPillDeparturePorts(target, value){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillCriteria[target].push(value);
+    this.setState({components: cloneComponents});
+    console.log(this.state.components[2].data.pillCriteria[target]);
+  }
+
+  updatePillCriteriaDeparturePorts(){
+    return(
+      this.state.components[2].data.pillCriteria.pl_departurePorts.map((port, i)=>{
+        return <DeparturePort 
+                  key={i} 
+                  delete={this.deletePillDeparturePort}
+                  port={port}>
+                </DeparturePort>
+      })
+    )
+  }
+
+  deletePillDeparturePort(i){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillCriteria.pl_departurePorts.splice(i, 1);
+    this.setState({components: cloneComponents});
+  }
   //
+
 
   populateComponentSelector(components){
     return components.map((component, i)=>{
@@ -418,11 +501,13 @@ export default class App extends Component {
         <Router>
         <Navbar/>
         <View>
+
           <Taskbar>
               <NavLink className='ge_promo-studio-link-a' to='/selector'>
                   <AddButton></AddButton>
               </NavLink>
           </Taskbar>
+
           <Switch>
             <List>
               <Route
@@ -434,23 +519,30 @@ export default class App extends Component {
               </Route>
               <Route
                 path='/builder'
-                render={(props)=> 
+                render={()=> 
                     Object.values(this.componentSelectorData()).length !== 0 ? 
                     <ComponentBuilder
                                       data={this.componentSelectorData()} 
+
                                       hb_setState={this.updateHeroBannerData}
                                       hb_setValues={this.updateHeroBannerDataFields}
                                       hb_setShadow={this.updateHeroBannerShadowValues}
+
                                       cd_setState={this.updateCountDownData}
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
+
                                       pl_amount={this.updatePillAmount()}
                                       pl_setPillDetails={this.setPillDetails}
                                       pl_updateDetailValue={this.updatePillDetailsValue}
                                       pl_setShips={this.setPillCriteria}
                                       pl_setShipCheckBoxes={this.updatePillShips}
                                       pl_addDate={this.addPillCriteriaDates}
-                                      pl_currentPromos={this.updatePillCriteriaDates}
+                                      pl_updateDates={this.updatePillCriteriaDates}
+                                      pl_setNights={this.setPillNumberOfNights}
+                                      pl_addPort={this.setPillDeparturePorts}
+                                      pl_updatePorts={this.updatePillCriteriaDeparturePorts}
+
                     /> : <Redirect to='/' />
                   }
               >
@@ -464,6 +556,7 @@ export default class App extends Component {
               </Route>
             </List>
           </Switch>
+
         </View>
         <Footer/>
       </Router>

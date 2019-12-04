@@ -9,7 +9,7 @@ export default function index(props) {
                 <div>Start Date: {props.startDate}</div>
                 <div>End Date: {props.endDate}</div>
             </div>
-            <button>Delete</button>
+            <button onClick={()=> props.delete(props.key, props.target)}>Delete</button>
         </div>
     )
 }
