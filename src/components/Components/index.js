@@ -299,6 +299,8 @@ function CountDown(props) {
 function Pills(props) {
 
     const [toggle, setToggle] = useState(false);
+    const [promoValues, setPromoDateValue] = useState({});
+    const [sailingValues, setSailingDateValue] = useState({});
 
     return (
         <div className='ge_pills-container'>
@@ -353,119 +355,131 @@ function Pills(props) {
                             </li>
                             <li>
                                 <label>AL - Allure of the Seas</label>
-                                <input type="checkbox" id='AL'/>
+                                <input type="checkbox" id='AL' checked={props.pl_setShipCheckBoxes('AL')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>AN - Anthem of the Seas</label>
-                                <input type="checkbox" id='AN'/>
+                                <input type="checkbox" id='AN' checked={props.pl_setShipCheckBoxes('AN')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>BR - Brilliance of the Seas</label>
-                                <input type="checkbox" id='BR'/>
+                                <input type="checkbox" id='BR' checked={props.pl_setShipCheckBoxes('BR')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>EN - Enchantment of the Seas</label>
-                                <input type="checkbox" id='EN'/>
+                                <input type="checkbox" id='EN' checked={props.pl_setShipCheckBoxes('EN')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>EX - Explorer of the Seas</label>
-                                <input type="checkbox" id='EX'/>
+                                <input type="checkbox" id='EX' checked={props.pl_setShipCheckBoxes('EX')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>FR - Freedom of the Seas</label>
-                                <input type="checkbox" id='FR'/>
+                                <input type="checkbox" id='FR' checked={props.pl_setShipCheckBoxes('FR')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>GR - Grandeur of the Seas</label>
-                                <input type="checkbox" id='GR'/>
+                                <input type="checkbox" id='GR' checked={props.pl_setShipCheckBoxes('GR')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>HM - Harmony of the Seas</label>
-                                <input type="checkbox" id='HM'/>
+                                <input type="checkbox" id='HM' checked={props.pl_setShipCheckBoxes('HM')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>ID - Independence of the Seas</label>
-                                <input type="checkbox" id='ID'/>
+                                <input type="checkbox" id='ID' checked={props.pl_setShipCheckBoxes('ID')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>JW - Jewel of the Seas</label>
-                                <input type="checkbox" id='JW'/>
+                                <input type="checkbox" id='JW' checked={props.pl_setShipCheckBoxes('JW')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>LB - Liberty of the Seas</label>
-                                <input type="checkbox" id='LB'/>
+                                <input type="checkbox" id='LB' checked={props.pl_setShipCheckBoxes('LB')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>LG - Legend of the Seas</label>
-                                <input type="checkbox" id='LG'/>
+                                <input type="checkbox" id='LG' checked={props.pl_setShipCheckBoxes('LG')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>MA - Mariner of the Seas</label>
-                                <input type="checkbox" id='MA'/>
+                                <input type="checkbox" id='MA' checked={props.pl_setShipCheckBoxes('MA')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>MJ - Majesty of the Seas</label>
-                                <input type="checkbox" id='MJ'/>
+                                <input type="checkbox" id='MJ' checked={props.pl_setShipCheckBoxes('MJ')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>NE - Empress of the Seas</label>
-                                <input type="checkbox" id='NE'/>
+                                <input type="checkbox" id='NE' checked={props.pl_setShipCheckBoxes('NE')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>NV - Navigator of the Seas</label>
-                                <input type="checkbox" id='NV'/>
+                                <input type="checkbox" id='NV' checked={props.pl_setShipCheckBoxes('NV')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>OA - Oasis of the Seas</label>
-                                <input type="checkbox" id='OA'/>
+                                <input type="checkbox" id='OA' checked={props.pl_setShipCheckBoxes('OA')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>OV - Ovation of the Seas</label>
-                                <input type="checkbox" id='OV'/>
+                                <input type="checkbox" id='OV' checked={props.pl_setShipCheckBoxes('OV')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>OY - Odyssey of the Seas</label>
-                                <input type="checkbox" id='OY'/>
+                                <input type="checkbox" id='OY' checked={props.pl_setShipCheckBoxes('OY')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>QN - Quantum of the Seas</label>
-                                <input type="checkbox" id='QN'/>
+                                <input type="checkbox" id='QN' checked={props.pl_setShipCheckBoxes('QN')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>RD - Radiance of the Seas</label>
-                                <input type="checkbox" id='RD'/>
+                                <input type="checkbox" id='RD' checked={props.pl_setShipCheckBoxes('RD')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>RH - Rhapsody of the Seas</label>
-                                <input type="checkbox" id='RH'/>
+                                <input type="checkbox" id='RH' checked={props.pl_setShipCheckBoxes('RH')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>SR - Serenade of the Seas</label>
-                                <input type="checkbox" id='SR'/>
+                                <input type="checkbox" id='SR' checked={props.pl_setShipCheckBoxes('SR')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>SY - Symphony of the Seas</label>
-                                <input type="checkbox" id='SY'/>
+                                <input type="checkbox" id='SY' checked={props.pl_setShipCheckBoxes('SY')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>VI - Vision of the Seas</label>
-                                <input type="checkbox" id='VI'/>
+                                <input type="checkbox" id='VI' checked={props.pl_setShipCheckBoxes('VI')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                             <li>
                                 <label>VY - Voyager of the Seas</label>
-                                <input type="checkbox" id='VY'/>
+                                <input type="checkbox" id='VY' checked={props.pl_setShipCheckBoxes('VY')} onChange={(e)=> props.pl_setShips(e)}/>
                             </li>
                         </ul>
+                    </div>
+                    <div className='ge_pills-criteria-promos'>
+                        <h3>Add Promo Dates</h3>
+                        <label>Start Date</label>
+                        <input type="date" onChange={(e)=> setPromoDateValue({start: e.target.value, end: promoValues.end})}/>
+                        <label>End Date</label>
+                        <input type="date" onChange={(e)=> setPromoDateValue({start: promoValues.start, end: e.target.value})}/>
+                        <button onClick={()=> props.pl_addDate('pl_promoDates', promoValues)}>Add</button>
+                        <div>
+                            {props.pl_currentPromos('pl_promoDates')}
+                        </div>
                     </div>
                     <div className='ge_pills-criteria-sailings'>
                         <h3>Add Sailing Dates</h3>
                         <label>Start Date</label>
-                        <input type="date"/>
+                        <input type="date" onChange={(e)=> setSailingDateValue({start: e.target.value, end: sailingValues.end})}/>
                         <label>End Date</label>
-                        <input type="date"/>
-                        <button>Add</button>
+                        <input type="date" onChange={(e)=> setSailingDateValue({start: sailingValues.start, end: e.target.value})}/>
+                        <button onClick={()=> props.pl_addDate('pl_sailingDates', sailingValues)}>Add</button>
                         <div>
-                            {/* {props.pl_currentSailings()} */}
+                            
+                            {/* {props.pl_currentSailings} */}
                         </div>
                     </div>
                     <div className='ge_pills-criteria-nights'>

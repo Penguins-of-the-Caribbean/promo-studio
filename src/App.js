@@ -10,6 +10,7 @@ import List from './components/List/';
 import ComponentSelector from './components/ComponentSelector';
 import ComponentBuilder from './components/ComponentBuilder';
 import ExpComp from './components/ExperienceComponent';
+import SailingDate from './components/SailingDate';
 import { CodeBlock } from './components/Components';
 
 
@@ -172,6 +173,8 @@ export default class App extends Component {
     this.updatePillDetailsValue = this.updatePillDetailsValue.bind(this);
     this.setPillCriteria = this.setPillCriteria.bind(this);
     this.updatePillShips = this.updatePillShips.bind(this);
+    this.addPillCriteriaDates = this.addPillCriteriaDates.bind(this);
+    this.updatePillCriteriaDates = this.updatePillCriteriaDates.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -257,6 +260,28 @@ export default class App extends Component {
 
   updatePillShips(target){
     return this.state.components[2].data.pillCriteria.pl_shipCodes[target];
+  }
+
+  addPillCriteriaDates(target, date){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillCriteria[target].push(date);
+
+    this.setState({components: cloneComponents});
+    console.log(this.state.components[2].data.pillCriteria[target]);
+  }
+
+  updatePillCriteriaDates(target){
+    return(
+      this.state.components[2].data.pillCriteria[target].map((comp, i)=>{
+        return <SailingDate key={i} startDate={comp.start} endDate={comp.end}></SailingDate>
+      })
+    );
+  }
+
+  deletePillCriteriaDates(){
+    //code here
   }
   
   //
@@ -424,6 +449,8 @@ export default class App extends Component {
                                       pl_updateDetailValue={this.updatePillDetailsValue}
                                       pl_setShips={this.setPillCriteria}
                                       pl_setShipCheckBoxes={this.updatePillShips}
+                                      pl_addDate={this.addPillCriteriaDates}
+                                      pl_currentPromos={this.updatePillCriteriaDates}
                     /> : <Redirect to='/' />
                   }
               >
