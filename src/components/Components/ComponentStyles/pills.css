@@ -29,7 +29,9 @@
 
 .ge_pills-details-container{
     background: green;
-    margin: 10px 0px 20px 0px;   
+    margin: 10px 0px 20px 0px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .ge_pills-details-container > h3{
@@ -54,6 +56,11 @@
     border-radius: 5px;
     border: solid 1px gray;
     padding: 5px;
+}
+
+.ge_pills-preview-panel{
+    background: saddlebrown;
+    width: 400px;
 }
 
 .ge_pills-criteria-container{

@@ -301,7 +301,11 @@ function Pills(props) {
     const [toggle, setToggle] = useState(false);
     const [promoValues, setPromoDateValue] = useState({});
     const [sailingValues, setSailingDateValue] = useState({});
-    const [port, setPort] = useState('');
+    const [criteriaDeparturePort, setCriteriaDeparturePort] = useState('');
+    const [exclusionDeparturePort, setExclusiomnDeparturePort] = useState('');
+    const [exclusionDestinationPort, setExclusionDestinationPort] = useState('');
+    const [exclusionDepartureDates, setExclusionDepartureDate] = useState({});
+    const [exclusionsOtherPill, setExclusionsOtherPill] = useState('');
 
     return (
         <div className='ge_pills-container'>
@@ -312,9 +316,8 @@ function Pills(props) {
             </div>
 
             <div className='ge_pills-details-container'>
-                <h3>Pill Details:</h3>
                 <div className='ge_pills-details-inputs'>
-
+                    <h3>Pill Details:</h3>
                     <label>
                         {'Pill Color: '} 
                         {props.pl_updateDetailValue('pl_color') !== '' ? 
@@ -339,6 +342,13 @@ function Pills(props) {
                     </label>
                     <input type="text" id='pl_class' onChange={(e)=>props.pl_setPillDetails(e)} />
 
+                </div>
+
+                <div className="ge_pills-preview-panel">
+                    <h3>Pill Preview:</h3>
+                    <div>
+                        {props.pl_updatePillList()}
+                    </div>
                 </div>
             </div>
 
@@ -474,9 +484,9 @@ function Pills(props) {
                             onFocus={(e)=> e.target.value = ''} 
                             onChange={(e)=> setPromoDateValue({start: promoValues.start, end: e.target.value})}
                         />
-                        <button onClick={()=> props.pl_addDate('pl_promoDates', promoValues)}>Add</button>
+                        <button onClick={()=> props.pl_addDate('pillCriteria', 'pl_promoDates', promoValues)}>Add</button>
                         <div>
-                            {props.pl_updateDates('pl_promoDates')}
+                            {props.pl_updateDates('pillCriteria', 'pl_promoDates')}
                         </div>
                     </div>
                     <div className='ge_pills-criteria-sailings'>
@@ -493,25 +503,25 @@ function Pills(props) {
                             onFocus={(e)=> e.target.value = ''} 
                             onChange={(e)=> setSailingDateValue({start: sailingValues.start, end: e.target.value})}
                         />
-                        <button onClick={()=> props.pl_addDate('pl_sailingDates', sailingValues)}>Add</button>
+                        <button onClick={()=> props.pl_addDate('pillCriteria', 'pl_sailingDates', sailingValues)}>Add</button>
                         <div>
-                            {props.pl_updateDates('pl_sailingDates')}
+                            {props.pl_updateDates('pillCriteria', 'pl_sailingDates')}
                         </div>
                     </div>
                     <div className='ge_pills-criteria-nights'>
                         <h3>Number of Night</h3>
                         <label>From</label>
-                        <input type="number" id='0' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
+                        <input type="number" id='0' data-type='pillCriteria' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
                         <label>To</label>
-                        <input type="number" id='1' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
+                        <input type="number" id='1' data-type='pillCriteria' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
                     </div>
                     <div className='ge_pills-criteria-ports'>
                         <h3>Departure Ports</h3>
                         <label>Enter Port Name</label>
-                        <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setPort(e.target.value)}/>
-                        <button onClick={()=> props.pl_addPort('pl_departurePorts', port)}>Add Port</button>
+                        <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setCriteriaDeparturePort(e.target.value)}/>
+                        <button onClick={()=> props.pl_addPort('pillCriteria', 'pl_departurePorts', criteriaDeparturePort)}>Add Port</button>
                         <div>
-                            {props.pl_updatePorts()}
+                            {props.pl_updatePorts('pillCriteria', 'pl_departurePorts')}
                         </div>
                     </div>
                 </div>
@@ -644,37 +654,58 @@ function Pills(props) {
                             <div className='ge_pills-exclusions-nights'>
                                 <h3>Number of Night</h3>
                                 <label>From</label>
-                                <input type="number"/>
+                                <input type="number" id='0' data-type='pillExclusions' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
                                 <label>To</label>
-                                <input type="number"/>
+                                <input type="number" id='1' data-type='pillExclusions' className='pl_numberOfNights' onChange={(e)=> props.pl_setNights(e)}/>
                             </div>
                             <div className='ge_pills-exclusions-departure-port'>
                                 <h3>Departure Ports</h3>
                                 <label>Enter Port Name</label>
-                                <input type="text"/>
-                                <button>Exclude Port</button>
+                                <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setExclusiomnDeparturePort(e.target.value)}/>
+                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_departurePorts', exclusionDeparturePort)}>Add Port</button>
+                                <div>
+                                    {props.pl_updatePorts('pillExclusions', 'pl_departurePorts')}
+                                </div>
                             </div>
                             <div className='ge_pills-exclusions-destination-port'>
                                 <h3>Destination Ports</h3>
                                 <label>Enter Port Name</label>
-                                <input type="text"/>
-                                <button>Exclude Port</button>
+                                <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setExclusionDestinationPort(e.target.value)}/>
+                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_destinationPorts', exclusionDestinationPort)}>Add Port</button>
+                                <div>
+                                    {props.pl_updatePorts('pillExclusions', 'pl_destinationPorts')}
+                                </div>
                             </div>
                             <div className='ge_pills-exclusions-departure-dates'>
-                                <h3>Exclude Departure Dates</h3>
+                                <h3>Departure Dates</h3>
                                 <div>
                                     <label>Start Date</label>
-                                    <input type="date"/>
+                                    <input 
+                                        type="date" 
+                                        onFocus={(e)=> e.target.value = ''} 
+                                        onChange={(e)=> setExclusionDepartureDate({start: e.target.value, end: exclusionDepartureDates.end})}
+                                    />
                                     <label>End Date</label>
-                                    <input type="date"/>
-                                    <button>Exclude</button>
+                                    <input 
+                                        type="date" 
+                                        onFocus={(e)=> e.target.value = ''} 
+                                        onChange={(e)=> setExclusionDepartureDate({start: exclusionDepartureDates.start, end: e.target.value})}
+                                    />
+                                    <button onClick={()=> props.pl_addDate('pillExclusions', 'pl_departureDates', exclusionDepartureDates)}>Add</button>
+                                    <div>
+                                        {props.pl_updateDates('pillExclusions', 'pl_departureDates')}
+                                    </div>
                                 </div>
                             </div>
                             <div className='ge_pills-exclusions-pills'>
-                                <h3>Exclude Other Pills</h3>
+                                <h3>Other Pills</h3>
                                 <div>
                                     <label>Pill Class Name</label>
-                                    <input type="text"/>
+                                    <input type="text" onFocus={(e)=> {e.target.value = ''; setExclusionsOtherPill('')}} onChange={(e)=> setExclusionsOtherPill(e.target.value)}/>
+                                    <button onClick={()=> props.pl_setOtherPill(exclusionsOtherPill)}>Add</button>
+                                    <div>
+                                        {props.pl_updateOtherPills()}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -683,7 +714,7 @@ function Pills(props) {
             </div>
             
             <div className='ge_pills-create-pill-btn'>
-                <button id='ge_pill-create'>create pill</button>
+                <button id='ge_pill-create' onClick={()=> props.pl_createNewPill()} >Save</button>
                 <button id='ge_pill-delete'>delete pill</button>
             </div>
 

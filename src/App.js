@@ -12,6 +12,8 @@ import ComponentBuilder from './components/ComponentBuilder';
 import ExpComp from './components/ExperienceComponent';
 import SailingDate from './components/SailingDate';
 import DeparturePort from './components/DeparturePort';
+import Pill from './components/Pill';
+import OtherPill from './components/OtherPill';
 import { CodeBlock } from './components/Components';
 
 
@@ -210,6 +212,11 @@ export default class App extends Component {
     this.setPillDeparturePorts = this.setPillDeparturePorts.bind(this);
     this.updatePillCriteriaDeparturePorts = this.updatePillCriteriaDeparturePorts.bind(this);
     this.deletePillDeparturePort = this.deletePillDeparturePort.bind(this);
+    this.setPillOtherPillExclusion = this.setPillOtherPillExclusion.bind(this);
+    this.updatePillOtherPillExclusion = this.updatePillOtherPillExclusion.bind(this);
+    this.deletePillOtherPillExclusion = this.deletePillOtherPillExclusion.bind(this);
+    this.createNewPill = this.createNewPill.bind(this);
+    this.updateExistingPills = this.updateExistingPills.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -297,74 +304,150 @@ export default class App extends Component {
     return this.state.components[2].data[type].pl_shipCodes[target];
   }
 
-  addPillCriteriaDates(target, date){
+  addPillCriteriaDates(dataType, target, date){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
-    comp.data.pillCriteria[target].push(date);
+    comp.data[dataType][target].push(date);
 
     this.setState({components: cloneComponents});
-    console.log(this.state.components[2].data.pillCriteria[target]);
   }
 
-  updatePillCriteriaDates(target){
+  updatePillCriteriaDates(dataType, target){
     return(
-      this.state.components[2].data.pillCriteria[target].map((comp, i)=>{
+      this.state.components[2].data[dataType][target].map((comp, i)=>{
         return  <SailingDate 
                   key={i} 
                   startDate={comp.start} 
                   endDate={comp.end} 
                   delete={this.deletePillCriteriaDates} 
-                  target={target}>
+                  target={target}
+                  dataType={dataType}>
                 </SailingDate>
       })
     );
   }
 
-  deletePillCriteriaDates(i, target){
+  deletePillCriteriaDates(i, target, dataType){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
-    comp.data.pillCriteria[target].splice(i, 1);
+    comp.data[dataType][target].splice(i, 1);
     this.setState({components: cloneComponents});
-    console.log(this.state.components[2].data.pillCriteria[target]);
   }
 
   setPillNumberOfNights(e){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
-    comp.data.pillCriteria[e.target.className][Number(e.target.id)] = Number(e.target.value);
+    comp.data[e.target.dataset.type][e.target.className][Number(e.target.id)] = Number(e.target.value);
     this.setState({components: cloneComponents});
   }
 
-  setPillDeparturePorts(target, value){
+  setPillDeparturePorts(dataType, target, value){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
-    comp.data.pillCriteria[target].push(value);
+    comp.data[dataType][target].push(value);
     this.setState({components: cloneComponents});
-    console.log(this.state.components[2].data.pillCriteria[target]);
   }
 
-  updatePillCriteriaDeparturePorts(){
+  updatePillCriteriaDeparturePorts(dataType, portType){
     return(
-      this.state.components[2].data.pillCriteria.pl_departurePorts.map((port, i)=>{
+      this.state.components[2].data[dataType][portType].map((port, i)=>{
         return <DeparturePort 
                   key={i} 
                   delete={this.deletePillDeparturePort}
-                  port={port}>
+                  port={port}
+                  dataType={dataType}
+                  portType={portType}>
                 </DeparturePort>
       })
     )
   }
 
-  deletePillDeparturePort(i){
+  deletePillDeparturePort(dataType, portType, i){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
 
-    comp.data.pillCriteria.pl_departurePorts.splice(i, 1);
+    comp.data[dataType][portType].splice(i, 1);
     this.setState({components: cloneComponents});
+  }
+
+  setPillOtherPillExclusion(value){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillExclusions.pl_otherPills.push(value);
+    this.setState({components: cloneComponents});
+  }
+
+  updatePillOtherPillExclusion(){
+    return(
+      this.state.components[2].data.pillExclusions.pl_otherPills.map((pill, i)=>{
+        return <OtherPill key={i} pill={pill} delete={this.deletePillOtherPillExclusion}></OtherPill>
+      })
+    );
+  }
+
+  deletePillOtherPillExclusion(i){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillExclusions.pl_otherPills.splice(i, 1);
+    this.setState({Components: cloneComponents});
+  }
+
+  createNewPill(){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+    //let newPill = {...comp.data};
+    let newPill = JSON.parse(JSON.stringify(comp.data));
+
+    comp.pills.push(newPill);
+
+    for(const prop in comp.data.pillDetails){
+      comp.data.pillDetails[prop] = '';
+    }
+
+    for(const prop in comp.data.pillCriteria.pl_shipCodes){
+      comp.data.pillCriteria.pl_shipCodes[prop] = false;
+      if(prop === 'value') comp.data.pillCriteria.pl_shipCodes[prop] = []; 
+    }
+
+    for(const prop in comp.data.pillExclusions.pl_shipCodes){
+      comp.data.pillExclusions.pl_shipCodes[prop] = false;
+      if(prop === 'value') comp.data.pillExclusions.pl_shipCodes[prop] = []; 
+    }
+
+    comp.data.pillCriteria.pl_promoDates = [];
+    comp.data.pillCriteria.pl_sailingDates = [];
+    comp.data.pillCriteria.pl_numberOfNights = [0, 0];
+    comp.data.pillCriteria.pl_departurePorts = [];
+
+    comp.data.pillExclusions.pl_numberOfNights = [0, 0];
+    comp.data.pillExclusions.pl_departurePorts = [];
+    comp.data.pillExclusions.pl_destinationPorts = [];
+    comp.data.pillExclusions.pl_departureDates = [];
+    comp.data.pillExclusions.pl_otherPills = [];
+
+    this.setState({components: cloneComponents});
+  }
+
+  editExistingPill(){
+    //code here
+  }
+
+  deleteExistingPill(){
+    //code here
+  }
+
+  updateExistingPills(){
+    return(
+      this.state.components[2].pills.map((pill , i)=>{
+        return <Pill key={i} bgColor={pill.pillDetails.pl_color} text={pill.pillDetails.pl_text}/>
+      })
+    );
   }
   //
 
@@ -542,7 +625,10 @@ export default class App extends Component {
                                       pl_setNights={this.setPillNumberOfNights}
                                       pl_addPort={this.setPillDeparturePorts}
                                       pl_updatePorts={this.updatePillCriteriaDeparturePorts}
-
+                                      pl_setOtherPill={this.setPillOtherPillExclusion}
+                                      pl_updateOtherPills={this.updatePillOtherPillExclusion}
+                                      pl_createNewPill={this.createNewPill}
+                                      pl_updatePillList={this.updateExistingPills}
                     /> : <Redirect to='/' />
                   }
               >
