@@ -79,7 +79,7 @@ export default class App extends Component {
           pills:[],
           data: {
             pillDetails: {
-              pl_color: '',
+              pl_color: '#FF0000',
               pl_text: '',
               pl_class: ''
             },
@@ -217,6 +217,8 @@ export default class App extends Component {
     this.deletePillOtherPillExclusion = this.deletePillOtherPillExclusion.bind(this);
     this.createNewPill = this.createNewPill.bind(this);
     this.updateExistingPills = this.updateExistingPills.bind(this);
+    this.editExistingPill = this.editExistingPill.bind(this);
+    this.deleteExistingPill = this.deleteExistingPill.bind(this);
   }
 
   //HERO BANNER DATA HANDLER
@@ -434,20 +436,65 @@ export default class App extends Component {
     this.setState({components: cloneComponents});
   }
 
-  editExistingPill(){
-    //code here
+  editExistingPill(i){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[2];
+
+    comp.data.pillDetails.pl_color = comp.pills[i].pillDetails.pl_color;
+    comp.data.pillDetails.pl_text = comp.pills[i].pillDetails.pl_text;
+    comp.data.pillDetails.pl_class = comp.pills[i].pillDetails.pl_class;
+
+    for(const prop in comp.data.pillCriteria.pl_shipCodes){
+      comp.data.pillCriteria.pl_shipCodes[prop] = comp.pills[i].pillCriteria.pl_shipCodes[prop];
+    }
+
+    for(const prop in comp.data.pillExclusions.pl_shipCodes){
+      comp.data.pillExclusions.pl_shipCodes[prop] = comp.pills[i].pillExclusions.pl_shipCodes[prop];
+    }
+
+    comp.data.pillCriteria.pl_promoDates = comp.pills[i].pillCriteria.pl_promoDates;
+    comp.data.pillCriteria.pl_sailingDates = comp.pills[i].pillCriteria.pl_sailingDates;
+    comp.data.pillCriteria.pl_numberOfNights = comp.pills[i].pillCriteria.pl_numberOfNights;
+    comp.data.pillCriteria.pl_departurePorts = comp.pills[i].pillCriteria.pl_departurePorts;
+
+    comp.data.pillExclusions.pl_numberOfNights = comp.pills[i].pillExclusions.pl_numberOfNights;
+    comp.data.pillExclusions.pl_departurePorts = comp.pills[i].pillExclusions.pl_departurePorts;
+    comp.data.pillExclusions.pl_destinationPorts = comp.pills[i].pillExclusions.pl_destinationPorts;
+    comp.data.pillExclusions.pl_departureDates = comp.pills[i].pillExclusions.pl_departureDates;
+    comp.data.pillExclusions.pl_otherPills = comp.pills[i].pillExclusions.pl_otherPills;
+
+    //REMOVE PILL FROM PILLS ARRAY
+    comp.pills.splice(i, 1);
+
+    this.setState({components: cloneComponents});
+    console.log(this.state.components[2]);
   }
 
-  deleteExistingPill(){
-    //code here
+  deleteExistingPill(i){
+    let cloneComponents = [...this.state.components];
+    cloneComponents[2].pills.splice(i, 1);
+    this.setState({components: cloneComponents});
+    console.log(this.state.components[2].pills);
   }
 
   updateExistingPills(){
     return(
       this.state.components[2].pills.map((pill , i)=>{
-        return <Pill key={i} bgColor={pill.pillDetails.pl_color} text={pill.pillDetails.pl_text}/>
+        return <Pill 
+                  key={i}
+                  index={i} 
+                  bgColor={pill.pillDetails.pl_color} 
+                  text={pill.pillDetails.pl_text}
+                  edit={this.editExistingPill}
+                  delete={this.deleteExistingPill}
+                />
       })
     );
+  }
+
+  pillsCodeSnippet(){
+    //code here
+    
   }
   //
 
@@ -560,7 +607,7 @@ export default class App extends Component {
           '${this.state.components[1].data.cd_dst}',
           '${this.state.components[1].data.cd_layout}'
       );`,
-      pills: '', 
+      pills: this.pillsCodeSnippet(), 
       peopleWatching: '',
       exitPopup: '',
       ksf: '',

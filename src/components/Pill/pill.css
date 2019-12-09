@@ -1,3 +1,37 @@
 .ge_pill-container{
     background: royalblue;
+    width: 400px;
+    height: auto;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ge_pill{
+    width: auto;
+    padding: 6px 10px;
+    margin: 0px;
+    float: left;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+}
+
+.ge_pill-controls{
+    background: green;
+    width: auto;
+    height: 26px;
+    float: left;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ge_pill-controls button{
+    float: left;
+    margin: 0px 5px;
 }

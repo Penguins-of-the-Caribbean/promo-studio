@@ -299,6 +299,8 @@ function CountDown(props) {
 function Pills(props) {
 
     const [toggle, setToggle] = useState(false);
+    const [textValue, setTextValue] = useState('');
+    const [classValue, setClassValue] = useState('');
     const [promoValues, setPromoDateValue] = useState({});
     const [sailingValues, setSailingDateValue] = useState({});
     const [criteriaDeparturePort, setCriteriaDeparturePort] = useState('');
@@ -332,7 +334,11 @@ function Pills(props) {
                         props.pl_updateDetailValue('pl_text') : 
                         'Enter text'}
                     </label>
-                    <input type="text" id='pl_text' onChange={(e)=>props.pl_setPillDetails(e)} />
+                    <input 
+                        type="text" id='pl_text' 
+                        onFocus={(e)=> e.target.value=''} 
+                        value={textValue}
+                        onChange={(e)=>{props.pl_setPillDetails(e); setTextValue(e.target.value)}} />
 
                     <label>
                         {'Pill Class Name: '} 
@@ -340,13 +346,18 @@ function Pills(props) {
                         props.pl_updateDetailValue('pl_class') : 
                         'Enter class name'}
                     </label>
-                    <input type="text" id='pl_class' onChange={(e)=>props.pl_setPillDetails(e)} />
-
+                    <input 
+                        type="text" 
+                        id='pl_class' 
+                        onFocus={(e)=> e.target.value=''} 
+                        value={classValue}
+                        onChange={(e)=> {props.pl_setPillDetails(e); setClassValue(e.target.value)}} 
+                    />
                 </div>
 
                 <div className="ge_pills-preview-panel">
                     <h3>Pill Preview:</h3>
-                    <div>
+                    <div className='ge_pills-preview-panel-pill-container'>
                         {props.pl_updatePillList()}
                     </div>
                 </div>
@@ -714,7 +725,7 @@ function Pills(props) {
             </div>
             
             <div className='ge_pills-create-pill-btn'>
-                <button id='ge_pill-create' onClick={()=> props.pl_createNewPill()} >Save</button>
+                <button id='ge_pill-create' onClick={()=> {props.pl_createNewPill(); setTextValue(''); setClassValue('')}} >Save</button>
                 <button id='ge_pill-delete'>delete pill</button>
             </div>
 

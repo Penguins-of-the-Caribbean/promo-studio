@@ -61,6 +61,16 @@
 .ge_pills-preview-panel{
     background: saddlebrown;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ge_pills-preview-panel-pill-container{
+    /* background: purple; */
+    width: 100%;
+    height: auto;
 }
 
 .ge_pills-criteria-container{
