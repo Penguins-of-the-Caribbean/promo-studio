@@ -75,6 +75,7 @@ export default class App extends Component {
         {
           id: 'pills',
           name: 'Pills',
+          parent: '.itinerary-card-component',
           selected: false,
           pills:[],
           data: {
@@ -493,8 +494,57 @@ export default class App extends Component {
   }
 
   pillsCodeSnippet(){
-    //code here
-    
+    let code = '';
+
+    function processDates(pill, category, target){
+
+      let str = '';
+
+      pill[category][target].forEach((date)=>{
+        str += `
+                {
+                  startDate: '${date.start}',
+                  endDate: '${date.end}'
+                },
+                `
+      });
+      console.log()
+      return str;
+    }
+
+    this.state.components[2].pills.forEach((pill, i)=>{
+      let codeSnipet = `
+        pills({
+          pillDetails: {
+            color: '${pill.pillDetails.pl_color}',
+            text: '${pill.pillDetails.pl_text}',
+            class: '${pill.pillDetails.pl_class}'
+          },
+          pillCriteria: {
+            shipCodes: [${pill.pillCriteria.pl_shipCodes.value.join(', ')}],
+            promoDates: [${processDates(pill, 'pillCriteria', 'pl_promoDates')}
+            ],
+            sailingDates: [${processDates(pill, 'pillCriteria', 'pl_sailingDates')}
+            ],
+            numberOfNights: [${pill.pillCriteria.pl_numberOfNights[0]}, ${pill.pillCriteria.pl_numberOfNights[1]}],
+            departurePorts: [${pill.pillCriteria.pl_departurePorts.join(', ')}],
+          },
+          pillExclusions: {
+            shipCodes: [${pill.pillExclusions.pl_shipCodes.value.join(', ')}],
+            numberOfNights: [${pill.pillExclusions.pl_numberOfNights[0]}, ${pill.pillExclusions.pl_numberOfNights[1]}],
+            departurePorts: [${pill.pillExclusions.pl_departurePorts.join(', ')}],
+            destinationPorts: [${pill.pillExclusions.pl_destinationPorts.join(', ')}],
+            departureDates: [${processDates(pill, 'pillExclusions', 'pl_departureDates')}
+            ],
+            otherPills: [${pill.pillExclusions.pl_otherPills.join(', ')}]
+          }
+        });
+      `;
+      code += codeSnipet;
+    });
+
+    return code;
+
   }
   //
 
@@ -607,12 +657,16 @@ export default class App extends Component {
           '${this.state.components[1].data.cd_dst}',
           '${this.state.components[1].data.cd_layout}'
       );`,
-      pills: this.pillsCodeSnippet(), 
+      pills: `
+      init('${this.state.components[2].parent}', function(){
+          ${this.pillsCodeSnippet()}
+      });
+      `, 
       peopleWatching: '',
       exitPopup: '',
       ksf: '',
       promoCode: '',
-      iobd: ''
+      iobd: '',
     };
 
     this.state.components.forEach((comp)=>{

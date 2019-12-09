@@ -326,7 +326,11 @@ function Pills(props) {
                         props.pl_updateDetailValue('pl_color') : 
                         'Select color'}
                     </label>
-                    <input type="color" id='pl_color' onChange={(e)=>props.pl_setPillDetails(e)} />
+                    <input 
+                        type="color" 
+                        id='pl_color' 
+                        value={props.pl_updateDetailValue('pl_color') !== '' ? props.pl_updateDetailValue('pl_color') : null} 
+                        onChange={(e)=>props.pl_setPillDetails(e)} />
 
                     <label>
                         {'Pill Text: '} 
@@ -530,7 +534,7 @@ function Pills(props) {
                         <h3>Departure Ports</h3>
                         <label>Enter Port Name</label>
                         <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setCriteriaDeparturePort(e.target.value)}/>
-                        <button onClick={()=> props.pl_addPort('pillCriteria', 'pl_departurePorts', criteriaDeparturePort)}>Add Port</button>
+                        <button onClick={()=> props.pl_addPort('pillCriteria', 'pl_departurePorts', `"${criteriaDeparturePort}"`)}>Add Port</button>
                         <div>
                             {props.pl_updatePorts('pillCriteria', 'pl_departurePorts')}
                         </div>
@@ -673,7 +677,7 @@ function Pills(props) {
                                 <h3>Departure Ports</h3>
                                 <label>Enter Port Name</label>
                                 <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setExclusiomnDeparturePort(e.target.value)}/>
-                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_departurePorts', exclusionDeparturePort)}>Add Port</button>
+                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_departurePorts', `"${exclusionDeparturePort}"`)}>Add Port</button>
                                 <div>
                                     {props.pl_updatePorts('pillExclusions', 'pl_departurePorts')}
                                 </div>
@@ -682,7 +686,7 @@ function Pills(props) {
                                 <h3>Destination Ports</h3>
                                 <label>Enter Port Name</label>
                                 <input type="text" onFocus={(e)=> e.target.value = ''} onChange={(e)=> setExclusionDestinationPort(e.target.value)}/>
-                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_destinationPorts', exclusionDestinationPort)}>Add Port</button>
+                                <button onClick={()=> props.pl_addPort('pillExclusions', 'pl_destinationPorts', `"${exclusionDestinationPort}"`)}>Add Port</button>
                                 <div>
                                     {props.pl_updatePorts('pillExclusions', 'pl_destinationPorts')}
                                 </div>
@@ -713,7 +717,7 @@ function Pills(props) {
                                 <div>
                                     <label>Pill Class Name</label>
                                     <input type="text" onFocus={(e)=> {e.target.value = ''; setExclusionsOtherPill('')}} onChange={(e)=> setExclusionsOtherPill(e.target.value)}/>
-                                    <button onClick={()=> props.pl_setOtherPill(exclusionsOtherPill)}>Add</button>
+                                    <button onClick={()=> props.pl_setOtherPill(`"${exclusionsOtherPill}"`)}>Add</button>
                                     <div>
                                         {props.pl_updateOtherPills()}
                                     </div>
