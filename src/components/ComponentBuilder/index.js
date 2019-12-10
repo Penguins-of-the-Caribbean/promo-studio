@@ -15,7 +15,7 @@ export default function index(props) {
             {props.data.promoCode === true ? <div>Promo Code</div> : null}
             {props.data.iobd === true ? <div>IOBD</div> : null}
             <Submit>
-                <NavLink to='/code'>generate code</NavLink>
+                <NavLink className='ge_generate-code-btn' to='/code'>generate code</NavLink>
             </Submit>
         </div>
     )

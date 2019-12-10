@@ -200,6 +200,7 @@ export default class App extends Component {
     this.updateCountDownData = this.updateCountDownData.bind(this);
     this.updateCountDownMarkets = this.updateCountDownMarkets.bind(this);
     this.updateCountDownMarketCheckBoxes = this.updateCountDownMarketCheckBoxes.bind(this);
+    this.setCountDownInputValue = this.setCountDownInputValue.bind(this);
 
     //PILLS
     this.setPillDetails = this.setPillDetails.bind(this);
@@ -222,7 +223,7 @@ export default class App extends Component {
     this.deleteExistingPill = this.deleteExistingPill.bind(this);
   }
 
-  //HERO BANNER DATA HANDLER
+  //HERO BANNER
   updateHeroBannerData(e){
     let cloneComponents = [...this.state.components];
     let comp =  cloneComponents[0];
@@ -240,11 +241,13 @@ export default class App extends Component {
     return this.state.components[0].data[target];
   }
 
+  //COUNT DOWN 
   updateCountDownData(e){
-    let cloneComponents = this.state.components;
+    let cloneComponents = [...this.state.components];
     let comp = cloneComponents[1];
 
     comp.data[e.target.id] = e.target.value;
+    this.setState({components: cloneComponents});
   }
 
   updateCountDownMarkets(e){
@@ -266,6 +269,10 @@ export default class App extends Component {
   
   updateCountDownMarketCheckBoxes(target){
       return this.state.components[1].data.cd_market[target];
+  }
+
+  setCountDownInputValue(target){
+    return this.state.components[1].data[target];
   }
 
   //PILLS
@@ -715,6 +722,7 @@ export default class App extends Component {
                                       cd_setState={this.updateCountDownData}
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
+                                      cd_setValues={this.setCountDownInputValue}
 
                                       pl_amount={this.updatePillAmount()}
                                       pl_setPillDetails={this.setPillDetails}

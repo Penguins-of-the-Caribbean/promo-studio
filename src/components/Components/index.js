@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './ComponentStyles/hero-banner.css';
 import './ComponentStyles/count-down.css';
 import './ComponentStyles/pills.css';
@@ -14,107 +14,154 @@ function HeroBanner(props) {
     return (
         <div className='ge_hero-banner-container'>
             <h1>Hero Banner</h1>
-            <form>
-                <label>Parent element</label>
-                <p>{props.hb_setValues('hb_parent') !== '' ? props.hb_setValues('hb_parent') : 'Enter Value'}</p>
-                <input 
-                    type="text" 
-                    id="hb_parent" 
-                    onChange={(e)=>props.hb_setState(e)}
-                    required
-                />
-                <label>Header text</label>
-                <p>{props.hb_setValues('hb_header') !== '' ? props.hb_setValues('hb_header') : 'Enter Value'}</p>
-                <input 
-                    type="text" 
-                    id="hb_header" 
-                    onChange={(e)=>props.hb_setState(e)}
-                    required
-                />
-                <label>Subtext</label>
-                <p>{props.hb_setValues('hb_subtext') !== '' ? props.hb_setValues('hb_subtext') : 'Enter Value'}</p>
-                <input 
-                    type="text" 
-                    id="hb_subtext" 
-                    onChange={(e)=>props.hb_setState(e)}
-                    required
-                />
-                <label>Text alignment</label>
-                <select id="hb_textAlignment" onChange={(e)=>props.hb_setState(e)} required >
-                    <option value="center">center(Default)</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                </select>
-                <label>Add desktop image</label>
-                <p>{props.hb_setValues('hb_desktopImage') !== '' ? props.hb_setValues('hb_desktopImage') : 'Enter Value'}</p>
-                <input 
-                    type="url" 
-                    id="hb_desktopImage" 
-                    onChange={(e)=>props.hb_setState(e)}
-                    required
-                />
-                <label>Add mobile image</label>
-                <p>{props.hb_setValues('hb_mobileImage') !== '' ? props.hb_setValues('hb_mobileImage') : 'Enter Value'}</p>
-                <input 
-                    type="url" 
-                    id="hb_mobileImage"
-                    onChange={(e)=>props.hb_setState(e)}
-                />
-                <div className='ge_hb-drop-shadow-widget'>
-                    <label>Add Shadow</label>
+            <div>
+                <div className='ge_hero-banner-parent'>
+                    <div className='ge_hb-labels'>
+                        <label>Parent element:</label>
+                        <p>{props.hb_setValues('hb_parent') !== '' ? props.hb_setValues('hb_parent') : 'Enter Value'}</p>
+                    </div>
                     <input 
-                        type="checkbox" 
-                        onChange={(e)=>setToggle(e.target.checked)}
+                        className='ge_input-style'
+                        type="text" 
+                        id="hb_parent" 
+                        onChange={(e)=>props.hb_setState(e)}
+                        required
                     />
+                </div>
+                <div className='ge_hero-banner-header'>
+                    <div className='ge_hb-labels'>
+                        <label>Header Text:</label>
+                        <p>{props.hb_setValues('hb_header') !== '' ? props.hb_setValues('hb_header') : 'Enter Value'}</p>
+                    </div>
+                    <input 
+                        className='ge_input-style'
+                        type="text" 
+                        id="hb_header" 
+                        onChange={(e)=>props.hb_setState(e)}
+                        required
+                    />
+                </div>
+                <div className='ge_hero-banner-subtext'>
+                    <div className='ge_hb-labels'>
+                        <label>Subtext:</label>
+                        <p>{props.hb_setValues('hb_subtext') !== '' ? props.hb_setValues('hb_subtext') : 'Enter Value'}</p>
+                    </div>
+                    <input
+                        className='ge_input-style' 
+                        type="text" 
+                        id="hb_subtext" 
+                        onChange={(e)=>props.hb_setState(e)}
+                        required
+                    />
+                </div>
+                <div className='ge_hero-banner-text-align'>
+                    <label>Text alignment: </label>
+                    <select className='ge_select-style' id="hb_textAlignment" onChange={(e)=>props.hb_setState(e)} required >
+                        <option value="center">center(Default)</option>
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                    </select>
+                </div>
+                <div className='ge_hero-banner-desktop-image'>
+                    <div className='ge_hb-labels'>
+                        <label>Add desktop image</label>
+                        <p>{props.hb_setValues('hb_desktopImage') !== '' ? props.hb_setValues('hb_desktopImage') : 'Enter Value'}</p>
+                    </div>
+                    <input 
+                        className='ge_input-style'
+                        type="url" 
+                        id="hb_desktopImage" 
+                        onChange={(e)=>props.hb_setState(e)}
+                        required
+                    />
+                </div>
+                <div className='ge_hero-banner-mobile-image'>
+                    <div className='ge_hb-labels'>
+                        <label>Add mobile image</label>
+                        <p>{props.hb_setValues('hb_mobileImage') !== '' ? props.hb_setValues('hb_mobileImage') : 'Enter Value'}</p>
+                    </div>
+                    <input 
+                        className='ge_input-style'
+                        type="url" 
+                        id="hb_mobileImage"
+                        onChange={(e)=>props.hb_setState(e)}
+                    />
+                </div>
+                <div className='ge_hb-drop-shadow-widget'>
+                    <div className='ge_hb-add-shadow'>
+                        <label>Add Shadow</label>
+                        <input 
+                            type="checkbox" 
+                            onChange={(e)=>setToggle(e.target.checked)}
+                        />
+                    </div>
                     {
                         toggle === true ? 
                         <div className="ge_hb-drop-shadow-widget-container">
                             <h3>Shadow Editor</h3>
-                            <label>Horizontal Shift</label>
-                            <p>{props.hb_setValues('hb_hShift') !== '' ? props.hb_setValues('hb_hShift')+'px' : 'Enter Value'}</p>
-                            <input 
-                                type="range" 
-                                min="-10" 
-                                max="10" 
-                                step="1" 
-                                id="hb_hShift" 
-                                value={props.hb_setShadow('hb_hShift')}
-                                onChange={(e)=>props.hb_setState(e)}
-                            />
-                            <label>Vertical Shift</label>
-                            <p>{props.hb_setValues('hb_vShift') !== '' ? props.hb_setValues('hb_vShift')+'px' : 'Enter Value'}</p>
-                            <input 
-                                type="range" 
-                                min="-10" 
-                                max="10" 
-                                step="1" 
-                                id="hb_vShift" 
-                                value={props.hb_setShadow('hb_hvShift')}
-                                onChange={(e)=>props.hb_setState(e)}
-                            />
-                            <label>Blur Offset</label>
-                            <p>{props.hb_setValues('hb_blur') !== '' ? props.hb_setValues('hb_blur')+'px' : 'Enter Value'}</p>
-                            <input 
-                                type="range" 
-                                min="-10" 
-                                max="10" 
-                                step="1" 
-                                id="hb_blur" 
-                                value={props.hb_setShadow('hb_hblur')}
-                                onChange={(e)=>props.hb_setState(e)}
-                            />
-                            <label>Color</label>
-                            <p>{props.hb_setValues('hb_color') !== '' ? props.hb_setValues('hb_color') : 'Enter Value'}</p>
-                            <input 
-                                type="color" 
-                                id="hb_color"
-                                value={props.hb_setShadow('hb_color')} 
-                                onChange={(e)=>props.hb_setState(e)}
-                            />
+                            <div className='ge_hb-drop-shadow-widget-controls'>
+                                <div className='ge_hb-drop-shadow-input-container'>
+                                    <div className='ge_hb-labels'>
+                                        <label>Horizontal Shift:</label>
+                                        <p>{props.hb_setValues('hb_hShift') !== '' ? props.hb_setValues('hb_hShift')+'px' : 'Enter Value'}</p>
+                                    </div>
+                                    <input 
+                                        type="range" 
+                                        min="-10" 
+                                        max="10" 
+                                        step="1" 
+                                        id="hb_hShift" 
+                                        value={props.hb_setShadow('hb_hShift')}
+                                        onChange={(e)=>props.hb_setState(e)}
+                                    />
+                                </div>
+                                <div className='ge_hb-drop-shadow-input-container'>
+                                    <div className='ge_hb-labels'>
+                                        <label>Vertical Shift:</label>
+                                        <p>{props.hb_setValues('hb_vShift') !== '' ? props.hb_setValues('hb_vShift')+'px' : 'Enter Value'}</p>
+                                    </div>
+                                    <input 
+                                        type="range" 
+                                        min="-10" 
+                                        max="10" 
+                                        step="1" 
+                                        id="hb_vShift" 
+                                        value={props.hb_setShadow('hb_hvShift')}
+                                        onChange={(e)=>props.hb_setState(e)}
+                                    />
+                                </div>
+                                <div className='ge_hb-drop-shadow-input-container'>
+                                    <div className='ge_hb-labels'>
+                                        <label>Blur Offset:</label>
+                                        <p>{props.hb_setValues('hb_blur') !== '' ? props.hb_setValues('hb_blur')+'px' : 'Enter Value'}</p>
+                                    </div>
+                                    <input 
+                                        type="range" 
+                                        min="-10" 
+                                        max="10" 
+                                        step="1" 
+                                        id="hb_blur" 
+                                        value={props.hb_setShadow('hb_hblur')}
+                                        onChange={(e)=>props.hb_setState(e)}
+                                    />
+                                </div>
+                                <div className='ge_hb-drop-shadow-input-container'>
+                                    <div className='ge_hb-labels'>
+                                        <label>Color:</label>
+                                        <p>{props.hb_setValues('hb_color') !== '' ? props.hb_setValues('hb_color') : 'Enter Value'}</p>
+                                    </div>
+                                    <input 
+                                        type="color" 
+                                        id="hb_color"
+                                        value={props.hb_setShadow('hb_color')} 
+                                        onChange={(e)=>props.hb_setState(e)}
+                                    />
+                                </div>
+                           </div>
                         </div> : null
                     }
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
@@ -124,62 +171,127 @@ function CountDown(props) {
         <div className='ge_count-down-container'>
             <h1>Count Down</h1>
             <div className='ge_count-down-form'>
-                <label>Parent Element</label>
-                <input 
-                    type="text" 
-                    id="cd_parent" 
-                    onChange={(e)=>props.cd_setState(e)} 
-                    required
-                />
-                <label>Count-down Start Date:</label>
-                <input 
-                    type="date" 
-                    id="cd_startDate" 
-                    onChange={(e)=>props.cd_setState(e)}
-                />
-                <label>Count-down Start Time:</label>
-                <input 
-                    type="time" 
-                    id="cd_startTime" 
-                    onChange={(e)=>props.cd_setState(e)}
-                />
-                <label>Count-down End Date:</label>
-                <input 
-                    type="date" 
-                    id="cd_endDate" 
-                    onChange={(e)=>props.cd_setState(e)}
-                />
-                <label>Count-down Time:</label>
-                <input 
-                    type="time" 
-                    id="cd_endTime" 
-                    onChange={(e)=>props.cd_setState(e)}
-                />
-                <div className="ge_count-down-offer">
-                    <label>Offer</label>
+                <div className='ge_cd-section'>
+                    <div className='ge_hb-labels'>
+                        <label>Parent Element:</label>
+                        <p>{props.cd_setValues('cd_parent') !== '' ? props.cd_setValues('cd_parent') : 'Enter Value'}</p>
+                    </div>
                     <input 
+                        className='ge_input-style'
                         type="text" 
-                        id="cd_offer"
-                        onChange={(e)=>props.cd_setState(e)}
+                        id="cd_parent" 
+                        onChange={(e)=>props.cd_setState(e)} 
                     />
-                    <label>Text</label>
-                    <input 
-                        type="text" 
-                        id="cd_text" 
-                        onChange={(e)=>props.cd_setState(e)}
-                    />
-                    <label>Subtext</label>
-                    <input 
-                        type="text" 
-                        id="cd_subText" 
-                        onChange={(e)=>props.cd_setState(e)}
-                    />
-                    <label>Timer Text</label>
-                    <input 
-                        type="text" 
-                        id="cd_timerText" 
-                        onChange={(e)=>props.cd_setState(e)}
-                    />
+                </div>
+
+                <div className='ge_cd-section-a'>
+                    <div className='ge_cd-section-b'>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Countdown Start-Date:</label>
+                                <p>{props.cd_setValues('cd_startDate') !== '' ? props.cd_setValues('cd_startDate') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="date" 
+                                id="cd_startDate" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Countdown Start-Time:</label>
+                                <p>{props.cd_setValues('cd_startTime') !== '' ? props.cd_setValues('cd_startTime') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="time" 
+                                id="cd_startTime" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                    </div>
+                    <div className='ge_cd-section-b'>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Countdown End-Date:</label>
+                                <p>{props.cd_setValues('cd_endDate') !== '' ? props.cd_setValues('cd_endDate') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="date" 
+                                id="cd_endDate" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Countdown Emd-Time:</label>
+                                <p>{props.cd_setValues('cd_endTime') !== '' ? props.cd_setValues('cd_endTime') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="time" 
+                                id="cd_endTime" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="ge_cd-section-a">
+                    <div className='ge_cd-section-b'>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Offer:</label>
+                                <p>{props.cd_setValues('cd_offer') !== '' ? props.cd_setValues('cd_offer') : 'Enter Value'}</p>
+                            </div>
+                            <input
+                                className='ge_cd-section-c-input-style'
+                                type="text" 
+                                id="cd_offer"
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Text:</label>
+                                <p>{props.cd_setValues('cd_text') !== '' ? props.cd_setValues('cd_text') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="text" 
+                                id="cd_text" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                    </div>
+                    <div className='ge_cd-section-b'>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Subtext:</label>
+                                <p>{props.cd_setValues('cd_subText') !== '' ? props.cd_setValues('cd_subText') : 'Enter Value'}</p>
+                            </div>
+                            <input 
+                                className='ge_cd-section-c-input-style'
+                                type="text" 
+                                id="cd_subText" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                        <div className='ge_cd-section-c'>
+                            <div className='ge_hb-labels'>
+                                <label>Timer Text:</label>
+                                <p>{props.cd_setValues('cd_timerText') !== '' ? props.cd_setValues('cd_timerText') : 'Enter Value'}</p>
+                            </div>
+                            <input
+                                className='ge_cd-section-c-input-style'
+                                type="text" 
+                                id="cd_timerText" 
+                                onChange={(e)=>props.cd_setState(e)}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div className="ge_count-down-markets">
                     <label>Select Markets</label>
@@ -788,13 +900,6 @@ function Submit(props) {
 }
 
 function CodeBlock(props){
-    
-    const [code, getCode] = useState('');
-
-    useEffect(()=> {
-        //.replace(/\s+/g, '')
-        getCode(props.children);
-    }, [props.children]);
 
     return (
         <div className='ge_code-block-container'>
@@ -803,14 +908,13 @@ function CodeBlock(props){
                     {props.children}
                 </pre>
             </code>
-            <textarea className='ge_code-block-text' readonly value={code}>
+            <textarea className='ge_code-block-text' readonly value={props.children}>
                 {props.children}
             </textarea>
             <TaskBar>
                 <Button click={()=>{ 
                     document.querySelector('.ge_code-block-text').select();
                     document.execCommand('copy');
-                    // document.querySelector('.ge_code-block').children[document.querySelector('.ge_code-block').children.length-1].remove();
                 }
                 }>Copy Code</Button>
             </TaskBar>

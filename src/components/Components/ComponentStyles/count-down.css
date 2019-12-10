@@ -1,4 +1,66 @@
 .ge_count-down-container{
-    background: purple;
+    /* background: purple; */
     width: 100%;
+}
+
+.ge_count-down-container>h1{
+    margin: 0px;
+    padding: 10px;
+}
+
+.ge_count-down-form{
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.ge_cd-section{
+    padding: 10px;
+}
+
+.ge_cd-section-a{
+    /* background: pink; */
+    display: flex;
+    justify-content: left;
+    margin: 10px 0px 0px 0px
+}
+
+.ge_cd-section-b{
+    /* background: red; */
+    width: 40%;
+    margin: 0px 0px 0px 10px;
+}
+
+.ge_cd-section-b:nth-child(even){
+    margin: 0px 0px 0px 40px;
+}
+
+.ge_cd-section-c{
+    /* background: yellow; */
+    margin: 10px 0px 0px 0px;
+}
+
+.ge_cd-section-c-input-style{
+    background: rgb(40, 44, 52);
+    width: 100%;
+    margin: 5px 0px;
+    padding: 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ge_cd-section:nth-child(odd){
+    /* background: yellow; */
+}
+
+.ge_cd-section:nth-child(even){
+    /* background: burlywood; */
+}
+
+.ge_count-down-markets{
+    background: red;
 }
