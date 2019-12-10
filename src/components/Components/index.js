@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ComponentStyles/hero-banner.css';
 import './ComponentStyles/count-down.css';
 import './ComponentStyles/pills.css';
 import './ComponentStyles/submit.css';
+import './ComponentStyles/code-block.css';
 import Button from '../Button/';
+import TaskBar from '../Taskbar/';
 
 function HeroBanner(props) {
 
@@ -780,19 +782,42 @@ function IOBD(){
 function Submit(props) {
     return (
         <div className='ge_submit-container'>
-            <Button click={()=>{console.log('hello motto')}} >{props.children}</Button>
+            <Button>{props.children}</Button>
         </div>
     )
 }
 
 function CodeBlock(props){
+    
+    const [code, getCode] = useState('');
+
+    useEffect(()=> {
+        //.replace(/\s+/g, '')
+        getCode(props.children);
+    }, [props.children]);
+
     return (
-        <code>
-            <pre>
+        <div className='ge_code-block-container'>
+            <code className='ge_code-block'>
+                <pre>
+                    {props.children}
+                </pre>
+            </code>
+            <textarea className='ge_code-block-text' readonly value={code}>
                 {props.children}
-            </pre>
-        </code>
+            </textarea>
+            <TaskBar>
+                <Button click={()=>{ 
+                    document.querySelector('.ge_code-block-text').select();
+                    document.execCommand('copy');
+                    // document.querySelector('.ge_code-block').children[document.querySelector('.ge_code-block').children.length-1].remove();
+                }
+                }>Copy Code</Button>
+            </TaskBar>
+        </div>
     )
 }
 
 export {HeroBanner, CountDown, Pills, PeopleWatching, ExitPopup, KidsSailFree, PromoCode, IOBD, Submit, CodeBlock}
+
+

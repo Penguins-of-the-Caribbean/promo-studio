@@ -618,27 +618,27 @@ export default class App extends Component {
     let codeSnippets = {
       heroBanner: `
       heroBanner(
-          '${this.state.components[0].data.hb_parent}',
-          '${this.state.components[0].data.hb_header}',
-          '${this.state.components[0].data.hb_subtext}', 
-          '${this.state.components[0].data.hb_textAlignment}',
-          [
-            '${this.state.components[0].data.hb_desktopImage}',
-            '${this.state.components[0].data.hb_mobileImage}'
-          ],
-          {
+        '${this.state.components[0].data.hb_parent}',
+        '${this.state.components[0].data.hb_header}',
+        '${this.state.components[0].data.hb_subtext}', 
+        '${this.state.components[0].data.hb_textAlignment}',
+        [
+          '${this.state.components[0].data.hb_desktopImage}',
+          '${this.state.components[0].data.hb_mobileImage}'
+        ],
+        {
 
-              hShift: '${this.state.components[0].data.hb_hShift}px',
-              vShift: '${this.state.components[0].data.hb_vShift}px',
-              blur:   '${this.state.components[0].data.hb_blur}px',
-              color:  '${this.state.components[0].data.hb_color}',
-          },
-          {
-              hShift: '${this.state.components[0].data.hb_hShift}px',
-              vShift: '${this.state.components[0].data.hb_vShift}px',
-              blur:   '${this.state.components[0].data.hb_blur}px',
-              color:  '${this.state.components[0].data.hb_color}',
-          }
+            hShift: '${this.state.components[0].data.hb_hShift}px',
+            vShift: '${this.state.components[0].data.hb_vShift}px',
+            blur:   '${this.state.components[0].data.hb_blur}px',
+            color:  '${this.state.components[0].data.hb_color}',
+        },
+        {
+            hShift: '${this.state.components[0].data.hb_hShift}px',
+            vShift: '${this.state.components[0].data.hb_vShift}px',
+            blur:   '${this.state.components[0].data.hb_blur}px',
+            color:  '${this.state.components[0].data.hb_color}',
+        }
       );`,
       countDown: `
       countDown( 
