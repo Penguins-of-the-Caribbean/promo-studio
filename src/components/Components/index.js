@@ -64,7 +64,7 @@ function HeroBanner(props) {
                 </div>
                 <div className='ge_hero-banner-desktop-image'>
                     <div className='ge_hb-labels'>
-                        <label>Add desktop image</label>
+                        <label>Add desktop image:</label>
                         <p>{props.hb_setValues('hb_desktopImage') !== '' ? props.hb_setValues('hb_desktopImage') : 'Enter Value'}</p>
                     </div>
                     <input 
@@ -77,7 +77,7 @@ function HeroBanner(props) {
                 </div>
                 <div className='ge_hero-banner-mobile-image'>
                     <div className='ge_hb-labels'>
-                        <label>Add mobile image</label>
+                        <label>Add mobile image:</label>
                         <p>{props.hb_setValues('hb_mobileImage') !== '' ? props.hb_setValues('hb_mobileImage') : 'Enter Value'}</p>
                     </div>
                     <input 
@@ -294,116 +294,142 @@ function CountDown(props) {
                     </div>
                 </div>
                 <div className="ge_count-down-markets">
-                    <label>Select Markets</label>
-                    <ul>
-                        <li>
-                            <label>Australia</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='aus' 
-                            checked={props.cd_setCheckBoxes('aus')} 
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Germany</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='deu' 
-                            checked={props.cd_setCheckBoxes('deu')} 
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Spain</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='esp' 
-                            checked={props.cd_setCheckBoxes('esp')} 
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Italy</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='ita' 
-                            checked={props.cd_setCheckBoxes('ita')} 
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Latin America</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='lac'
-                            checked={props.cd_setCheckBoxes('lac')} 
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Mexico</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='mex' 
-                            checked={props.cd_setCheckBoxes('mex')}
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Norway</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='nor' 
-                            checked={props.cd_setCheckBoxes('nor')}
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Singapore</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='sgp' 
-                            checked={props.cd_setCheckBoxes('sgp')}
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                        <li>
-                            <label>Sweden</label>
-                            <input 
-                            type="checkbox" 
-                            className="cd_market" 
-                            value='swe' 
-                            checked={props.cd_setCheckBoxes('swe')}
-                            onChange={(e)=>props.cd_setMarkets(e)} />
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <label>Last</label>
-                    <input 
-                        type="text" 
-                        id="cd_last" 
-                        onChange={(e)=>props.cd_setState(e)}
-                    />
-                    <label >Days</label>
-                    <input 
-                        type="text" 
-                        id="cd_days" 
-                        onChange={(e)=>props.cd_setState(e)}
-                    />
-                </div>
-                <div>
-                    <label>Daylight Savings</label>
-                    <select id="cd_dst" onChange={(e)=>props.cd_setState(e)}>
-                        <option value="false">False</option>
-                        <option value="true">True</option>
-                    </select>
-                    <label>Invert Layout</label>
-                    <select id="cd_layout" onChange={(e)=>props.cd_setState(e)}>
-                        <option value="false">False</option>
-                        <option value="true">True</option>
-                    </select>
+                    <div className="ge_count-down-markets-container">
+                        <label>Select Markets</label>
+                        <ul>
+                            <li>
+                                <label>Australia</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='aus' 
+                                checked={props.cd_setCheckBoxes('aus')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Germany</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='deu' 
+                                checked={props.cd_setCheckBoxes('deu')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Spain</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='esp' 
+                                checked={props.cd_setCheckBoxes('esp')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Italy</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='ita' 
+                                checked={props.cd_setCheckBoxes('ita')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Latin America</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='lac'
+                                checked={props.cd_setCheckBoxes('lac')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Mexico</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='mex' 
+                                checked={props.cd_setCheckBoxes('mex')}
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Norway</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='nor' 
+                                checked={props.cd_setCheckBoxes('nor')}
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Singapore</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='sgp' 
+                                checked={props.cd_setCheckBoxes('sgp')}
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Sweden</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='swe' 
+                                checked={props.cd_setCheckBoxes('swe')}
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='ge_cd-last-days'>
+                        <label>Enter Last Days Text</label>
+                        <div className='ge_cd-last-days-container'>
+                            <div>
+                                <div className='ge_hb-labels'>
+                                    <label>Last:</label>
+                                    <p>{props.cd_setValues('cd_last') !== '' ? props.cd_setValues('cd_last') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_cd-section-c-input-style'
+                                    type="text" 
+                                    id="cd_last" 
+                                    onChange={(e)=>props.cd_setState(e)}
+                                />
+                            </div>
+                            <div>
+                                <div className='ge_hb-labels'>
+                                    <label>Days:</label>
+                                    <p>{props.cd_setValues('cd_days') !== '' ? props.cd_setValues('cd_days') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_cd-section-c-input-style'
+                                    type="text" 
+                                    id="cd_days" 
+                                    onChange={(e)=>props.cd_setState(e)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className='ge_cd-dst-and-layout'>
+                        <label>Daylight Savings &amp; Invert Layout</label>
+                        <div className='ge_cd-dst-and-layout-container'>
+                            <div className='ge_hb-labels'>
+                                <label>Daylight Savings:</label>
+                                <p>{props.cd_setValues('cd_dst').toString()}</p>
+                            </div>
+                            <select className='ge_cd-input-style' id="cd_dst" onChange={(e)=>props.cd_setState(e)}>
+                                <option value="false">False</option>
+                                <option value="true">True</option>
+                            </select>
+                            <div className='ge_hb-labels'>
+                                <label>Invert Layout</label>
+                                <p>{props.cd_setValues('cd_layout').toString()}</p>
+                            </div>
+                            <select className='ge_cd-input-style' id="cd_layout" onChange={(e)=>props.cd_setState(e)}>
+                                <option value="false">False</option>
+                                <option value="true">True</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

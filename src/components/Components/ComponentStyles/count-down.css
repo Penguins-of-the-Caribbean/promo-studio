@@ -53,14 +53,88 @@
     font-weight: 600;
 }
 
-.ge_cd-section:nth-child(odd){
-    /* background: yellow; */
-}
-
-.ge_cd-section:nth-child(even){
-    /* background: burlywood; */
-}
-
 .ge_count-down-markets{
-    background: red;
+    /* background: red; */
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    margin: 10px 0px 0px 0px;
 }
+
+.ge_count-down-markets-container{
+    /* background: blue; */
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.ge_count-down-markets-container > label{
+    padding: 10px 10px 0px 10px;
+}
+
+.ge_count-down-markets-container > ul{
+    /* background: pink; */
+    width: 150px;
+    margin: 0px;
+    padding: 5px;
+}
+
+.ge_count-down-markets-container > ul > li{
+    background: rgb(40, 44, 52);
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px 0px 0px 5px;
+    border-radius: 3px;
+    color: white;
+}
+
+.ge_cd-last-days{
+    /* background: yellow; */
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0px 0px 0px 20px;
+}
+
+.ge_cd-last-days-container{
+    /* background: pink; */
+    padding: 15px;
+}
+
+.ge_cd-last-days > label{
+    padding: 10px 10px 0px 15px;
+}
+
+.ge_cd-dst-and-layout{
+    /* background: yellowgreen; */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0px 0px 0px 20px;
+}
+
+.ge_cd-dst-and-layout > label{
+    padding: 10px 10px 0px 15px;
+}
+
+.ge_cd-dst-and-layout-container{
+    /* background: pink; */
+    padding: 15px;
+}
+
+.ge_cd-input-style{
+    background: rgb(40, 44, 52);
+    width: 100%;
+    height: 33px;
+    margin: 5px 0px;
+    padding: 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+  }
