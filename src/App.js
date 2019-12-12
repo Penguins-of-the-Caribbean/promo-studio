@@ -98,7 +98,6 @@ export default class App extends Component {
                 ID: false,
                 JW: false, 
                 LB: false,
-                LG: false,
                 MA: false,
                 MJ: false,
                 NE: false,
@@ -110,6 +109,7 @@ export default class App extends Component {
                 RD: false,
                 RH: false,
                 SR: false,
+                SC: false,
                 SY: false,
                 VI: false,
                 VY: false,
@@ -134,7 +134,6 @@ export default class App extends Component {
                 ID: false,
                 JW: false, 
                 LB: false,
-                LG: false,
                 MA: false,
                 MJ: false,
                 NE: false,
@@ -146,6 +145,7 @@ export default class App extends Component {
                 RD: false,
                 RH: false,
                 SR: false,
+                SC: false,
                 SY: false,
                 VI: false,
                 VY: false,
@@ -624,46 +624,54 @@ export default class App extends Component {
     
     let codeSnippets = {
       heroBanner: `
-      heroBanner(
-        '${this.state.components[0].data.hb_parent}',
-        '${this.state.components[0].data.hb_header}',
-        '${this.state.components[0].data.hb_subtext}', 
-        '${this.state.components[0].data.hb_textAlignment}',
-        [
-          '${this.state.components[0].data.hb_desktopImage}',
-          '${this.state.components[0].data.hb_mobileImage}'
-        ],
-        {
+      init('${this.state.components[0].data.hb_parent}', function(){
 
-            hShift: '${this.state.components[0].data.hb_hShift}px',
-            vShift: '${this.state.components[0].data.hb_vShift}px',
-            blur:   '${this.state.components[0].data.hb_blur}px',
-            color:  '${this.state.components[0].data.hb_color}',
-        },
-        {
-            hShift: '${this.state.components[0].data.hb_hShift}px',
-            vShift: '${this.state.components[0].data.hb_vShift}px',
-            blur:   '${this.state.components[0].data.hb_blur}px',
-            color:  '${this.state.components[0].data.hb_color}',
-        }
-      );`,
-      countDown: `
-      countDown( 
-          '${this.state.components[1].data.cd_parent}',
-          '${this.state.components[1].data.cd_startDate +' '+ this.state.components[1].data.cd_startTime + ':00'}',
-          '${this.state.components[1].data.cd_endDate +' '+ this.state.components[1].data.cd_endTime + ':00'}',
+        heroBanner(
+          '${this.state.components[0].data.hb_parent}',
+          '${this.state.components[0].data.hb_header}',
+          '${this.state.components[0].data.hb_subtext}', 
+          '${this.state.components[0].data.hb_textAlignment}',
+          [
+            '${this.state.components[0].data.hb_desktopImage}',
+            '${this.state.components[0].data.hb_mobileImage}'
+          ],
           {
-              offer:     '${this.state.components[1].data.cd_offer}',
-              text:      '${this.state.components[1].data.cd_text}',
-              subText:   '${this.state.components[1].data.cd_subText}',
-              timerText: '${this.state.components[1].data.cd_timerText}'
+  
+              hShift: '${this.state.components[0].data.hb_hShift}px',
+              vShift: '${this.state.components[0].data.hb_vShift}px',
+              blur:   '${this.state.components[0].data.hb_blur}px',
+              color:  '${this.state.components[0].data.hb_color}',
           },
-          [${this.state.components[1].data.cd_market.value}],
-          '${this.state.components[1].data.cd_last}',
-          '${this.state.components[1].data.cd_days}',
-          '${this.state.components[1].data.cd_dst}',
-          '${this.state.components[1].data.cd_layout}'
-      );`,
+          {
+              hShift: '${this.state.components[0].data.hb_hShift}px',
+              vShift: '${this.state.components[0].data.hb_vShift}px',
+              blur:   '${this.state.components[0].data.hb_blur}px',
+              color:  '${this.state.components[0].data.hb_color}',
+          }
+        );
+
+      });`,
+      countDown: `
+      init('${this.state.components[1].data.cd_parent}', function(){
+
+        countDown( 
+            '${this.state.components[1].data.cd_parent}',
+            '${this.state.components[1].data.cd_startDate +' '+ this.state.components[1].data.cd_startTime + ':00'}',
+            '${this.state.components[1].data.cd_endDate +' '+ this.state.components[1].data.cd_endTime + ':00'}',
+            {
+                offer:     '${this.state.components[1].data.cd_offer}',
+                text:      '${this.state.components[1].data.cd_text}',
+                subText:   '${this.state.components[1].data.cd_subText}',
+                timerText: '${this.state.components[1].data.cd_timerText}'
+            },
+            [${this.state.components[1].data.cd_market.value}],
+            '${this.state.components[1].data.cd_last}',
+            '${this.state.components[1].data.cd_days}',
+            '${this.state.components[1].data.cd_dst}',
+            '${this.state.components[1].data.cd_layout}'
+        );
+
+      });`,
       pills: `
       init('${this.state.components[2].parent}', function(){
           ${this.pillsCodeSnippet()}

@@ -1,13 +1,15 @@
+.ge_pills-container{
+    padding: 15px;
+}
+
 .ge_pills-header{
+    /* background: magenta; */
     padding: 0px 0px 3px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 3px #000000;
-}
-
-.ge_pills-container{
-    padding: 15px;
+    border-bottom: solid 3px rgb(40, 44, 52);;
+    color: rgb(40, 44, 52);
 }
 
 .ge_pills-title{
@@ -16,33 +18,33 @@
     padding: 0px;
 }
 
-.ge_pills-added-counter{
-    width: 155px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid 1px #000000;
-    border-radius: 4px;
-    text-transform: uppercase;
+/*
+PILL HEADER SECTION
+*/
+
+/* .ge_pills-details-header{
+    background: red;
+} */
+
+.ge_pills-details-header > h3{
+    margin: 0px;
+    padding: 7px 0px;
+    color: rgb(40, 44, 52);
 }
 
+/*
+PILL DETAILS SECTION
+*/
+
 .ge_pills-details-container{
-    background: green;
+    /* background: green; */
     margin: 10px 0px 20px 0px;
     display: flex;
     justify-content: space-between;
 }
 
-.ge_pills-details-container > h3{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .ge_pills-details-inputs{
+    /* background: chocolate; */
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -58,148 +60,313 @@
     padding: 5px;
 }
 
+.ge_pills-details-input{
+    /* background: yellow; */
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px;
+}
+
+.ge_pills-details-color-input{
+    background: none;
+    width: 60%;
+    height: 35px;
+    margin: 5px 0px 0px -2px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+}
+
+.ge_pills-input-style{
+    background: rgb(40, 44, 52);
+    margin: 5px 0px;
+    padding: 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/*
+PILL DETAILS PREVIEW SECTION
+*/
+
 .ge_pills-preview-panel{
-    background: saddlebrown;
+    background: rgb(40, 44, 52);
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    border-radius: 3px;
+}
+
+.ge_pills-preview-panel-container{
+    /* background: red; */
+    width: 380px;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ge_pills-preview-panel-container h3{
+    color: white;
+}
+
+.ge_pills-added-counter{
+    width: 155px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px white;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: white;
 }
 
 .ge_pills-preview-panel-pill-container{
     /* background: purple; */
-    width: 100%;
-    height: auto;
+    width: 380px;
+    padding: 0px 10px;
 }
 
+/*
+PILL CRITERIA SECTION
+*/
+
 .ge_pills-criteria-container{
-    background: blue;
+    /* background: blue; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .ge_pills-criteria-header{
-    background: lightyellow;
+    /* background: lightyellow; */
+    color: rgb(40, 44, 52);
 }
 
 .ge_pills-criteria-inputs{
-    background: pink;
+    /* background: pink; */
     display: flex;
-    justify-content: left;
+    flex-direction: column;
 }
+
+/*
+    SHIPS SECTION
+*/
 
 .ge_pills-criteria-ships{
-    background : magenta;
-    width: 270px;
-}
-
-.ge_pills-criteria-ships ul{
-    margin: 0px;
-    padding: 0px;
-}
-
-.ge_pills-criteria-ships ul li{
+    /* background : magenta; */
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-.ge_pills-criteria-promos{
-    background: hotpink;
+.ge_pills-criteria-ships > h3{
+    /* background: green; */
+    color: rgb(40, 44, 52);
+}
+
+.ge_pills-criteria-ship-inputs-container{
+    /* background: blue; */
+    display: flex;
+    justify-content: left
+}
+
+
+.ge_pills-criteria-ship-inputs-container ul{
+    /* background: red; */
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+
+.ge_pills-criteria-ship-inputs-container ul li{
+    background: rgb(40, 44, 52);
+    margin: 5px 0px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+}
+
+/*
+    PROMOS SECTION
+*/
+
+.ge_pills-criteria-promos-container{
+    display: flex;
+    justify-content: left;
+}
+
+.ge_pills-criteria-parameter{
+    /* background: hotpink; */
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 0px 0px;
+}
+
+.ge_pills-criteria-parameter-container{
+    /* background: yellowgreen; */
+    height: 230px;
     display: flex;
     flex-direction: column;
 }
 
-.ge_pills-criteria-sailings{
-    background: cyan;
-    display: flex;
-    flex-direction: column;
+.ge_pills-criteria-parameter-container > h3{
+    /* background: red; */
+    padding: 0px;
+    margin: 10px 0px;
+    color: rgb(40, 44, 52);
 }
 
-.ge_pills-criteria-nights{
-    background: greenyellow;
-    display: flex;
-    flex-direction: column;
+.ge_pills-criteria-parameter-container input{
+    background: rgb(40, 44, 52);
+    width: 90%;
+    margin: 5px 0px;
+    padding: 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.ge_pills-criteria-ports{
-    background: blueviolet;
-    display: flex;
-    flex-direction: column;
+.ge_pills-criteria-parameter-container button{
+    margin: 10px 0px;
+    height: 25px;
 }
+
+/*
+PILL EXCLUSIONS TOGGLE SECTION
+*/
 
 .ge_pills-exclusions-toggle{
-    background: yellow;
+    /* background: yellow; */
     display: flex;
     justify-content: left;
     align-items: center;
+}
+
+.ge_pills-exclusions-toggle h3{
+    color: rgb(40, 44, 52);
 }
 
 .ge_pills-exclusions-toggle input{
     margin: 5px 0px 0px 10px;
 }
 
+/*
+PILL EXCLUSIONS SECTION
+*/
+
 .ge_pills-exclusions-panel{
-    background: green;
+    background: #d0d0d0;
+    padding: 10px;
     display: flex;
+    border-radius: 4px;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: inset 0px 0px 12px -2px rgba(0,0,0,0.75);
 }
 
-.ge_pills-exclusions-panel-container{
+/* .ge_pills-exclusions-panel-container{
     background: pink;
+} */
+
+.ge_pills-exclusions-ships{
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_pills-criteria-ships > h3{
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+
+.ge_pills-exclusions-ships-container{
+    /* background: green; */
     display: flex;
     justify-content: left;
 }
 
-.ge_pills-exclusions-ships{
-    background: magenta;
-}
-
 .ge_pills-exclusions-ships ul{
     width: 270px;
-    margin: 0px;
+    margin: 0px 10px 0px 0px;
     padding: 0px;
 }
 
 .ge_pills-exclusions-ships ul li{
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
+    background: rgb(40, 44, 52);
+    margin: 5px 0px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
 }
 
-.ge_pills-exclusions-nights{
-    background: cyan;
+.ge_pills-exclusions-inputs-container{
+    /* background: green; */
+    display: flex;
+    justify-content: left;
+}
+
+.ge_pills-exclusion-parameter-container{
+    /* background: hotpink; */
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 0px 0px;
+}
+
+.ge_pills-exclusion-parameter-container > h3{
+    /* background: red; */
+    padding: 0px;
+    margin: 10px 0px;
+    color: rgb(40, 44, 52);
+}
+
+.ge_pills-exclusion-parameter-container input{
+    background: rgb(40, 44, 52);
+    width: 90%;
+    margin: 5px 0px;
+    padding: 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ge_pills-exclusion-parameter-container > button{
+    margin: 10px 0px;
+    height: 25px;
+}
+
+.ge_pills-exclusion-param-input-container{
+    /* background: hotpink; */
+    height: 220px;
     display: flex;
     flex-direction: column;
 }
 
-.ge_pills-exclusions-departure-port{
-    background: purple;
-    display: flex;
-    flex-direction: column;
-}
+/* .ge_pill-exclusion{
+    background: black;
+    min-height: 200px;
+} */
 
-.ge_pills-exclusions-destination-port{
-    background: orange;
-    display: flex;
-    flex-direction: column;
-}
-
-.ge_pills-exclusions-departure-dates{
-    background: midnightblue;
-    display: flex;
-    flex-direction: column;
-}
-
-.ge_pills-exclusions-pills{
-    background: hotpink;
-    display: flex;
-    flex-direction: column;
-}
+/*
+ CREATE PILL SECTION
+*/
 
 .ge_pills-create-pill-btn{
     margin: 20px 0px 5px 0px;
@@ -226,20 +393,3 @@
     transform: scale3d(0.95, 0.95, 0.95);
 }
 
-#ge_pill-delete{
-    background: rgb(218, 61, 213);
-    width: 115px;
-    height: 30px;
-    margin: 0px 5px 0px 0px;
-    border: none;
-    border-radius: 4px;
-    color:rgb(255, 255, 255);
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
-#ge_pill-delete:active{
-    background: rgb(155, 42, 151);
-    transform: scale3d(0.95, 0.95, 0.95);
-}

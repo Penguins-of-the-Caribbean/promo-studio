@@ -14,6 +14,10 @@
 
 .ge_code-block-text{
     height: 0px;
+    width: 0px;
+    resize: none;
+    border: none;
     margin: -10px 0px 0px 0px;
     z-index: -999;
+    outline: none;
 }

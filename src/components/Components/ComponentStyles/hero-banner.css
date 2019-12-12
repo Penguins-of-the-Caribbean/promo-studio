@@ -1,16 +1,26 @@
 .ge_hero-banner-container{
-    width: 100%;
+    /* background: cornflowerblue; */
+    padding: 10px;
 }
 
-.ge_hero-banner-container>h1{
+.ge_hero-banner-container-header{
+    /* background: red; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px 0px 30px 0px;
+}
+
+.ge_hero-banner-container-header > h1{
+    /* background: green; */
+    width: 100%;
     margin: 0px;
-    padding: 10px;
     color: rgb(40, 44, 52);
+    border-bottom: solid 3px #000000;
 }
 
 .ge_hero-banner-parent{
     /* background: red; */
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content:left;
@@ -23,39 +33,37 @@
 
 .ge_hb-labels > label{
     margin: 0px;
-    padding: 0px;
     color: rgb(40, 44, 52);
 }
 
 .ge_hb-labels > p{
     margin: 0px 0px 0px 5px;
-    padding: 0px;
     color: rgb(40, 44, 52);
 }
 
 .ge_hero-banner-header{
     /* background: green; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hero-banner-subtext{
     /* background: orange; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hero-banner-text-align{
     /* background: pink; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hero-banner-desktop-image{
     /* background: magenta; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hero-banner-mobile-image{
     /* background: sandybrown; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hb-drop-shadow-widget{
@@ -64,7 +72,7 @@
 }
 
 .ge_hb-add-shadow{
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hb-add-shadow>input{
@@ -73,7 +81,7 @@
 
 .ge_hb-drop-shadow-widget-container{
     /* background: lightcoral; */
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .ge_hb-drop-shadow-widget-controls{

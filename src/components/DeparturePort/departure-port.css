@@ -1,3 +1,25 @@
 .ge_departure-port-stamp{
-    background: royalblue;
+    background: #F0544f;
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    margin: 5px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ge_port-param{
+    /* background: blue; */
+    margin: 2px 0px 4px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ge_port-param label, .ge_port-param p{
+    /* background: darkred; */
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-weight: 800;
 }
