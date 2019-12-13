@@ -168,8 +168,41 @@ export default class App extends Component {
         {
           id: 'exitPopup',
           name: 'Exit Popup',
+          parent: '.reveal-overlay',
           selected: false,
-          data: {}
+          data: {
+            bannerDetails:{
+              ep_backgroundColor: '#ffffff',
+              ep_offerText: '',
+              ep_offerSubText: '',
+              ep_textColor: ''
+            },
+            continueBtn:{ 
+              ep_text: '',
+              ep_textColor: '#000000',
+              ep_backgroundColor: '#febd11',
+            },
+            cancelBtn:{
+              ep_text: '',
+              ep_textColor: '#000000',
+              ep_backgroundColor: '#ffffff',
+              ep_borderColor: '#000000'
+            },
+            clock:{
+              ep_hours: '',
+              ep_minutes: '',
+              ep_seconds: '',
+              ep_hoursLeft: '',
+              ep_textColor: '#ce0f69'
+            },
+            countDown:{
+              ep_start: '',
+              ep_end: ''
+            },
+            countries:[],
+            dst: false,
+            showDays: false,
+          }
         },
         {
           id: 'ksf',
@@ -221,6 +254,8 @@ export default class App extends Component {
     this.updateExistingPills = this.updateExistingPills.bind(this);
     this.editExistingPill = this.editExistingPill.bind(this);
     this.deleteExistingPill = this.deleteExistingPill.bind(this);
+
+    //EXIT POP-UP
   }
 
   //HERO BANNER
@@ -411,7 +446,6 @@ export default class App extends Component {
   createNewPill(){
     let cloneComponents = [...this.state.components];
     let comp = cloneComponents[2];
-    //let newPill = {...comp.data};
     let newPill = JSON.parse(JSON.stringify(comp.data));
 
     comp.pills.push(newPill);
@@ -678,7 +712,43 @@ export default class App extends Component {
       });
       `, 
       peopleWatching: '',
-      exitPopup: '',
+      exitPopup:`
+      init('${this.state.components[4].parent}', function(){
+
+        exitPopUp({
+          bannerDetails:{
+            backgroundColor: '${this.state.components[4].data.bannerDetails.ep_backgroundColor}',
+            offerText: '${this.state.components[4].data.bannerDetails.ep_offerText}',
+            offerSubText: '${this.state.components[4].data.bannerDetails.ep_offerText}',
+            textColor: '${this.state.components[4].data.bannerDetails.ep_textColor}',
+          },
+          continueBtn:{
+            text: '${this.state.components[4].data.continueBtn.ep_text}',
+            textColor: '${this.state.components[4].data.continueBtn.ep_textColor}',
+            backgroundColor: '${this.state.components[4].data.continueBtn.ep_backgroundColor}',
+          },
+          cancelBtn:{
+            text: '${this.state.components[4].data.cancelBtn.ep_text}',
+            textColor: '${this.state.components[4].data.cancelBtn.ep_textColor}',
+            backgroundColor: '${this.state.components[4].data.cancelBtn.ep_backgroundColor}',
+            borderColor: '${this.state.components[4].data.cancelBtn.ep_borderColor}'
+          },
+          clock:{
+            hours:'${this.state.components[4].data.clock.ep_hours}',
+            minutes: '${this.state.components[4].data.clock.ep_minutes}',
+            seconds: '${this.state.components[4].data.clock.ep_seconds}',
+            hoursLeft: '${this.state.components[4].data.clock.ep_hoursLeft}',
+            textColor: '${this.state.components[4].data.clock.ep_textColor}'
+          },
+          countDown:{
+            start:'${this.state.components[4].data.countDown.ep_start}',
+            end: '${this.state.components[4].data.countDown.ep_end}'
+          },
+          countries: ${this.state.components[4].data.countries}
+        }, ${this.state.components[4].data.dst}, ${this.state.components[4].data.showDays});
+
+      });
+      `,
       ksf: '',
       promoCode: '',
       iobd: '',
@@ -686,6 +756,7 @@ export default class App extends Component {
 
     this.state.components.forEach((comp)=>{
       if(comp.selected === true){
+        console.log(comp);
         code += codeSnippets[comp.id]
       }
     });
