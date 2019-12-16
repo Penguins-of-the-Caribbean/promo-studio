@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './ComponentStyles/hero-banner.css';
 import './ComponentStyles/count-down.css';
 import './ComponentStyles/pills.css';
+import './ComponentStyles/exit-popup.css';
 import './ComponentStyles/submit.css';
 import './ComponentStyles/code-block.css';
 import Button from '../Button/';
@@ -935,10 +936,231 @@ function PeopleWatching() {
     )
 }
 
-function ExitPopup() {
+function ExitPopup(props) {
     return (
         <div className='ge_exit-popup-container'>
-            
+            <div className='ge_ep-details-container'>
+
+                <div className='ge_ep-header'>
+                    <h1>Exit Popup</h1>
+                </div>
+
+                <div className='ge_ep-background-color'>
+                    <h3>Details:</h3>
+                    <div>
+                        <div>
+                            <label>Background Color:</label>
+                            <p>{props.ep_setValue('ep_backgroundColor', 'bannerDetails')}</p>
+                        </div>
+                        <input 
+                            type="color"
+                            id='ep_backgroundColor'
+                            value={props.ep_setValue('ep_backgroundColor', 'bannerDetails')}
+                            onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
+                        />
+                    </div>
+                    <div>
+                        <div>
+                            <label>Offer Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Offer Sub-text</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Text Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                </div>
+
+                <div className='ge_ep-continue-btn'>
+                    <h3>Continue Button:</h3>
+                    <div>
+                        <div>
+                            <label>Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Text Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Background Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                </div>
+
+                <div className='ge_ep-cancel-btn'>
+                    <h3>Cancel Button:</h3>
+                    <div>
+                        <div>
+                            <label>Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Text Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Background Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Border Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                </div>
+
+                <div className='ge_ep-clock'>
+                    <h3>Clock Text:</h3>
+                    <div>
+                        <div>
+                            <label>Hours Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Minutes Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Seconds Text:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Hours Left:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Text Color:</label>
+                            <p>Enter value</p>
+                        </div>
+                        <input type="color"/>
+                    </div>
+                </div>
+
+                <div className='ge_ep-count-down'>
+                    <h3>Count-down:</h3>
+                    <div>
+                        <div>
+                            <label>Start Time:</label>
+                        </div>
+                        <input type='time'/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>End Time:</label>
+                        </div>
+                        <input type='time'/>
+                    </div>
+                </div>
+
+                <div className='ge_ep-countries'>
+                    <h3>Countries:</h3>
+                    <div>
+                        <div>
+                            <label>Start Time:</label>
+                        </div>
+                        <ul>
+                            <li>
+                                <label>Australia</label>
+                            </li>
+                            <li>
+                                <label>Germany</label>
+                            </li>
+                            <li>
+                                <label>Great Britain</label>
+                            </li>
+                            <li>
+                                <label>Spain</label>
+                            </li>
+                            <li>
+                                <label>Ireland</label>
+                            </li>
+                            <li>
+                                <label>Italy</label>
+                            </li>
+                            <li>
+                                <label>Latin America</label>
+                            </li>
+                            <li>
+                                <label>Mexico</label>
+                            </li>
+                            <li>
+                                <label>Norway</label>
+                            </li>
+                            <li>
+                                <label>Singapore</label>
+                            </li>
+                            <li>
+                                <label>Sweden</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Add</button>
+                    </div>
+                    <div>
+                        countries list
+                    </div>
+                </div>
+
+                <div className='ge_ep-dst-and-days'>
+                    <div>
+                        <div>
+                            <label>Daylight Savings Time:</label>
+                        </div>
+                        <input type="checkbox"/>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Show Days:</label>
+                        </div>
+                        <input type="checkbox"/>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     )
 }

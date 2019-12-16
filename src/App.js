@@ -255,7 +255,11 @@ export default class App extends Component {
     this.editExistingPill = this.editExistingPill.bind(this);
     this.deleteExistingPill = this.deleteExistingPill.bind(this);
 
+    //PEOPLE WATCHING
+
     //EXIT POP-UP
+    this.exitPopupUpdateValue = this.exitPopupUpdateValue.bind(this);
+    this.exitPopupSetValue = this.exitPopupSetValue.bind(this);
   }
 
   //HERO BANNER
@@ -553,6 +557,9 @@ export default class App extends Component {
       return str;
     }
 
+    //EXIT POPUP
+
+
     this.state.components[2].pills.forEach((pill, i)=>{
       let codeSnipet = `
         pills({
@@ -587,6 +594,21 @@ export default class App extends Component {
     return code;
 
   }
+
+  //EXIT POPUP
+  exitPopupUpdateValue(e, category){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[4];
+
+    comp.data[category][e.target.id] = e.target.value;
+
+    this.setState({components: cloneComponents});
+  }
+
+  exitPopupSetValue(target, category){
+    return this.state.components[4].data[category][target];
+  }
+
   //
 
 
@@ -817,6 +839,9 @@ export default class App extends Component {
                                       pl_updateOtherPills={this.updatePillOtherPillExclusion}
                                       pl_createNewPill={this.createNewPill}
                                       pl_updatePillList={this.updateExistingPills}
+
+                                      ep_setValue={this.exitPopupSetValue}
+                                      ep_setDetail={this.exitPopupUpdateValue}
                     /> : <Redirect to='/' />
                   }
               >
