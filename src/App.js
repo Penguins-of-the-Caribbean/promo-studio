@@ -175,11 +175,11 @@ export default class App extends Component {
               ep_backgroundColor: '#ffffff',
               ep_offerText: '',
               ep_offerSubText: '',
-              ep_textColor: ''
+              ep_textColor: '#ce0f69'
             },
             continueBtn:{ 
               ep_text: '',
-              ep_textColor: '#000000',
+              ep_textColor: '#15264C',
               ep_backgroundColor: '#febd11',
             },
             cancelBtn:{
@@ -608,9 +608,7 @@ export default class App extends Component {
   exitPopupSetValue(target, category){
     return this.state.components[4].data[category][target];
   }
-
   //
-
 
   populateComponentSelector(components){
     return components.map((component, i)=>{

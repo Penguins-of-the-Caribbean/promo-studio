@@ -962,23 +962,36 @@ function ExitPopup(props) {
                     <div>
                         <div>
                             <label>Offer Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_offerText', 'bannerDetails') !== '' ? props.ep_setValue('ep_offerText', 'bannerDetails') : 'Enter value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_offerText'
+                            onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Offer Sub-text</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_offerSubText', 'bannerDetails') !== '' ? props.ep_setValue('ep_offerSubText', 'bannerDetails') : 'Enter value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_offerSubText'
+                            onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Text Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_textColor', 'bannerDetails')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_textColor'
+                            value={props.ep_setValue('ep_textColor', 'bannerDetails')}
+                            onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
+                        />
                     </div>
                 </div>
 
@@ -987,23 +1000,37 @@ function ExitPopup(props) {
                     <div>
                         <div>
                             <label>Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_text', 'continueBtn') !== '' ? props.ep_setValue('ep_text', 'continueBtn') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_text'
+                            onChange={(e)=> props.ep_setDetail(e, 'continueBtn')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Text Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_textColor', 'continueBtn')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_textColor'
+                            value={props.ep_setValue('ep_textColor', 'continueBtn')}
+                            onChange={(e)=> props.ep_setDetail(e, 'continueBtn')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Background Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_backgroundColor', 'continueBtn')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_backgroundColor'
+                            value={props.ep_setValue('ep_backgroundColor', 'continueBtn')}
+                            onChange={(e)=> props.ep_setDetail(e, 'continueBtn')}
+                        />
                     </div>
                 </div>
 
@@ -1012,30 +1039,49 @@ function ExitPopup(props) {
                     <div>
                         <div>
                             <label>Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_text', 'cancelBtn') !== '' ? props.ep_setValue('ep_text', 'cancelBtn') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_text'
+                            onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Text Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_textColor', 'cancelBtn')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_textColor'
+                            value={props.ep_setValue('ep_textColor', 'cancelBtn')}
+                            onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Background Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_backgroundColor', 'cancelBtn')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_backgroundColor'
+                            value={props.ep_setValue('ep_backgroundColor', 'cancelBtn')}
+                            onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Border Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_borderColor', 'cancelBtn')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_borderColor'
+                            value={props.ep_setValue('ep_borderColor', 'cancelBtn')}
+                            onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
+                        />
                     </div>
                 </div>
 
@@ -1044,37 +1090,58 @@ function ExitPopup(props) {
                     <div>
                         <div>
                             <label>Hours Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_hours', 'clock') !== '' ? props.ep_setValue('ep_hours', 'clock') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_hours'
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Minutes Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_minutes', 'clock') !== '' ? props.ep_setValue('ep_minutes', 'clock') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_minutes'
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Seconds Text:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_seconds', 'clock') !== '' ? props.ep_setValue('ep_seconds', 'clock') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_seconds'
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Hours Left:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_hoursLeft', 'clock') !== '' ? props.ep_setValue('ep_hoursLeft', 'clock') : 'Enter Value'}</p>
                         </div>
-                        <input type="text"/>
+                        <input 
+                            type="text"
+                            id='ep_hoursLeft'
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>Text Color:</label>
-                            <p>Enter value</p>
+                            <p>{props.ep_setValue('ep_textColor', 'clock')}</p>
                         </div>
-                        <input type="color"/>
+                        <input 
+                            type="color"
+                            id='ep_textColor'
+                            value={props.ep_setValue('ep_textColor', 'clock')}
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
                     </div>
                 </div>
 
@@ -1083,14 +1150,24 @@ function ExitPopup(props) {
                     <div>
                         <div>
                             <label>Start Time:</label>
+                            <p>{props.ep_setValue('ep_start', 'countDown') !== '' ? props.ep_setValue('ep_start', 'countDown') : 'Enter Time'}</p>
                         </div>
-                        <input type='time'/>
+                        <input 
+                            type='time'
+                            id='ep_start'
+                            onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                        />
                     </div>
                     <div>
                         <div>
                             <label>End Time:</label>
+                            <p>{props.ep_setValue('ep_end', 'countDown') !== '' ? props.ep_setValue('ep_end', 'countDown') : 'Enter Time'}</p>
                         </div>
-                        <input type='time'/>
+                        <input 
+                            type='time'
+                            id='ep_end'
+                            onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                        />
                     </div>
                 </div>
 
