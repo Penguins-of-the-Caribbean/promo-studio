@@ -321,12 +321,30 @@ function CountDown(props) {
                                 onChange={(e)=>props.cd_setMarkets(e)} />
                             </li>
                             <li>
+                                <label>Great Britain</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='gbr' 
+                                checked={props.cd_setCheckBoxes('gbr')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
                                 <label>Spain</label>
                                 <input 
                                 type="checkbox" 
                                 className="cd_market" 
                                 value='esp' 
                                 checked={props.cd_setCheckBoxes('esp')} 
+                                onChange={(e)=>props.cd_setMarkets(e)} />
+                            </li>
+                            <li>
+                                <label>Ireland</label>
+                                <input 
+                                type="checkbox" 
+                                className="cd_market" 
+                                value='irl' 
+                                checked={props.cd_setCheckBoxes('irl')} 
                                 onChange={(e)=>props.cd_setMarkets(e)} />
                             </li>
                             <li>
@@ -947,8 +965,8 @@ function ExitPopup(props) {
 
                 <div className='ge_ep-background-color'>
                     <h3>Details:</h3>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Background Color:</label>
                             <p>{props.ep_setValue('ep_backgroundColor', 'bannerDetails')}</p>
                         </div>
@@ -959,8 +977,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Offer Text:</label>
                             <p>{props.ep_setValue('ep_offerText', 'bannerDetails') !== '' ? props.ep_setValue('ep_offerText', 'bannerDetails') : 'Enter value'}</p>
                         </div>
@@ -970,9 +988,9 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
                         />
                     </div>
-                    <div>
-                        <div>
-                            <label>Offer Sub-text</label>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
+                            <label>Offer Sub-text:</label>
                             <p>{props.ep_setValue('ep_offerSubText', 'bannerDetails') !== '' ? props.ep_setValue('ep_offerSubText', 'bannerDetails') : 'Enter value'}</p>
                         </div>
                         <input 
@@ -981,8 +999,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'bannerDetails')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text Color:</label>
                             <p>{props.ep_setValue('ep_textColor', 'bannerDetails')}</p>
                         </div>
@@ -997,8 +1015,8 @@ function ExitPopup(props) {
 
                 <div className='ge_ep-continue-btn'>
                     <h3>Continue Button:</h3>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text:</label>
                             <p>{props.ep_setValue('ep_text', 'continueBtn') !== '' ? props.ep_setValue('ep_text', 'continueBtn') : 'Enter Value'}</p>
                         </div>
@@ -1008,8 +1026,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'continueBtn')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text Color:</label>
                             <p>{props.ep_setValue('ep_textColor', 'continueBtn')}</p>
                         </div>
@@ -1020,8 +1038,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'continueBtn')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Background Color:</label>
                             <p>{props.ep_setValue('ep_backgroundColor', 'continueBtn')}</p>
                         </div>
@@ -1036,8 +1054,8 @@ function ExitPopup(props) {
 
                 <div className='ge_ep-cancel-btn'>
                     <h3>Cancel Button:</h3>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text:</label>
                             <p>{props.ep_setValue('ep_text', 'cancelBtn') !== '' ? props.ep_setValue('ep_text', 'cancelBtn') : 'Enter Value'}</p>
                         </div>
@@ -1047,8 +1065,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text Color:</label>
                             <p>{props.ep_setValue('ep_textColor', 'cancelBtn')}</p>
                         </div>
@@ -1059,8 +1077,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Background Color:</label>
                             <p>{props.ep_setValue('ep_backgroundColor', 'cancelBtn')}</p>
                         </div>
@@ -1071,8 +1089,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'cancelBtn')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Border Color:</label>
                             <p>{props.ep_setValue('ep_borderColor', 'cancelBtn')}</p>
                         </div>
@@ -1087,8 +1105,8 @@ function ExitPopup(props) {
 
                 <div className='ge_ep-clock'>
                     <h3>Clock Text:</h3>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Hours Text:</label>
                             <p>{props.ep_setValue('ep_hours', 'clock') !== '' ? props.ep_setValue('ep_hours', 'clock') : 'Enter Value'}</p>
                         </div>
@@ -1098,8 +1116,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'clock')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Minutes Text:</label>
                             <p>{props.ep_setValue('ep_minutes', 'clock') !== '' ? props.ep_setValue('ep_minutes', 'clock') : 'Enter Value'}</p>
                         </div>
@@ -1109,8 +1127,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'clock')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Seconds Text:</label>
                             <p>{props.ep_setValue('ep_seconds', 'clock') !== '' ? props.ep_setValue('ep_seconds', 'clock') : 'Enter Value'}</p>
                         </div>
@@ -1120,8 +1138,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'clock')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Hours Left:</label>
                             <p>{props.ep_setValue('ep_hoursLeft', 'clock') !== '' ? props.ep_setValue('ep_hoursLeft', 'clock') : 'Enter Value'}</p>
                         </div>
@@ -1131,8 +1149,8 @@ function ExitPopup(props) {
                             onChange={(e)=> props.ep_setDetail(e, 'clock')}
                         />
                     </div>
-                    <div>
-                        <div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Text Color:</label>
                             <p>{props.ep_setValue('ep_textColor', 'clock')}</p>
                         </div>
@@ -1147,93 +1165,194 @@ function ExitPopup(props) {
 
                 <div className='ge_ep-count-down'>
                     <h3>Count-down:</h3>
-                    <div>
-                        <div>
-                            <label>Start Time:</label>
-                            <p>{props.ep_setValue('ep_start', 'countDown') !== '' ? props.ep_setValue('ep_start', 'countDown') : 'Enter Time'}</p>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-color-input-container'>
+                            <div className='ge_ep-input-header-container'>
+                                <label>Start Date:</label>
+                                <p>{props.ep_setValue('ep_dateStart', 'countDown') !== '' ? props.ep_setValue('ep_dateStart', 'countDown') : 'Enter Time'}</p>
+                            </div>
+                            <input 
+                                type='date'
+                                id='ep_dateStart'
+                                onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                            />
                         </div>
-                        <input 
-                            type='time'
-                            id='ep_start'
-                            onChange={(e)=> props.ep_setDetail(e, 'countDown')}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label>End Time:</label>
-                            <p>{props.ep_setValue('ep_end', 'countDown') !== '' ? props.ep_setValue('ep_end', 'countDown') : 'Enter Time'}</p>
+                        <div className='ge_ep-color-input-container'>
+                            <div className='ge_ep-input-header-container'>
+                                <label>Start Time:</label>
+                                <p>{props.ep_setValue('ep_timeStart', 'countDown') !== '' ? props.ep_setValue('ep_timeStart', 'countDown') : 'Enter Time'}</p>
+                            </div>
+                            <input 
+                                type='time'
+                                id='ep_timeStart'
+                                onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                            />
                         </div>
-                        <input 
-                            type='time'
-                            id='ep_end'
-                            onChange={(e)=> props.ep_setDetail(e, 'countDown')}
-                        />
                     </div>
+
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-color-input-container'>
+                            <div className='ge_ep-input-header-container'>
+                                <label>End Date:</label>
+                                <p>{props.ep_setValue('ep_dateEnd', 'countDown') !== '' ? props.ep_setValue('ep_dateEnd', 'countDown') : 'Enter Time'}</p>
+                            </div>
+                            <input 
+                                type='date'
+                                id='ep_dateEnd'
+                                onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                            />
+                        </div>
+                        <div className='ge_ep-color-input-container'>
+                            <div className='ge_ep-input-header-container'>
+                                <label>End Time:</label>
+                                <p>{props.ep_setValue('ep_timeEnd', 'countDown') !== '' ? props.ep_setValue('ep_timeEnd', 'countDown') : 'Enter Time'}</p>
+                            </div>
+                            <input 
+                                type='time'
+                                id='ep_timeEnd'
+                                onChange={(e)=> props.ep_setDetail(e, 'countDown')}
+                            />
+                        </div>
+                    </div>
+
                 </div>
 
                 <div className='ge_ep-countries'>
                     <h3>Countries:</h3>
-                    <div>
-                        <div>
-                            <label>Start Time:</label>
-                        </div>
+                    <div className='ge_ep-checkboxes-container'>
                         <ul>
                             <li>
                                 <label>Australia</label>
+                                <input 
+                                    type="checkbox"
+                                    value='aus'
+                                    checked={props.ep_setValue('aus', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Germany</label>
+                                <input 
+                                    type="checkbox"
+                                    value='deu'
+                                    checked={props.ep_setValue('deu', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Great Britain</label>
+                                <input 
+                                    type="checkbox"
+                                    value='gbr'
+                                    checked={props.ep_setValue('gbr', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Spain</label>
+                                <input 
+                                    type="checkbox"
+                                    value='esp'
+                                    checked={props.ep_setValue('esp', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Ireland</label>
+                                <input 
+                                    type="checkbox"
+                                    value='irl'
+                                    checked={props.ep_setValue('irl', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Italy</label>
+                                <input 
+                                    type="checkbox"
+                                    value='ita'
+                                    checked={props.ep_setValue('ita', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
+                        </ul>
+                        <ul>
                             <li>
                                 <label>Latin America</label>
+                                <input 
+                                    type="checkbox"
+                                    value='lac'
+                                    checked={props.ep_setValue('lac', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Mexico</label>
+                                <input 
+                                    type="checkbox"
+                                    value='mex'
+                                    checked={props.ep_setValue('mex', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Norway</label>
+                                <input 
+                                    type="checkbox"
+                                    value='nor'
+                                    checked={props.ep_setValue('nor', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Singapore</label>
+                                <input 
+                                    type="checkbox"
+                                    value='sgp'
+                                    checked={props.ep_setValue('sgp', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                             <li>
                                 <label>Sweden</label>
+                                <input 
+                                    type="checkbox"
+                                    value='swe'
+                                    checked={props.ep_setValue('swe', 'countries')}
+                                    onChange={(e)=> props.ep_setCountries(e)}
+                                />
                             </li>
                         </ul>
-                    </div>
-                    <div>
-                        <button>Add</button>
-                    </div>
-                    <div>
-                        countries list
                     </div>
                 </div>
 
                 <div className='ge_ep-dst-and-days'>
-                    <div>
-                        <div>
+                    <h3>Miscellaneous:</h3>
+
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Daylight Savings Time:</label>
+                            <input 
+                                type="checkbox"
+                                value='dst'
+                                checked={props.ep_setValue('dst', 'misc')}
+                                onChange={(e)=> props.ep_setMisc(e)}
+                            />
                         </div>
-                        <input type="checkbox"/>
                     </div>
-                    <div>
-                        <div>
+
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
                             <label>Show Days:</label>
+                            <input 
+                                type="checkbox"
+                                value='showDays'
+                                checked={props.ep_setValue('showDays', 'misc')}
+                                onChange={(e)=> props.ep_setMisc(e)}
+                            />
                         </div>
-                        <input type="checkbox"/>
                     </div>
+
                 </div>
 
             </div>

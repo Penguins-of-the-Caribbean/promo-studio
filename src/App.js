@@ -57,7 +57,9 @@ export default class App extends Component {
             cd_market: {
               aus: false,
               deu: false,
+              gbr: false,
               esp: false,
+              irl: false,
               ita: false,
               lac: false,
               mex: false,
@@ -196,12 +198,30 @@ export default class App extends Component {
               ep_textColor: '#ce0f69'
             },
             countDown:{
-              ep_start: '',
-              ep_end: ''
+              ep_dateStart: '',
+              ep_timeStart: '',
+              ep_dateEnd: '',
+              ep_timeEnd: ''
             },
-            countries:[],
-            dst: false,
-            showDays: false,
+            countries:{
+              aus: false,
+              deu: false,
+              gbr: false,
+              esp: false,
+              irl: false,
+              ita: false,
+              lac: false,
+              mex: false,
+              nor: false,
+              sgp: false,
+              swe: false,
+              value: []
+            },
+            misc:{
+              dst: false,
+              showDays: false,
+              value: []
+            }
           }
         },
         {
@@ -260,6 +280,8 @@ export default class App extends Component {
     //EXIT POP-UP
     this.exitPopupUpdateValue = this.exitPopupUpdateValue.bind(this);
     this.exitPopupSetValue = this.exitPopupSetValue.bind(this);
+    this.exitPopUpUpdateCountries = this.exitPopUpUpdateCountries.bind(this);
+    this.exitPopUpUpdateMisc = this.exitPopUpUpdateMisc.bind(this);
   }
 
   //HERO BANNER
@@ -608,6 +630,41 @@ export default class App extends Component {
   exitPopupSetValue(target, category){
     return this.state.components[4].data[category][target];
   }
+
+  exitPopUpUpdateCountries(e){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[4];
+    
+    if(e.target.checked  === true){
+      comp.data.countries[e.target.value] = true;
+      if(comp.data.countries.value.indexOf(e.target.value) === -1){
+        comp.data.countries.value.push(`'${e.target.value}'`);
+      }
+    }else if(e.target.checked === false){
+      comp.data.countries[e.target.value] = false;
+      comp.data.countries.value.splice(comp.data.countries.value.indexOf(`'${e.target.value}'`), 1);
+    }
+
+    this.setState({components: cloneComponents});
+
+    console.log(this.state.components[4].data.countries);
+  }
+
+  exitPopUpUpdateMisc(e){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[4];
+
+    if(e.target.checked === true){
+      comp.data.misc[e.target.value] = true;
+    }else if(e.target.checked === false){
+      comp.data.misc[e.target.value] = false;
+    }
+
+    this.setState({components: cloneComponents});
+
+    console.log(this.state.components[4].data.misc);
+
+  }
   //
 
   populateComponentSelector(components){
@@ -761,11 +818,11 @@ export default class App extends Component {
             textColor: '${this.state.components[4].data.clock.ep_textColor}'
           },
           countDown:{
-            start:'${this.state.components[4].data.countDown.ep_start}',
-            end: '${this.state.components[4].data.countDown.ep_end}'
+            start:'${this.state.components[4].data.countDown.ep_dateStart} ${this.state.components[4].data.countDown.ep_timeStart}:00',
+            end: '${this.state.components[4].data.countDown.ep_dateEnd} ${this.state.components[4].data.countDown.ep_timeEnd}:00'
           },
-          countries: ${this.state.components[4].data.countries}
-        }, ${this.state.components[4].data.dst}, ${this.state.components[4].data.showDays});
+          countries: [${this.state.components[4].data.countries.value.join(', ')}]
+        }, ${this.state.components[4].data.misc.dst}, ${this.state.components[4].data.misc.showDays});
 
       });
       `,
@@ -840,6 +897,8 @@ export default class App extends Component {
 
                                       ep_setValue={this.exitPopupSetValue}
                                       ep_setDetail={this.exitPopupUpdateValue}
+                                      ep_setCountries={this.exitPopUpUpdateCountries}
+                                      ep_setMisc={this.exitPopUpUpdateMisc}
                     /> : <Redirect to='/' />
                   }
               >

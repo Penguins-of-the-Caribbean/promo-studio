@@ -1,4 +1,110 @@
 .ge_exit-popup-container{
-    background: pink;
+    /* background: pink; */
     padding: 10px;
+}
+
+.ge_ep-header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px 0px 30px 0px;
+}
+
+.ge_ep-header > h1{
+    width: 100%;
+    margin: 0px;
+    color: rgb(40, 44, 52);
+    border-bottom: solid 3px #000000;
+}
+
+.ge_ep-background-color{
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+}
+
+.ge_ep-color-input-container:nth-child(even){
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0px 0px 10px 0px;
+}
+
+.ge_ep-color-input-container:nth-child(odd){
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.ge_ep-input-header-container{
+    /* background: blueviolet; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.ge_ep-input-header-container label{
+    padding: 0px;
+    margin: 5px 0px;
+}
+
+.ge_ep-input-header-container p{
+    padding: 0px;
+    margin: 0px 0px 0px 10px;
+}
+
+.ge_ep-input-header-container input{
+    margin: 0px 0px 0px 10px;
+}
+
+.ge_ep-color-input-container > input{
+    background: rgb(40, 44, 52);
+    width: 50%;
+    height: 33px;
+    margin: 5px 0px;
+    padding: 0px 7px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ge_ep-color-input-container > input[type='color']{
+    background: none;
+    width: 210px;
+    height: 35px;
+    margin: 5px 0px 0px -2px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+}
+
+.ge_ep-checkboxes-container{
+    /* background: blue; */
+    display: flex;
+    justify-content: left;
+    margin: 0px 0px 10px 0px;
+}
+
+.ge_ep-checkboxes-container> ul{
+    /* background: red; */
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+
+.ge_ep-checkboxes-container > ul > li{
+    background: rgb(40, 44, 52);
+    margin: 5px 0px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
 }
