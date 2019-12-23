@@ -170,6 +170,9 @@ function HeroBanner(props) {
 }
 
 function CountDown(props) {
+
+    const [layout, setLayout] = useState('');
+
     return (
         <div className='ge_count-down-container'>
             <div className='ge_count-down-header'>
@@ -245,7 +248,7 @@ function CountDown(props) {
                 </div>
 
                 <div className="ge_cd-section-a">
-                    <div className='ge_cd-section-b'>
+                    {/* <div className='ge_cd-section-b'>
                         <div className='ge_cd-section-c'>
                             <div className='ge_hb-labels'>
                                 <label>Offer:</label>
@@ -296,8 +299,22 @@ function CountDown(props) {
                                 onChange={(e)=>props.cd_setState(e)}
                             />
                         </div>
+                    </div> */}
+                    <div className='ge-cd-header'>
+                        <h4>Offer:</h4>
                     </div>
+                    <div className='ge_cd-offer-selector'>
+                        <label>Layout:</label>
+                        <select onChange={(e)=> setLayout(e.target.value)}>
+                            <option value=''>Select Layout</option> 
+                            <option value='standardOffer' >Standard</option>
+                            <option value='doubleOffer'   >Double</option>
+                            <option value='tripleOffer'   >Triple</option>
+                        </select>
+                    </div>
+                    <div>{layout  === '' ? 'Select Layout' : layout}</div>
                 </div>
+                
                 <div className="ge_count-down-markets">
                     <div className="ge_count-down-markets-container">
                         <label>Select Markets</label>
@@ -1146,6 +1163,17 @@ function ExitPopup(props) {
                         <input 
                             type="text"
                             id='ep_hoursLeft'
+                            onChange={(e)=> props.ep_setDetail(e, 'clock')}
+                        />
+                    </div>
+                    <div className='ge_ep-color-input-container'>
+                        <div className='ge_ep-input-header-container'>
+                            <label>Days Left:</label>
+                            <p>{props.ep_setValue('ep_daysLeft', 'clock') !== '' ? props.ep_setValue('ep_daysLeft', 'clock') : 'Enter Value'}</p>
+                        </div>
+                        <input 
+                            type="text"
+                            id='ep_daysLeft'
                             onChange={(e)=> props.ep_setDetail(e, 'clock')}
                         />
                     </div>

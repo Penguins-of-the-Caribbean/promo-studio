@@ -195,6 +195,7 @@ export default class App extends Component {
               ep_minutes: '',
               ep_seconds: '',
               ep_hoursLeft: '',
+              ep_daysLeft: '',
               ep_textColor: '#ce0f69'
             },
             countDown:{
@@ -815,6 +816,7 @@ export default class App extends Component {
             minutes: '${this.state.components[4].data.clock.ep_minutes}',
             seconds: '${this.state.components[4].data.clock.ep_seconds}',
             hoursLeft: '${this.state.components[4].data.clock.ep_hoursLeft}',
+            daysLeft: '${this.state.components[4].data.clock.ep_daysLeft}',
             textColor: '${this.state.components[4].data.clock.ep_textColor}'
           },
           countDown:{
