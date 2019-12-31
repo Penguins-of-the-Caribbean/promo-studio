@@ -169,9 +169,179 @@ function HeroBanner(props) {
     )
 }
 
-function CountDown(props) {
+function CountDownBanner(props){
 
-    const [layout, setLayout] = useState('');
+    const [timer, setTimer] = useState(false);
+    const [showDays, setShowDays] = useState(false);
+
+    return (
+        <div className='ge_count-down-container'>
+            <div className='ge_count-down-header'>
+                <h1>Countdown Banner</h1>
+            </div>
+            <div className='ge_count-down-form'>
+
+                <div className='ge_cd-section'>
+                    <div className='ge_hb-labels'>
+                        <label>Parent Element:</label>
+                        <p>{props.cd_setValues('cd_parent') !== '' ? props.cd_setValues('cd_parent') : 'Enter Value'}</p>
+                    </div>
+                    <input 
+                        className='ge_input-style'
+                        type="text" 
+                        id="cd_parent" 
+                        onChange={(e)=>props.cd_setState(e)} 
+                    />
+                </div>
+
+                <div className='ge_timer-section'>
+                    <div className='ge_cd-add-timer'>
+                        <label>Add Timer</label>
+                        <input 
+                            type="checkbox" 
+                            onChange={(e)=>setTimer(e.target.checked)}
+                        />
+                    </div>
+                    {timer === true ? 
+                        <div className='ge_timer-section'>
+                            <div className='ge_cd-section'>
+                                <div className='ge_hb-labels'>
+                                    <label>Timer Text:</label>
+                                    <p>{props.cd_setValues('cd_timerText') !== '' ? props.cd_setValues('cd_timerText') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_input-style'
+                                    type="text" 
+                                    id="cd_timerText" 
+                                    onChange={(e)=>props.cd_setState(e)} 
+                                />
+                            </div>
+                            <div className='ge_cd-section'>
+                                <div className='ge_hb-labels'>
+                                    <label>Start Date:</label>
+                                    <p>{props.cd_setValues('cd_timerStartDate') !== '' ? props.cd_setValues('cd_timerStartDate') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_input-style'
+                                    type="date" 
+                                    id="cd_timerStartDate" 
+                                    onChange={(e)=>props.cd_setState(e)} 
+                                />
+                            </div>
+                            <div className='ge_cd-section'>
+                                <div className='ge_hb-labels'>
+                                    <label>Start Time:</label>
+                                    <p>{props.cd_setValues('cd_timerStartTime') !== '' ? props.cd_setValues('cd_timerStartTime') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_input-style'
+                                    type="time" 
+                                    id="cd_timerStartTime" 
+                                    onChange={(e)=>props.cd_setState(e)} 
+                                />
+                            </div>
+                            <div className='ge_cd-section'>
+                                <div className='ge_hb-labels'>
+                                    <label>End Date:</label>
+                                    <p>{props.cd_setValues('cd_timerEndDate') !== '' ? props.cd_setValues('cd_timerEndDate') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_input-style'
+                                    type="date" 
+                                    id="cd_timerEndDate" 
+                                    onChange={(e)=>props.cd_setState(e)} 
+                                />
+                            </div>
+                            <div className='ge_cd-section'>
+                                <div className='ge_hb-labels'>
+                                    <label>End Time:</label>
+                                    <p>{props.cd_setValues('cd_timerEndTime') !== '' ? props.cd_setValues('cd_timerEndTime') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_input-style'
+                                    type="time" 
+                                    id="cd_timerEndTime" 
+                                    onChange={(e)=>props.cd_setState(e)} 
+                                />
+                            </div>
+                            <div className='ge_cd-add-timer'>
+                                <label>Daylight Savings:</label>
+                                <input 
+                                    type="checkbox" 
+                                    id="cd_timerShowDays" 
+                                    onChange={(e)=> props.cd_setState(e)}
+                                />
+                            </div>
+                            <div className='ge_cd-add-timer'>
+                                <label>Reverse Layout:</label>
+                                <input 
+                                    type="checkbox" 
+                                    id="cd_timerReverseLayou" 
+                                    onChange={(e)=> props.cd_setState(e)}
+                                />
+                            </div>
+
+                            <div>
+                                <div className='ge_cd-add-timer'>
+                                    <label>Show Days:</label>
+                                    <input 
+                                        type="checkbox" 
+                                        id="cd_timerShowDays" 
+                                        onChange={(e)=>{setShowDays(e.target.checked); props.cd_setState(e)}}
+                                    />
+                                </div>
+                                {showDays === true ? 
+                                    <div>
+                                        <div className='ge_cd-section'>
+                                            <div className='ge_hb-labels'>
+                                                <label>Text:</label>
+                                                <p>{props.cd_setValues('cd_timerShowDaysLast') !== '' ? props.cd_setValues('cd_timerShowDaysLast') : 'Enter Value'}</p>
+                                            </div>
+                                            <input 
+                                                className='ge_input-style'
+                                                type="text" 
+                                                id="cd_timerShowDaysLast" 
+                                                onChange={(e)=>props.cd_setState(e)} 
+                                            />
+                                        </div>
+                                        <div className='ge_cd-section'>
+                                            <div className='ge_hb-labels'>
+                                                <label>Number Of Days:</label>
+                                                <p>{props.cd_setValues('cd_timerShowDaysNumber') !== '' ? props.cd_setValues('cd_timerShowDaysNumber') : 'Enter Value'}</p>
+                                            </div>
+                                            <input 
+                                                className='ge_input-style'
+                                                type="number" 
+                                                id="cd_timerShowDaysNumber" 
+                                                onChange={(e)=>props.cd_setState(e)} 
+                                            />
+                                        </div>
+                                        <div className='ge_cd-section'>
+                                            <div className='ge_hb-labels'>
+                                                <label>Text:</label>
+                                                <p>{props.cd_setValues('cd_timerShowDaysDays') !== '' ? props.cd_setValues('cd_timerShowDaysDays') : 'Enter Value'}</p>
+                                            </div>
+                                            <input 
+                                                className='ge_input-style'
+                                                type="text" 
+                                                id="cd_timerShowDaysDays" 
+                                                onChange={(e)=>props.cd_setState(e)} 
+                                            />
+                                        </div>
+                                    </div>
+                                : null}
+                            </div>
+
+                        </div>
+                    : null}
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
+function CountDown(props) {
 
     return (
         <div className='ge_count-down-container'>
@@ -248,7 +418,7 @@ function CountDown(props) {
                 </div>
 
                 <div className="ge_cd-section-a">
-                    {/* <div className='ge_cd-section-b'>
+                    <div className='ge_cd-section-b'>
                         <div className='ge_cd-section-c'>
                             <div className='ge_hb-labels'>
                                 <label>Offer:</label>
@@ -299,20 +469,7 @@ function CountDown(props) {
                                 onChange={(e)=>props.cd_setState(e)}
                             />
                         </div>
-                    </div> */}
-                    <div className='ge-cd-header'>
-                        <h4>Offer:</h4>
                     </div>
-                    <div className='ge_cd-offer-selector'>
-                        <label>Layout:</label>
-                        <select onChange={(e)=> setLayout(e.target.value)}>
-                            <option value=''>Select Layout</option> 
-                            <option value='standardOffer' >Standard</option>
-                            <option value='doubleOffer'   >Double</option>
-                            <option value='tripleOffer'   >Triple</option>
-                        </select>
-                    </div>
-                    <div>{layout  === '' ? 'Select Layout' : layout}</div>
                 </div>
                 
                 <div className="ge_count-down-markets">
@@ -1444,6 +1601,6 @@ function CodeBlock(props){
     )
 }
 
-export {HeroBanner, CountDown, Pills, PeopleWatching, ExitPopup, KidsSailFree, PromoCode, IOBD, Submit, CodeBlock}
+export {HeroBanner, CountDownBanner, CountDown, Pills, PeopleWatching, ExitPopup, KidsSailFree, PromoCode, IOBD, Submit, CodeBlock}
 
 

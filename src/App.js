@@ -41,20 +41,23 @@ export default class App extends Component {
           }
         },
         {
-          id: 'countDown',
-          name: 'Count Down',
+          id: 'countDownBanner',
+          name: 'Countdown Banner',
           selected: false,
-          data: {
-            cd_parent: '',
-            cd_startDate: '',
-            cd_startTime: '',
-            cd_endDate: '', 
-            cd_endTime: '',
-            cd_offer: '',
-            cd_text: '',
-            cd_subText: '',
+          data:{
+            cd_parent: '.hero-image-container',
             cd_timerText: '',
-            cd_market: {
+            cd_timerStartDate: '',
+            cd_timerStartTime: '',
+            cd_timerEndDate: '',
+            cd_timerEndTime: '',
+            cd_timerDst: false,
+            cd_timerShowDays: false,
+            cd_timerShowDaysLast: '',
+            cd_timerShowDaysNumber: 2,
+            cd_timerShowDaysDays: '',
+            cd_timerReverseLayout: false,
+            cd_markets: {
               aus: false,
               deu: false,
               gbr: false,
@@ -68,10 +71,21 @@ export default class App extends Component {
               swe: false,
               value: []
             },
-            cd_last: '',
-            cd_days: '',
-            cd_dst: false,
-            cd_layout: false
+            cd_textFields:{
+              textField:{
+                text:{
+                  text: '',
+                  textSize: '',
+                  textAlign: ''
+                },
+                subText:{
+                  text: '',
+                  textSize: '',
+                  textAlign: ''
+                }
+              },
+              values: []
+            }
           }
         },
         {
@@ -283,6 +297,9 @@ export default class App extends Component {
     this.exitPopupSetValue = this.exitPopupSetValue.bind(this);
     this.exitPopUpUpdateCountries = this.exitPopUpUpdateCountries.bind(this);
     this.exitPopUpUpdateMisc = this.exitPopUpUpdateMisc.bind(this);
+
+    //KSF
+    //IOBD
   }
 
   //HERO BANNER
@@ -579,9 +596,6 @@ export default class App extends Component {
       console.log()
       return str;
     }
-
-    //EXIT POPUP
-
 
     this.state.components[2].pills.forEach((pill, i)=>{
       let codeSnipet = `
