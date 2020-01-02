@@ -173,6 +173,7 @@ function CountDownBanner(props){
 
     const [timer, setTimer] = useState(false);
     const [showDays, setShowDays] = useState(false);
+    const [subtext, addSubtext] = useState(false);
 
     return (
         <div className='ge_count-down-container'>
@@ -276,7 +277,7 @@ function CountDownBanner(props){
                                 <label>Reverse Layout:</label>
                                 <input 
                                     type="checkbox" 
-                                    id="cd_timerReverseLayou" 
+                                    id="cd_timerReverseLayout" 
                                     onChange={(e)=> props.cd_setState(e)}
                                 />
                             </div>
@@ -291,38 +292,38 @@ function CountDownBanner(props){
                                     />
                                 </div>
                                 {showDays === true ? 
-                                    <div>
-                                        <div className='ge_cd-section'>
+                                    <div className='ge_cd-showdays-section'>
+                                        <div className='ge_cd-showdays-wrapper'>
                                             <div className='ge_hb-labels'>
                                                 <label>Text:</label>
                                                 <p>{props.cd_setValues('cd_timerShowDaysLast') !== '' ? props.cd_setValues('cd_timerShowDaysLast') : 'Enter Value'}</p>
                                             </div>
                                             <input 
-                                                className='ge_input-style'
+                                                className='ge_cd-input-style'
                                                 type="text" 
                                                 id="cd_timerShowDaysLast" 
                                                 onChange={(e)=>props.cd_setState(e)} 
                                             />
                                         </div>
-                                        <div className='ge_cd-section'>
+                                        <div className='ge_cd-showdays-wrapper'>
                                             <div className='ge_hb-labels'>
                                                 <label>Number Of Days:</label>
                                                 <p>{props.cd_setValues('cd_timerShowDaysNumber') !== '' ? props.cd_setValues('cd_timerShowDaysNumber') : 'Enter Value'}</p>
                                             </div>
                                             <input 
-                                                className='ge_input-style'
+                                                className='ge_cd-input-style'
                                                 type="number" 
                                                 id="cd_timerShowDaysNumber" 
                                                 onChange={(e)=>props.cd_setState(e)} 
                                             />
                                         </div>
-                                        <div className='ge_cd-section'>
+                                        <div className='ge_cd-showdays-wrapper'>
                                             <div className='ge_hb-labels'>
                                                 <label>Text:</label>
                                                 <p>{props.cd_setValues('cd_timerShowDaysDays') !== '' ? props.cd_setValues('cd_timerShowDaysDays') : 'Enter Value'}</p>
                                             </div>
                                             <input 
-                                                className='ge_input-style'
+                                                className='ge_cd-input-style'
                                                 type="text" 
                                                 id="cd_timerShowDaysDays" 
                                                 onChange={(e)=>props.cd_setState(e)} 
@@ -334,6 +335,100 @@ function CountDownBanner(props){
 
                         </div>
                     : null}
+                </div>
+
+                <div className='ge_cd-textfields-section'>
+                    <h3>Add Text Field</h3>
+                    <div className='ge_cd-section'>
+                        <div  className='ge_cd-text-section'>
+                            <div className='ge_cd-text-section-wrapper'>
+                                <div className='ge_hb-labels'>
+                                    <label>Text:</label>
+                                    <p>{props.cd_setTextField('text', 'text') !== '' ? props.cd_setTextField('text', 'text') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_cd-input-style'
+                                    type="text"
+                                    onChange={(e)=>props.cd_setTextFieldValues(e, 'text', 'text')} 
+                                />
+                            </div>
+                            <div className='ge_cd-subtext-section-wrapper'>
+                                <div className='ge_hb-labels'>
+                                    <label>Font-size:</label>
+                                    <p>{props.cd_setTextField('text', 'textSize') !== '' ? props.cd_setTextField('text', 'textSize') : 'Enter Value'}</p>
+                                </div>
+                                <input 
+                                    className='ge_cd-input-style'
+                                    type="number" 
+                                    onChange={(e)=>props.cd_setTextFieldValues(e, 'text', 'textSize')} 
+                                />
+                            </div>
+                            <div className='ge_cd-subtext-section-wrapper'>
+                                <div className='ge_hb-labels'>
+                                    <label>Alignment:</label>
+                                    <p>{props.cd_setTextField('text', 'textAlign') !== '' ? props.cd_setTextField('text', 'textAlign') : 'Enter Value'}</p>
+                                </div>
+                                <select className='ge_cd-select-style' onChange={(e)=>props.cd_setTextFieldValues(e, 'text', 'textAlign')}>
+                                    <option value="center">Center</option>
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className='ge_cd-subtext-add-section'>
+                            <div className='ge_cd-add-subext'>
+                                <label>Add Subtext</label>
+                                <input 
+                                    type="checkbox" 
+                                    onChange={(e)=>addSubtext(e.target.checked)}
+                                />
+                            </div>
+                            {subtext === true ? 
+                                <div  className='ge_cd-subtext-section'>
+                                    <div className='ge_cd-subtext-section-wrapper'>
+                                        <div className='ge_hb-labels'>
+                                            <label>Subtext:</label>
+                                            <p>{props.cd_setTextField('subText', 'text') !== '' ? props.cd_setTextField('subText', 'text') : 'Enter Value'}</p>
+                                        </div>
+                                        <input 
+                                            className='ge_cd-input-style'
+                                            type="text"
+                                            onChange={(e)=>props.cd_setTextFieldValues(e, 'subText', 'text')} 
+                                        />
+                                    </div>
+                                    <div className='ge_cd-subtext-section-wrapper'>
+                                        <div className='ge_hb-labels'>
+                                            <label>Font-size:</label>
+                                            <p>{props.cd_setTextField('subText', 'textSize') !== '' ? props.cd_setTextField('subText', 'textSize') : 'Enter Value'}</p>
+                                        </div>
+                                        <input 
+                                            className='ge_cd-input-style'
+                                            type="number" 
+                                            onChange={(e)=>props.cd_setTextFieldValues(e, 'subText', 'textSize')} 
+                                        />
+                                    </div>
+                                    <div className='ge_cd-subtext-section-wrapper'>
+                                        <div className='ge_hb-labels'>
+                                            <label>Alignment:</label>
+                                            <p>{props.cd_setTextField('subText', 'textAlign') !== '' ? props.cd_setTextField('subText', 'textAlign') : 'Enter Value'}</p>
+                                        </div>
+                                        <select className='ge_cd-select-style' onChange={(e)=>props.cd_setTextFieldValues(e, 'subText', 'textAlign')}>
+                                            <option value="center">Center</option>
+                                            <option value="left">Left</option>
+                                            <option value="right">Right</option>
+                                        </select>
+                                    </div>
+                                </div>
+                             : null}
+                        </div>
+                    </div>
+                </div>
+                <div className='ge_cd-add-text-field'>
+                    <button onClick={()=> props.cd_addTextField()}>Add</button>
+                </div>
+                <div className='ge_cd-textfields-container'>
+                    {props.cd_updateTextField()}
                 </div>
 
             </div>

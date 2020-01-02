@@ -14,6 +14,7 @@ import SailingDate from './components/SailingDate';
 import DeparturePort from './components/DeparturePort';
 import Pill from './components/Pill';
 import OtherPill from './components/OtherPill';
+import TextField from './components/TextField';
 import { CodeBlock } from './components/Components';
 
 
@@ -76,12 +77,12 @@ export default class App extends Component {
                 text:{
                   text: '',
                   textSize: '',
-                  textAlign: ''
+                  textAlign: 'center'
                 },
                 subText:{
                   text: '',
                   textSize: '',
-                  textAlign: ''
+                  textAlign: 'center'
                 }
               },
               values: []
@@ -269,6 +270,11 @@ export default class App extends Component {
     this.updateCountDownMarkets = this.updateCountDownMarkets.bind(this);
     this.updateCountDownMarketCheckBoxes = this.updateCountDownMarketCheckBoxes.bind(this);
     this.setCountDownInputValue = this.setCountDownInputValue.bind(this);
+    this.setCountDownTextFieldValue = this.setCountDownTextFieldValue.bind(this);
+    this.addCountDownTextField = this.addCountDownTextField.bind(this);
+    this.updateCountDownTextFieldValue = this.updateCountDownTextFieldValue.bind(this);
+    this.createCountDownTextFiendValues = this.createCountDownTextFiendValues.bind(this);
+    this.deleteCountDownTextField = this.deleteCountDownTextField.bind(this);
 
     //PILLS
     this.setPillDetails = this.setPillDetails.bind(this);
@@ -352,6 +358,48 @@ export default class App extends Component {
 
   setCountDownInputValue(target){
     return this.state.components[1].data[target];
+  }
+
+  setCountDownTextFieldValue(e, category, dataType){
+    let cloneComponents = [...this.state.components];
+
+    cloneComponents[1].data.cd_textFields.textField[category][dataType] = e.target.value;
+
+    this.setState({components: cloneComponents});
+  }
+
+  updateCountDownTextFieldValue(category, dataType){
+    return this.state.components[1].data.cd_textFields.textField[category][dataType];
+  }
+
+  addCountDownTextField(){
+    let cloneComponents = [...this.state.components];
+    let textFieldValues = JSON.parse(JSON.stringify(this.state.components[1].data.cd_textFields.textField));
+    //let textFieldValues = {...this.state.components[1].data.cd_textFields.textField};
+
+    cloneComponents[1].data.cd_textFields.values.push(textFieldValues);
+    cloneComponents[1].data.cd_textFields.textField = { text: {text:'', textSize: '', textAlign: ''}, subText: {text:'', textSize: '', textAlign: ''}};
+
+    this.setState({components: cloneComponents});
+  }
+
+  deleteCountDownTextField(index){
+    let cloneComponents = [...this.state.components];
+    console.log(this.state.components)
+    cloneComponents[1].data.cd_textFields.values.splice(index, 1);
+    this.setState({components: cloneComponents}); 
+  }
+
+  createCountDownTextFiendValues(){
+    return(
+      this.state.components[1].data.cd_textFields.values.map((textField, i)=>{
+        return <TextField 
+                  key={i}
+                  delete={this.deleteCountDownTextField}
+                  textField={textField}
+              />
+      })
+    )
   }
 
   //PILLS
@@ -895,6 +943,10 @@ export default class App extends Component {
                                       cd_setMarkets={this.updateCountDownMarkets}
                                       cd_setCheckBoxes={this.updateCountDownMarketCheckBoxes}
                                       cd_setValues={this.setCountDownInputValue}
+                                      cd_setTextFieldValues={this.setCountDownTextFieldValue}
+                                      cd_setTextField={this.updateCountDownTextFieldValue}
+                                      cd_addTextField={this.addCountDownTextField}
+                                      cd_updateTextField={this.createCountDownTextFiendValues}
 
                                       pl_amount={this.updatePillAmount()}
                                       pl_setPillDetails={this.setPillDetails}
