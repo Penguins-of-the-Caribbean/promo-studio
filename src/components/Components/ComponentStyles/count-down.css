@@ -97,6 +97,9 @@
 
 .ge_cd-textfields-container{
     margin: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
 }
 
 .ge_cd-add-text-field{

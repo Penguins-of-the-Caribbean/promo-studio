@@ -1,3 +1,59 @@
 .ge_text-field-component-container{
     background: purple;
+    padding: 10px;
+    background: rgb(228, 228, 228);
+    margin: 0px 5px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ge_text-field-container{
+    /* background: red; */
+}
+
+.ge_text-field-container p{
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+}
+
+.ge_subtext-field-container{
+    /* background: blue; */
+    margin: 20px 0px 0px 0px;
+}
+
+.ge_subtext-field-container p{
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+}
+
+.ge_text-field-props{
+    /* background: green; */
+    display: flex;
+    justify-content:left;
+}
+
+.ge_text-field-props ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.ge_text-field-props ul li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+}
+
+.ge_text-field-props p{
+    margin: 0px 30px 0px 0px;
+    padding: 0px;
+    font-size: 12px;
+}
+
+.ge_text-field-component-container > button{
+    width: 150px;
+    height: 30px;
+    margin: 15px 0px 0px 0px;
 }

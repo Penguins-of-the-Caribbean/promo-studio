@@ -368,7 +368,10 @@ function CountDownBanner(props){
                                     <label>Alignment:</label>
                                     <p>{props.cd_setTextField('text', 'textAlign') !== '' ? props.cd_setTextField('text', 'textAlign') : 'Enter Value'}</p>
                                 </div>
-                                <select className='ge_cd-select-style' onChange={(e)=>props.cd_setTextFieldValues(e, 'text', 'textAlign')}>
+                                <select 
+                                    className='ge_cd-select-style' 
+                                    onChange={(e)=>props.cd_setTextFieldValues(e, 'text', 'textAlign')}
+                                    >
                                     <option value="center">Center</option>
                                     <option value="left">Left</option>
                                     <option value="right">Right</option>
@@ -413,7 +416,10 @@ function CountDownBanner(props){
                                             <label>Alignment:</label>
                                             <p>{props.cd_setTextField('subText', 'textAlign') !== '' ? props.cd_setTextField('subText', 'textAlign') : 'Enter Value'}</p>
                                         </div>
-                                        <select className='ge_cd-select-style' onChange={(e)=>props.cd_setTextFieldValues(e, 'subText', 'textAlign')}>
+                                        <select 
+                                            className='ge_cd-select-style' 
+                                            onChange={(e)=>props.cd_setTextFieldValues(e, 'subText', 'textAlign')}
+                                            >
                                             <option value="center">Center</option>
                                             <option value="left">Left</option>
                                             <option value="right">Right</option>

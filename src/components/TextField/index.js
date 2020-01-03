@@ -5,18 +5,40 @@ export default function index(props) {
     return (
         <div className='ge_text-field-component-container'>
            <div>
-                <p>{props.textField.text.text}</p>
-                <p>{props.textField.text.textSize}</p>
-                <p>{props.textField.text.textAlign}</p>
-           </div> 
-           {props.textField.subText !== undefined ? 
-            <div>
-                <p>{props.textField.subText.text}</p>
-                <p>{props.textField.subText.textSize}</p>
-                <p>{props.textField.subText.textAlign}</p>
+            <div className='ge_text-field-container'>
+                    <p>Text: {props.textField.text.text}</p>
+                    <div className='ge_text-field-props'>
+                        <ul>
+                            <li>
+                                <p>Font-size:</p>
+                                <p>{props.textField.text.textSize} px</p>
+                            </li>
+                            <li>
+                                <p>Text-alignment:</p>
+                                <p>{props.textField.text.textAlign}</p>
+                            </li>
+                        </ul>
+                    </div>
             </div> 
-           : null}
-           <button onClick={()=> props.delete()}>Delete</button>
+            {props.textField.subText.text !== '' ? 
+                <div className='ge_subtext-field-container'>
+                    <p>Subtext: {props.textField.subText.text}</p>
+                    <div className='ge_text-field-props'>
+                        <ul>
+                            <li>
+                                <p>Font-size:</p>
+                                <p>{props.textField.subText.textSize} px</p>
+                            </li>
+                            <li>
+                                <p>Text-alignment:</p>
+                                <p>{props.textField.subText.textAlign}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            : null}
+           </div>
+           <button onClick={()=> props.delete(props.index)}>Delete</button>
         </div>
     )
 }

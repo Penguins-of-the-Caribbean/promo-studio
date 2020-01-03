@@ -378,14 +378,13 @@ export default class App extends Component {
     //let textFieldValues = {...this.state.components[1].data.cd_textFields.textField};
 
     cloneComponents[1].data.cd_textFields.values.push(textFieldValues);
-    cloneComponents[1].data.cd_textFields.textField = { text: {text:'', textSize: '', textAlign: ''}, subText: {text:'', textSize: '', textAlign: ''}};
+    cloneComponents[1].data.cd_textFields.textField = { text: {text:'', textSize: '', textAlign: 'center'}, subText: {text:'', textSize: '', textAlign: 'center'}};
 
     this.setState({components: cloneComponents});
   }
 
   deleteCountDownTextField(index){
     let cloneComponents = [...this.state.components];
-    console.log(this.state.components)
     cloneComponents[1].data.cd_textFields.values.splice(index, 1);
     this.setState({components: cloneComponents}); 
   }
@@ -395,6 +394,7 @@ export default class App extends Component {
       this.state.components[1].data.cd_textFields.values.map((textField, i)=>{
         return <TextField 
                   key={i}
+                  index={i}
                   delete={this.deleteCountDownTextField}
                   textField={textField}
               />
