@@ -2,7 +2,7 @@
     background: purple;
     padding: 10px;
     background: rgb(228, 228, 228);
-    margin: 0px 5px 0px 0px;
+    margin: 0px 5px 5px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,8 +52,15 @@
     font-size: 12px;
 }
 
-.ge_text-field-component-container > button{
-    width: 150px;
-    height: 30px;
-    margin: 15px 0px 0px 0px;
+.ge_text-field-action-btns{
+    /* background: red; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.ge_text-field-action-btns > button{
+    width: 75px;
+    height: 21px;
+    margin: 15px 10px 0px 0px;
 }

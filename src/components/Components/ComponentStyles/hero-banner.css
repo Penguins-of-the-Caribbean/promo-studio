@@ -116,3 +116,27 @@
     box-shadow: none;
     appearance: none;
 }
+
+.ge_cd-checkboxes-container{
+    /* background: blue; */
+    display: flex;
+    justify-content: left;
+    margin: 0px 0px 10px 0px;
+}
+
+.ge_cd-checkboxes-container> ul{
+    /* background: red; */
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+
+.ge_cd-checkboxes-container > ul > li{
+    background: rgb(40, 44, 52);
+    margin: 5px 0px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+}

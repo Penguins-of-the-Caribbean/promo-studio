@@ -38,7 +38,10 @@ export default function index(props) {
                 </div> 
             : null}
            </div>
-           <button onClick={()=> props.delete(props.index)}>Delete</button>
+          <div className='ge_text-field-action-btns'>
+            <button onClick={()=> props.delete(props.index)}>Delete</button>
+            <button onClick={()=> props.edit(props.index)}>Edit</button>
+          </div>
         </div>
     )
 }

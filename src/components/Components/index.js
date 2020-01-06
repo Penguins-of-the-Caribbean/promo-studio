@@ -337,6 +337,115 @@ function CountDownBanner(props){
                     : null}
                 </div>
 
+                <div className='ge-cd-add-markets-section'>
+                    <h3>Countries:</h3>
+                    <div className='ge_cd-checkboxes-container'>
+                        <ul>
+                            <li>
+                                <label>Australia</label>
+                                <input 
+                                    type="checkbox"
+                                    value='aus'
+                                    checked={props.cd_updateCountries('aus')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Germany</label>
+                                <input 
+                                    type="checkbox"
+                                    value='deu'
+                                    checked={props.cd_updateCountries('deu')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Great Britain</label>
+                                <input 
+                                    type="checkbox"
+                                    value='gbr'
+                                    checked={props.cd_updateCountries('gbr')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Spain</label>
+                                <input 
+                                    type="checkbox"
+                                    value='esp'
+                                    checked={props.cd_updateCountries('esp')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Ireland</label>
+                                <input 
+                                    type="checkbox"
+                                    value='irl'
+                                    checked={props.cd_updateCountries('irl')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Italy</label>
+                                <input 
+                                    type="checkbox"
+                                    value='ita'
+                                    checked={props.cd_updateCountries('ita')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <label>Latin America</label>
+                                <input 
+                                    type="checkbox"
+                                    value='lac'
+                                    checked={props.cd_updateCountries('lac')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Mexico</label>
+                                <input 
+                                    type="checkbox"
+                                    value='mex'
+                                    checked={props.cd_updateCountries('mex')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Norway</label>
+                                <input 
+                                    type="checkbox"
+                                    value='nor'
+                                    checked={props.cd_updateCountries('nor')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Singapore</label>
+                                <input 
+                                    type="checkbox"
+                                    value='sgp'
+                                    checked={props.cd_updateCountries('sgp')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                            <li>
+                                <label>Sweden</label>
+                                <input 
+                                    type="checkbox"
+                                    value='swe'
+                                    checked={props.cd_updateCountries('swe')}
+                                    onChange={(e)=> props.cd_setCountries(e)}
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div className='ge_cd-textfields-section'>
                     <h3>Add Text Field</h3>
                     <div className='ge_cd-section'>

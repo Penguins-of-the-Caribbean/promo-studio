@@ -70,7 +70,7 @@ export default class App extends Component {
               nor: false,
               sgp: false,
               swe: false,
-              value: []
+              values: []
             },
             cd_textFields:{
               textField:{
@@ -275,6 +275,9 @@ export default class App extends Component {
     this.updateCountDownTextFieldValue = this.updateCountDownTextFieldValue.bind(this);
     this.createCountDownTextFiendValues = this.createCountDownTextFiendValues.bind(this);
     this.deleteCountDownTextField = this.deleteCountDownTextField.bind(this);
+    this.editCountDownTextField = this.editCountDownTextField.bind(this);
+    this.setCountDownCountries = this.setCountDownCountries.bind(this);
+    this.updateCountDownCountries = this.updateCountDownCountries.bind(this);
 
     //PILLS
     this.setPillDetails = this.setPillDetails.bind(this);
@@ -360,6 +363,24 @@ export default class App extends Component {
     return this.state.components[1].data[target];
   }
 
+  setCountDownCountries(e){
+    let cloneComponents = [...this.state.components];
+
+    cloneComponents[1].data.cd_markets[e.target.value] = e.target.checked;
+
+    if(e.target.checked === true){
+      cloneComponents[1].data.cd_markets.values.push("'"+e.target.value+"'");
+    }else{
+      cloneComponents[1].data.cd_markets.values.splice(e.target.value, 1);
+    }
+
+    this.setState({components: cloneComponents});
+  }
+
+  updateCountDownCountries(market){
+    return this.state.components[1].data.cd_markets[market];
+  }
+
   setCountDownTextFieldValue(e, category, dataType){
     let cloneComponents = [...this.state.components];
 
@@ -383,10 +404,74 @@ export default class App extends Component {
     this.setState({components: cloneComponents});
   }
 
+  editCountDownTextField(index){
+    let cloneComponents = [...this.state.components];
+  
+    cloneComponents[1].data.cd_textFields.textField = {
+      text:{
+        text: cloneComponents[1].data.cd_textFields.values[index].text.text,
+        textSize: cloneComponents[1].data.cd_textFields.values[index].text.textSize,
+        textAlign: cloneComponents[1].data.cd_textFields.values[index].text.textAlign
+      },
+      subText:{
+        text: cloneComponents[1].data.cd_textFields.values[index].subText.text,
+        textSize: cloneComponents[1].data.cd_textFields.values[index].subText.textSize,
+        textAlign: cloneComponents[1].data.cd_textFields.values[index].subText.textAlign
+      }
+    };
+
+    cloneComponents[1].data.cd_textFields.values.splice(index, 1);
+
+    this.setState({components: cloneComponents});
+
+  }
+
   deleteCountDownTextField(index){
     let cloneComponents = [...this.state.components];
     cloneComponents[1].data.cd_textFields.values.splice(index, 1);
     this.setState({components: cloneComponents}); 
+  }
+
+  countDownBannerCodeSnippet(){
+    let textFields = this.state.components[1].data.cd_textFields.values.map((el, i)=>{
+      console.log(el.text.text);
+      return `
+          text: {
+            text: '${el.text.text}',
+            textSize: '${el.text.textSize}px',
+            textAlign: '${el.text.textAlign}'
+          }
+          ${el.subText !== undefined ? 
+          `subtext: {
+            text: ${el.subText.text},
+            textSize: '${el.subText.textSize}px',
+            textAlign: ${el.subText.textAlign}
+          }`: ''}
+      `;
+    });
+
+    console.log(textFields);
+
+    return `countDownBanner({ 
+          parent: '${this.state.components[1].data.cd_parent}', 
+          ${this.state.components[1].data.cd_timerText.length > 0 ?
+            `timer: {
+              text: '${this.state.components[1].data.cd_timerText}',
+              start: '${this.state.components[1].data.cd_timerStartDate} ${this.state.components[1].data.cd_timerStartTime}:00',
+              end: '${this.state.components[1].data.cd_timerEndDate} ${this.state.components[1].data.cd_timerEndTime}:00',
+              dst: ${this.state.components[1].data.cd_timerDst},
+              showDays: ${this.state.components[1].data.cd_timerShowDays !== '' ? `{
+                '${this.state.components[1].data.cd_timerShowDaysLast}',
+                ${this.state.components[1].data.cd_timerShowDaysNumber},
+                '${this.state.components[1].data.cd_timerShowDaysDays}'
+              }`: ''}
+              reverseLayout: ${this.state.components[1].data.cd_timerReverseLayout}
+            }`: '//no timer'}
+          countries: [${this.state.components[1].data.cd_markets.values.join(', ')}],
+          textFields:[
+            ${textFields.join(', ')}
+          ]
+        });`
   }
 
   createCountDownTextFiendValues(){
@@ -396,6 +481,7 @@ export default class App extends Component {
                   key={i}
                   index={i}
                   delete={this.deleteCountDownTextField}
+                  edit={this.editCountDownTextField}
                   textField={textField}
               />
       })
@@ -825,33 +911,21 @@ export default class App extends Component {
         );
 
       });`,
-      countDown: `
+
+      countDownBanner: `
       init('${this.state.components[1].data.cd_parent}', function(){
 
-        countDown( 
-            '${this.state.components[1].data.cd_parent}',
-            '${this.state.components[1].data.cd_startDate +' '+ this.state.components[1].data.cd_startTime + ':00'}',
-            '${this.state.components[1].data.cd_endDate +' '+ this.state.components[1].data.cd_endTime + ':00'}',
-            {
-                offer:     '${this.state.components[1].data.cd_offer}',
-                text:      '${this.state.components[1].data.cd_text}',
-                subText:   '${this.state.components[1].data.cd_subText}',
-                timerText: '${this.state.components[1].data.cd_timerText}'
-            },
-            [${this.state.components[1].data.cd_market.value}],
-            '${this.state.components[1].data.cd_last}',
-            '${this.state.components[1].data.cd_days}',
-            '${this.state.components[1].data.cd_dst}',
-            '${this.state.components[1].data.cd_layout}'
-        );
-
+        ${this.countDownBannerCodeSnippet()}
+        
       });`,
+
       pills: `
       init('${this.state.components[2].parent}', function(){
           ${this.pillsCodeSnippet()}
-      });
-      `, 
+      });`,
+
       peopleWatching: '',
+
       exitPopup:`
       init('${this.state.components[4].parent}', function(){
 
@@ -888,8 +962,8 @@ export default class App extends Component {
           countries: [${this.state.components[4].data.countries.value.join(', ')}]
         }, ${this.state.components[4].data.misc.dst}, ${this.state.components[4].data.misc.showDays});
 
-      });
-      `,
+      });`,
+
       ksf: '',
       promoCode: '',
       iobd: '',
@@ -947,6 +1021,8 @@ export default class App extends Component {
                                       cd_setTextField={this.updateCountDownTextFieldValue}
                                       cd_addTextField={this.addCountDownTextField}
                                       cd_updateTextField={this.createCountDownTextFiendValues}
+                                      cd_setCountries={this.setCountDownCountries}
+                                      cd_updateCountries={this.updateCountDownCountries}
 
                                       pl_amount={this.updatePillAmount()}
                                       pl_setPillDetails={this.setPillDetails}
