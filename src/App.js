@@ -436,18 +436,17 @@ export default class App extends Component {
     let textFields = this.state.components[1].data.cd_textFields.values.map((el, i)=>{
       console.log(el.text.text);
       return `
-          text: {
-            text: '${el.text.text}',
-            textSize: '${el.text.textSize}px',
-            textAlign: '${el.text.textAlign}'
-          }
-          ${el.subText !== undefined ? 
-          `subtext: {
-            text: ${el.subText.text},
-            textSize: '${el.subText.textSize}px',
-            textAlign: ${el.subText.textAlign}
-          }`: ''}
-      `;
+            text: {
+              text: '${el.text.text}',
+              textSize: '${el.text.textSize}px',
+              textAlign: '${el.text.textAlign}'
+            }
+            ${el.subText !== undefined ? 
+            `subtext: {
+              text: ${el.subText.text},
+              textSize: '${el.subText.textSize}px',
+              textAlign: ${el.subText.textAlign}
+            }`: ''}`;
     });
 
     console.log(textFields);
@@ -468,8 +467,7 @@ export default class App extends Component {
               reverseLayout: ${this.state.components[1].data.cd_timerReverseLayout}
             }`: '//no timer'}
           countries: [${this.state.components[1].data.cd_markets.values.join(', ')}],
-          textFields:[
-            ${textFields.join(', ')}
+          textFields:[${textFields.join(', ')}
           ]
         });`
   }
