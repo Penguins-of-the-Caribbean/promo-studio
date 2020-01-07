@@ -15,7 +15,9 @@ import DeparturePort from './components/DeparturePort';
 import Pill from './components/Pill';
 import OtherPill from './components/OtherPill';
 import TextField from './components/TextField';
-import { CodeBlock } from './components/Components';
+import Button from './components/Button';
+import Days from './components/Days';
+import { CodeBlock, Promos } from './components/Components';
 
 
 export default class App extends Component {
@@ -88,7 +90,7 @@ export default class App extends Component {
               values: []
             }
           }
-        },
+        }, 
         {
           id: 'pills',
           name: 'Pills',
@@ -258,7 +260,23 @@ export default class App extends Component {
           selected: false,
           data: {}
         },
-      ]
+      ],
+      promos: {
+        promo:{
+          type: '',
+          content: '',
+          criteria: {
+            markets: [],
+            ships: [],
+            numberOfNights: [],
+            promoDates: [],
+            sailingDates: [],
+            departurePorts: [],
+            destinationPorts: [],
+          }
+        },
+        values: []
+      }
     };
     //HERO BANNER
     this.updateHeroBannerData = this.updateHeroBannerData.bind(this);
@@ -814,6 +832,78 @@ export default class App extends Component {
   }
   //
 
+  //PROMOTIONS
+  renderPromos(){
+    return(
+      <div>
+        Promo Calendar
+      </div>
+    )
+  }
+
+  createPromo(){
+    //code
+  }
+
+  readPromo(){
+    //code
+  }
+
+  updatePomo(){
+    //code
+  }
+
+  deletePromo(){
+    //code
+  }
+
+  renderDaysPerMonth(year, month){
+    var date = new Date(year, month, 1);
+    var days = [];
+    while (date.getMonth() === month) {
+      days.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+
+    function toDayName(day){
+      let dayName = '';
+      switch(day){
+        case 0:
+          dayName = 'Sun';
+        break;
+        case 1:
+          dayName = 'Mon';
+        break;
+        case 2:
+          dayName = 'Tue';
+        break;
+        case 3:
+          dayName = 'Wed';
+        break;
+        case 4:
+          dayName = 'Thr';
+        break;
+        case 5:
+          dayName = 'Fri';
+        break;
+        case 6:
+          dayName = 'Sat';
+        break;
+        default:
+          return 'Day'
+      }
+
+      return dayName;
+    }
+
+    return(
+      days.map((day, i)=>{
+      return <Days key={i} dayName={toDayName(day.getDay())} dayNumber={i+1}></Days>
+      })
+    )
+  }
+
+  //NAVIGATION LOGIC
   populateComponentSelector(components){
     return components.map((component, i)=>{
       return (
@@ -989,6 +1079,9 @@ export default class App extends Component {
               <NavLink className='ge_promo-studio-link-a' to='/selector'>
                   <AddButton></AddButton>
               </NavLink>
+              <NavLink to='/promos'>
+                <Button>Promos</Button>
+              </NavLink>
           </Taskbar>
 
           <Switch>
@@ -1051,6 +1144,16 @@ export default class App extends Component {
                  <CodeBlock {...props} >{this.generateCodeSnippet()}</CodeBlock>
                 }
               >
+              </Route>
+              <Route 
+                path='/promos'
+                render={(props)=>
+                  <Promos {...props} 
+
+                          pc_renderPromos={this.renderPromos}
+                          pc_renderMonth={this.renderDaysPerMonth}
+                          
+                  ></Promos>}>  
               </Route>
             </List>
           </Switch>

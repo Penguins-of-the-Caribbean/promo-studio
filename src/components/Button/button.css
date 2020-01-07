@@ -12,6 +12,8 @@
     font-weight: 600;
     font-size: 12px;
     cursor: pointer;
+    user-select: none;
+    outline: none;
 }
 
 .ge_button:active{
