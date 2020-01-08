@@ -1816,6 +1816,7 @@ function Promos(props){
 
     const [month, setMonth] = useState(0);
     const [year, setYear] = useState(2020);
+    const [showCalendar, toggleCalendar] = useState(false);
 
     return(
         <div className='ge_promo-calendar'>
@@ -1848,12 +1849,44 @@ function Promos(props){
                     <option value='2029'>2029</option>
                     <option value='2030'>2030</option>
                 </select>
+
+                <ul>
+                    <li>
+                        <input 
+                            type="checkbox"
+                            onChange={(e)=> {props.pc_setMarkets(e, 'all'); toggleCalendar(e.target.checked)}}
+                        />All
+                    </li>
+                    {
+                        props.pc_markets.map((market, i)=>{
+                            return <li key={i}>
+                                        <input 
+                                            type="checkbox" 
+                                            checked={market.active }
+                                            onChange={(e)=> {props.pc_setMarkets(e, market.name); toggleCalendar(e.target.checked)}}
+                                        />
+                                        {market.name}
+                                    </li>
+                        })
+                    }
+                </ul>
+                
             </div>
             
-            <div className='ge_promo-calendar-days-container'>
-                <div className='ge_buffer'></div>
-                {props.pc_renderMonth(year, month)}
-            </div>
+            {showCalendar === true ? 
+                <div>
+                    <div className='ge_promo-calendar-days-container'>
+                        <div className='ge_buffer'></div>
+                        <div className='ge_promo-calendar-days-container'>
+                            {props.pc_renderMonth(year, month)}
+                        </div>
+                    </div>
+
+                    <div className='ge_promo-calendar-markets'>
+                        {props.pc_renderMarkets()}
+                    </div>
+                </div>: null
+            }
 
         </div>
     )

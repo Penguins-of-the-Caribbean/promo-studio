@@ -17,6 +17,7 @@ import OtherPill from './components/OtherPill';
 import TextField from './components/TextField';
 import Button from './components/Button';
 import Days from './components/Days';
+import Market from './components/Market';
 import { CodeBlock, Promos } from './components/Components';
 
 
@@ -261,12 +262,64 @@ export default class App extends Component {
           data: {}
         },
       ],
+      activeMarkets: {
+        format: {
+          name: '',
+          domain: '',
+        },
+        list: [
+          {
+            name: 'AUS',
+            domain: '',
+          },
+          {
+            name: 'DEU',
+            domain: ''
+          },
+          {
+            name: 'GBR',
+            domain: ''
+          },
+          {
+            name: 'ESP',
+            domain: ''
+          },
+          {
+            name: 'IRL',
+            domain: ''
+          },
+          {
+            name: 'ITA',
+            domain: ''
+          },
+          {
+            name: 'LAC',
+            domain: ''
+          },
+          {
+            name: 'MEX',
+            domain: ''
+          },
+          {
+            name: 'NOR',
+            domain: ''
+          },
+          {
+            name: 'SGP',
+            domain: ''
+          },
+          {
+            name: 'SWE',
+            domain: ''
+          }
+        ]
+      },
       promos: {
         promo:{
           type: '',
           content: '',
           criteria: {
-            markets: [],
+            market: '',
             ships: [],
             numberOfNights: [],
             promoDates: [],
@@ -275,7 +328,8 @@ export default class App extends Component {
             destinationPorts: [],
           }
         },
-        values: []
+        values: [],
+        days: []
       }
     };
     //HERO BANNER
@@ -327,6 +381,11 @@ export default class App extends Component {
 
     //KSF
     //IOBD
+
+    //PROMO CALENDAR
+    this.renderDaysPerMonth = this.renderDaysPerMonth.bind(this);
+    this.renderMarkets = this.renderMarkets.bind(this);
+    this.setMarkets = this.setMarkets.bind(this);
   }
 
   //HERO BANNER
@@ -454,17 +513,19 @@ export default class App extends Component {
     let textFields = this.state.components[1].data.cd_textFields.values.map((el, i)=>{
       console.log(el.text.text);
       return `
+          {
             text: {
               text: '${el.text.text}',
               textSize: '${el.text.textSize}px',
               textAlign: '${el.text.textAlign}'
-            }
-            ${el.subText !== undefined ? 
+            },
+            ${el.subText.text.length > 0 ? 
             `subtext: {
-              text: ${el.subText.text},
+              text: '${el.subText.text}',
               textSize: '${el.subText.textSize}px',
-              textAlign: ${el.subText.textAlign}
-            }`: ''}`;
+              textAlign: '${el.subText.textAlign}'
+            }`: '//no subtext'}
+          }`;
     });
 
     console.log(textFields);
@@ -478,14 +539,14 @@ export default class App extends Component {
               end: '${this.state.components[1].data.cd_timerEndDate} ${this.state.components[1].data.cd_timerEndTime}:00',
               dst: ${this.state.components[1].data.cd_timerDst},
               showDays: ${this.state.components[1].data.cd_timerShowDays !== '' ? `{
-                '${this.state.components[1].data.cd_timerShowDaysLast}',
-                ${this.state.components[1].data.cd_timerShowDaysNumber},
-                '${this.state.components[1].data.cd_timerShowDaysDays}'
-              }`: ''}
+                last: '${this.state.components[1].data.cd_timerShowDaysLast}',
+                number: ${this.state.components[1].data.cd_timerShowDaysNumber},
+                days: '${this.state.components[1].data.cd_timerShowDaysDays}'
+              },`: ''}
               reverseLayout: ${this.state.components[1].data.cd_timerReverseLayout}
-            }`: '//no timer'}
+            },`: '//no timer'}
           countries: [${this.state.components[1].data.cd_markets.values.join(', ')}],
-          textFields:[${textFields.join(', ')}
+          textFields:[ ${textFields.join(', ')}
           ]
         });`
   }
@@ -857,9 +918,53 @@ export default class App extends Component {
     //code
   }
 
+  renderMarkets(){
+    
+    console.log(this.state.activeMarkets.list);
+
+    let active = this.state.activeMarkets.list.filter((market, i)=>{
+      return market.active === true;
+    });
+
+    console.log(active);
+
+    return(
+        active.map((active, i)=>{
+          return <Market key={i} name={active.name}></Market>
+        })
+    )
+  }
+
+  setMarkets(e, marketName){
+
+    console.log(e.target.checked);
+
+    let cloneMarkets = {...this.state.activeMarkets};
+    let list = [];
+    
+    if(marketName === 'all' && e.target.checked === true){
+      list = cloneMarkets.list.map((market)=>{
+        return {name: market.name, domain: market.domain, active: true}
+      });
+    }else if(marketName === 'all' && e.target.checked === false){
+      list = cloneMarkets.list.map((market)=>{
+        return {name: market.name, domain: market.domain, active: false}
+      });
+    }else{
+      list = cloneMarkets.list.map((market)=>{
+        return  market.name === marketName ? 
+                {name: market.name, domain: market.domain, active: e.target.checked} :
+                market;
+      });
+    }
+
+    cloneMarkets.list = list;
+    this.setState({activeMarkets: cloneMarkets});
+  }
+
   renderDaysPerMonth(year, month){
-    var date = new Date(year, month, 1);
-    var days = [];
+    let date = new Date(year, month, 1);
+    let days = [];
     while (date.getMonth() === month) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1);
@@ -1059,7 +1164,6 @@ export default class App extends Component {
 
     this.state.components.forEach((comp)=>{
       if(comp.selected === true){
-        console.log(comp);
         code += codeSnippets[comp.id]
       }
     });
@@ -1149,8 +1253,10 @@ export default class App extends Component {
                 path='/promos'
                 render={(props)=>
                   <Promos {...props} 
-
-                          pc_renderPromos={this.renderPromos}
+                  
+                          pc_markets={this.state.activeMarkets.list}
+                          pc_setMarkets={this.setMarkets}
+                          pc_renderMarkets={this.renderMarkets}
                           pc_renderMonth={this.renderDaysPerMonth}
                           
                   ></Promos>}>  
