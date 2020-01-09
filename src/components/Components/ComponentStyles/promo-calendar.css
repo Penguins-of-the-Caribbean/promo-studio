@@ -13,17 +13,57 @@
     /* background: red; */
     width: 100%;
     display: flex;
-    justify-content: left;
-    align-items: center;
+    flex-flow: column;
+    justify-content: flex-start;
     margin: 0px 0px 10px 0px;
 }
 
-.ge_promo-calendar-filter > select{
+.ge_promo-calendar-input-containers{
+    /* background: green; */
+    width: 100%;
+    margin: 0px 0px 15px 0px;
+}
+
+.ge_promo-calendar-input-containers > select{
     margin: 0px 10px 0px 0px;
 }
 
+.ge_promo-calendar-input-containers > ul{
+    /* background: pink; */
+    display: flex;
+    justify-content: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_promo-calendar-input-containers > ul li{
+    background: #ffffff;
+    width: 60px;
+    margin: 0px 7px 0px 0px;
+    padding: 5px;
+    border-radius: 15px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #005edc;;
+    border: solid 1px #005edc;
+}
+
+.ge_promo-calendar-input-containers > ul > li > input{
+    position: absolute;
+    opacity: 0;
+}
+
+.ge_promo-calendar-input-containers > ul > li > input:hover{
+    cursor: pointer;
+}
+
 .ge_promo-calendar-days-container{
-    background: red;
+    /* background: red; */
     width: 1160px;
     display: flex;
     justify-content: left;
@@ -52,7 +92,7 @@
 }
 
 .ge_promo-calendar-markets{
-    background: red;
+    /* =background: red; */
     width: 1160px;
     display: flex;
     flex-flow: column;

@@ -269,6 +269,9 @@ export default class App extends Component {
         },
         list: [
           {
+            name: 'ALL',
+          },
+          {
             name: 'AUS',
             domain: '',
           },
@@ -511,7 +514,6 @@ export default class App extends Component {
 
   countDownBannerCodeSnippet(){
     let textFields = this.state.components[1].data.cd_textFields.values.map((el, i)=>{
-      console.log(el.text.text);
       return `
           {
             text: {
@@ -527,8 +529,6 @@ export default class App extends Component {
             }`: '//no subtext'}
           }`;
     });
-
-    console.log(textFields);
 
     return `countDownBanner({ 
           parent: '${this.state.components[1].data.cd_parent}', 
@@ -764,14 +764,12 @@ export default class App extends Component {
     comp.pills.splice(i, 1);
 
     this.setState({components: cloneComponents});
-    console.log(this.state.components[2]);
   }
 
   deleteExistingPill(i){
     let cloneComponents = [...this.state.components];
     cloneComponents[2].pills.splice(i, 1);
     this.setState({components: cloneComponents});
-    console.log(this.state.components[2].pills);
   }
 
   updateExistingPills(){
@@ -804,7 +802,6 @@ export default class App extends Component {
                 },
                 `
       });
-      console.log()
       return str;
     }
 
@@ -872,8 +869,6 @@ export default class App extends Component {
     }
 
     this.setState({components: cloneComponents});
-
-    console.log(this.state.components[4].data.countries);
   }
 
   exitPopUpUpdateMisc(e){
@@ -887,9 +882,6 @@ export default class App extends Component {
     }
 
     this.setState({components: cloneComponents});
-
-    console.log(this.state.components[4].data.misc);
-
   }
   //
 
@@ -919,40 +911,30 @@ export default class App extends Component {
   }
 
   renderMarkets(){
-    
-    console.log(this.state.activeMarkets.list);
-
     let active = this.state.activeMarkets.list.filter((market, i)=>{
       return market.active === true;
     });
 
-    console.log(active);
-
     return(
         active.map((active, i)=>{
-          return <Market key={i} name={active.name}></Market>
+          return active.name !== 'ALL' ? 
+                <Market key={i} name={active.name}></Market> :
+                null
         })
     )
   }
 
-  setMarkets(e, marketName){
-
-    console.log(e.target.checked);
-
+  setMarkets(e){
     let cloneMarkets = {...this.state.activeMarkets};
     let list = [];
-    
-    if(marketName === 'all' && e.target.checked === true){
+
+    if(e.target.name === 'ALL'){
       list = cloneMarkets.list.map((market)=>{
-        return {name: market.name, domain: market.domain, active: true}
-      });
-    }else if(marketName === 'all' && e.target.checked === false){
-      list = cloneMarkets.list.map((market)=>{
-        return {name: market.name, domain: market.domain, active: false}
+        return {name: market.name, domain: market.domain, active: e.target.checked}
       });
     }else{
       list = cloneMarkets.list.map((market)=>{
-        return  market.name === marketName ? 
+        return  market.name === e.target.name ? 
                 {name: market.name, domain: market.domain, active: e.target.checked} :
                 market;
       });

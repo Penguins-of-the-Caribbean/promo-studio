@@ -1816,78 +1816,75 @@ function Promos(props){
 
     const [month, setMonth] = useState(0);
     const [year, setYear] = useState(2020);
-    const [showCalendar, toggleCalendar] = useState(false);
 
     return(
         <div className='ge_promo-calendar'>
+
             <div className='ge_promo-calendar-filter'>
-                <select onChange={(e)=> setMonth(Number(e.target.value))}>
-                    <option value='0'>January</option>
-                    <option value='1'>February</option>
-                    <option value='2'>March</option>
-                    <option value='3'>April</option>
-                    <option value='4'>May</option>
-                    <option value='5'>June</option>
-                    <option value='6'>July</option>
-                    <option value='7'>August</option>
-                    <option value='8'>September</option>
-                    <option value='9'>October</option>
-                    <option value='10'>November</option>
-                    <option value='11'>December</option>
-                </select>
-
-                <select onChange={(e)=> setYear(Number(e.target.value))}>
-                    <option value='2020'>2020</option>
-                    <option value='2021'>2021</option>
-                    <option value='2022'>2022</option>
-                    <option value='2023'>2023</option>
-                    <option value='2024'>2024</option>
-                    <option value='2025'>2025</option>
-                    <option value='2026'>2026</option>
-                    <option value='2027'>2027</option>
-                    <option value='2028'>2028</option>
-                    <option value='2029'>2029</option>
-                    <option value='2030'>2030</option>
-                </select>
-
-                <ul>
-                    <li>
-                        <input 
-                            type="checkbox"
-                            onChange={(e)=> {props.pc_setMarkets(e, 'all'); toggleCalendar(e.target.checked)}}
-                        />All
-                    </li>
-                    {
-                        props.pc_markets.map((market, i)=>{
-                            return <li key={i}>
-                                        <input 
-                                            type="checkbox" 
-                                            checked={market.active }
-                                            onChange={(e)=> {props.pc_setMarkets(e, market.name); toggleCalendar(e.target.checked)}}
-                                        />
-                                        {market.name}
-                                    </li>
-                        })
-                    }
-                </ul>
-                
+                <div className='ge_promo-calendar-input-containers'>
+                    <select onChange={(e)=> setMonth(Number(e.target.value))}>
+                        <option value='0'>January</option>
+                        <option value='1'>February</option>
+                        <option value='2'>March</option>
+                        <option value='3'>April</option>
+                        <option value='4'>May</option>
+                        <option value='5'>June</option>
+                        <option value='6'>July</option>
+                        <option value='7'>August</option>
+                        <option value='8'>September</option>
+                        <option value='9'>October</option>
+                        <option value='10'>November</option>
+                        <option value='11'>December</option>
+                    </select>
+                    <select onChange={(e)=> setYear(Number(e.target.value))}>
+                        <option value='2020'>2020</option>
+                        <option value='2021'>2021</option>
+                        <option value='2022'>2022</option>
+                        <option value='2023'>2023</option>
+                        <option value='2024'>2024</option>
+                        <option value='2025'>2025</option>
+                        <option value='2026'>2026</option>
+                        <option value='2027'>2027</option>
+                        <option value='2028'>2028</option>
+                        <option value='2029'>2029</option>
+                        <option value='2030'>2030</option>
+                    </select>
+                </div>
+                <div className='ge_promo-calendar-input-containers'>
+                    <ul>
+                        {
+                            props.pc_markets.map((market, i)=>{
+                                return <li key={i} style={{
+                                                           background: market.active === true ? '#005edc' : '#ffffff',
+                                                           color: market.active === true ? '#ffffff' : '#005edc'
+                                                           }}>
+                                            <input 
+                                                type="checkbox"
+                                                name={market.name}
+                                                checked={market.active === true ? true : false}
+                                                onChange={(e)=> {
+                                                                props.pc_setMarkets(e);
+                                                                }}
+                                            />
+                                            {market.name}
+                                        </li>
+                            })
+                        }
+                    </ul>
+                </div>
             </div>
-            
-            {showCalendar === true ? 
-                <div>
+            <div>
+                <div className='ge_promo-calendar-days-container'>
+                    <div className='ge_buffer'></div>
                     <div className='ge_promo-calendar-days-container'>
-                        <div className='ge_buffer'></div>
-                        <div className='ge_promo-calendar-days-container'>
-                            {props.pc_renderMonth(year, month)}
-                        </div>
+                        {props.pc_renderMonth(year, month)}
                     </div>
+                </div>
 
-                    <div className='ge_promo-calendar-markets'>
-                        {props.pc_renderMarkets()}
-                    </div>
-                </div>: null
-            }
-
+                <div className='ge_promo-calendar-markets'>
+                    {props.pc_renderMarkets()}
+                </div>
+            </div>
         </div>
     )
 }
