@@ -35,6 +35,7 @@ export default class App extends Component {
             hb_parent: '',
             hb_header: '',
             hb_subtext: '',
+            hb_disclaimer: '',
             hb_textAlignment: 'center',
             hb_desktopImage: '',
             hb_mobileImage: '',
@@ -261,6 +262,39 @@ export default class App extends Component {
           selected: false,
           data: {}
         },
+        {
+          id: 'heroBannerNew',
+          name: 'Hero Banner New',
+          selected: false,
+          data: {
+            hb_parent: '',
+            hb_header: {
+              text: 'Header text here',
+              textSize: '38px',
+              textAlign: 'center',
+              textColor: '#ffffff'
+            },
+            hb_subtext: {
+              text: 'Subtext text here',
+              textSize: '38px',
+              textAlign: 'center',
+              textColor: '#ffffff'
+            },
+            hb_disclaimer: {
+              text: 'Disclaimer text here',
+              textSize: '38px',
+              textAlign: 'center',
+              textColor: '#ffffff'
+            },
+            hb_textFieldAlign: 'center',
+            hb_desktopImage: 'http://sb.monetate.net/img/1/388/2626401.jpg',
+            hb_mobileImage: 'http://sb.monetate.net/img/1/388/2626402.jpg',
+            hb_hShift: '0',
+            hb_vShift: '0',
+            hb_blur: '0',
+            hb_color: '#1c0c45'
+          }
+        },
       ],
       activeMarkets: {
         format: {
@@ -335,6 +369,7 @@ export default class App extends Component {
         days: []
       }
     };
+
     //HERO BANNER
     this.updateHeroBannerData = this.updateHeroBannerData.bind(this);
     this.updateHeroBannerDataFields = this.updateHeroBannerDataFields.bind(this);
@@ -1189,6 +1224,7 @@ export default class App extends Component {
                                       hb_setState={this.updateHeroBannerData}
                                       hb_setValues={this.updateHeroBannerDataFields}
                                       hb_setShadow={this.updateHeroBannerShadowValues}
+                                      hb_data={this.state.components[8].data}
 
                                       cd_setState={this.updateCountDownData}
                                       cd_setMarkets={this.updateCountDownMarkets}
@@ -1253,4 +1289,3 @@ export default class App extends Component {
     )
   }
 }
-

@@ -1,12 +1,14 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './component-builder.css';
-import {HeroBanner, CountDownBanner, Pills, ExitPopup, Submit} from '../Components/';
+import {HeroBanner, CountDownBanner, Pills, ExitPopup, Submit} from '../Components';
+import HeroBannerNew from '../ComponentBuilders/HeroBannerBuilder/HeroBannerNew';
 
 export default function index(props) {
     return (
         <div className='ge_component-builder-container'>
             {props.data.heroBanner === true ? <HeroBanner {...props}/> : null}
+            {props.data.heroBannerNew === true ? <HeroBannerNew {...props} /> : null}
             {props.data.countDownBanner === true ? <CountDownBanner {...props} /> : null}
             {props.data.pills === true ? <Pills {...props} /> : null}
             {props.data.peopleWatching === true ? <div>People Watchig</div> : null}

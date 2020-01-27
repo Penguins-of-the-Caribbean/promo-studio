@@ -58,6 +58,19 @@ function HeroBanner(props) {
                         required
                     />
                 </div>
+                <div className='ge_hero-banner-disclaimer'>
+                    <div className='ge_hb-labels'>
+                        <label>Disclaimer:</label>
+                        <p>{props.hb_setValues('hb_disclaimer') !== '' ? props.hb_setValues('hb_disclaimer') : 'Enter Value'}</p>
+                    </div>
+                    <input
+                        className='ge_input-style' 
+                        type="text" 
+                        id="hb_disclaimer" 
+                        onChange={(e)=>props.hb_setState(e)}
+                        required
+                    />
+                </div>
                 <div className='ge_hero-banner-text-align'>
                     <label>Text alignment: </label>
                     <select className='ge_select-style' id="hb_textAlignment" onChange={(e)=>props.hb_setState(e)} required >

@@ -1,0 +1,39 @@
+.ge_heroBannerBuilder{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.ge_heroBannerPreview{
+    background: greenyellow;
+    width: 100%;
+    height: 300px;
+}
+
+.ge_heroBanner-image{
+    width: 100%;
+    float: left;
+}
+
+.ge_heroBannerPreview-textField{
+    background: rgba(0, 0, 255, 0.5);
+    width: 100%;
+    position: absolute;
+}
+
+.ge_heroBannerPreview-textField h1{
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_heroBannerPreview-textField p{
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_heroBannerInputs{
+    background: green;
+    width: 100%;
+    margin: 50px 0px 0px 0px;
+}
