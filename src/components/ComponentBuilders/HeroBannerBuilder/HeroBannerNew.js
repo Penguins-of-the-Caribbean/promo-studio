@@ -1,34 +1,32 @@
-import React, {useState, useLayoutEffect, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './heroBannerBuilder.css';
 
 export default function HeroBannerNew(props) {
 
     const [toggle, setToggle] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
-    const imageDimensions = useRef(null);
-    const [dimensions, setDimensions] = useState({});
+    const [dimensions, setDimensions] = useState({width: 0, height: 0});
+    const imageDimensions = useRef();
 
     function getImageDimensions(){
         return {
             width: imageDimensions.current.offsetWidth,
-            height: imageDimensions.current.offsetHeight
+            height: imageDimensions.current.offsetWidth >= 678 ? 
+                (200/1920) * imageDimensions.current.offsetWidth 
+                :
+                (280/750) * imageDimensions.current.offsetWidth
         }
     }
 
-    useLayoutEffect(()=>{
-        if(imageDimensions){
-            setDimensions({
-                width: imageDimensions.current.offsetWidth,
-                height: imageDimensions.current.offsetHeight
-            })
-        }
-    }, []);
-
     useEffect(()=>{
+        
         function handleResize() {
             setWidth(window.innerWidth);
         }
-        
+
+        handleResize();
+        setDimensions(getImageDimensions());
+
         window.addEventListener('resize', ()=>{
             handleResize();
             setDimensions(getImageDimensions());
