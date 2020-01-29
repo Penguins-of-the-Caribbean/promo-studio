@@ -1,39 +1,137 @@
+/*
+    PREVIEW SECTIION
+*/
+
 .ge_heroBannerBuilder{
+    /* background: purple; */
     width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+
+.ge_heroBannerBuilder-header{
+    /* background: red; */
+    margin: 0px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.ge_heroBannerPreview{
+    /* background: greenyellow; */
+    width: 100%;
+    height: auto;
+}
+
+.ge_heroBanner-image{
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+.ge_heroBannerPreview-textField{
+    /* background: rgba(0, 0, 255, 0.5); */
+    width: 100%;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ge_heroBannerPreview-textField-container{
+    /* background: red; */
+    width: auto;
+    height: 100%;
+}
+
+.ge_heroBannerPreview-textField-wrapper{
+    /* background: green; */
+}
+
+.ge_heroBannerPreview-textField-container h1{
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+}
+
+.ge_heroBannerPreview-textField-container p:nth-child(2){
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+}
+
+.ge_heroBannerPreview-textField-container p:nth-child(3){
+    margin: 0px;
+    padding: 0px;
+    text-transform: lowercase;
+}
+
+/*
+    INPUTS SECTIION
+*/
+
+.ge_heroBannerInputs{
+    /* background: green; */
+    width: 100%;
+    margin: 20px 0px 0px 0px;
     display: flex;
     flex-direction: column;
     justify-content: left;
 }
 
-.ge_heroBannerPreview{
-    background: greenyellow;
-    width: 100%;
-    height: 300px;
-}
-
-.ge_heroBanner-image{
-    width: 100%;
-    float: left;
-}
-
-.ge_heroBannerPreview-textField{
-    background: rgba(0, 0, 255, 0.5);
-    width: 100%;
-    position: absolute;
-}
-
-.ge_heroBannerPreview-textField h1{
-    margin: 0px;
+.ge_heroBannerInputs-wrapper{
+    /* background: red; */
     padding: 0px;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
-.ge_heroBannerPreview-textField p{
+.ge_hb-iw-container{
+    /* background: yellow; */
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     margin: 0px;
-    padding: 0px;
+    padding: 10px 10px 5px 10px;
 }
 
-.ge_heroBannerInputs{
-    background: green;
+.ge_hb-iw-container label{
+    /* background: green; */
+    margin: 20px 0px 4px 0px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.ge_hb-iw-container input{
+    margin: 0px 0px 4px 0px;
     width: 100%;
-    margin: 50px 0px 0px 0px;
+    padding: 3px;
+    border: solid 1px #000000;
+}
+
+.ge_hb-iw-container-shadow{
+    /* background: blue; */
+    padding: 10px;
+}
+
+.ge_hb-iw-container-shadow label{
+    margin: 0px 0px 4px 0px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.ge_hb-iw-container-shadow input{
+    margin: 0px 0px 0px 10px;
+    padding: 3px;
+    border: solid 1px #000000;
 }
