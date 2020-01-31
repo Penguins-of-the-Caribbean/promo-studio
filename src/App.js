@@ -270,28 +270,28 @@ export default class App extends Component {
             hb_parent: '',
             hb_header: {
               text: '',
-              textSize: '32px',
+              textSize: '32',
               textAlign: 'center',
               textColor: '#ffffff'
             },
             hb_subtext: {
               text: '',
-              textSize: '18px',
+              textSize: '18',
               textAlign: 'center',
               textColor: '#ffffff'
             },
             hb_disclaimer: {
               text: '',
-              textSize: '9px',
+              textSize: '9',
               textAlign: 'center',
               textColor: '#ffffff'
             },
             hb_textFieldAlign: 'center',
             hb_desktopImage: 'http://sb.monetate.net/img/1/388/2626401.jpg',
             hb_mobileImage: 'http://sb.monetate.net/img/1/388/2626402.jpg',
-            hb_hShift: '4px',
-            hb_vShift: '4px',
-            hb_blur: '2px',
+            hb_hShift: '0',
+            hb_vShift: '0',
+            hb_blur: '0',
             hb_color: '#1c0c45'
           }
         },
@@ -428,6 +428,7 @@ export default class App extends Component {
     //NEW HERO BANNER
     this.handleInput = this.handleInput.bind(this);
     this.updatePreview = this.updatePreview.bind(this);
+    this.handleShdowInput = this.handleShdowInput.bind(this);
   }
 
   //NEW HERO BANNER
@@ -437,7 +438,8 @@ export default class App extends Component {
     let comp = cloneComponents[8];
 
     if( e.target.attributes.datatype.value ==='hb_desktopImage' || 
-        e.target.attributes.datatype.value ==='hb_desktopImage'
+        e.target.attributes.datatype.value ==='hb_desktopImage' ||
+        e.target.attributes.datatype.value ==='hb_textFieldAlign'
     ){
       comp[e.target.attributes.datatype.value] = e.target.value;
     }
@@ -449,21 +451,23 @@ export default class App extends Component {
       comp.data[e.target.attributes.datatype.value][type] = e.target.value;
     }
 
-    if(e.target.attributes.datatype.value === 'hb_header' && type === 'textSize'){
-      comp.data.hb_header.textSize = e.target.value+'px';
-    }
+    console.log(comp[e.target.attributes.datatype.value] = e.target.value);
 
     this.setState({components: cloneComponents});
     
   }
 
+  handleShdowInput(e, type){
+    let cloneComponents = [...this.state.components];
+    let comp = cloneComponents[8];
+
+    comp.data[type] = e.target.value;
+
+    this.setState({components: cloneComponents});
+  }
+
   updatePreview(value){
-    if(value === 'hb_desktopImage' || value === 'hb_mobileImage'){
-      return this.state.components[8][value];
-    }
-    if(value === 'hb_header' || value === 'hb_subtext' || value === 'hb_disclaimer'){
-      return this.state.components[8].data[value];
-    }
+    return this.state.components[8].data[value];
   }
 
   //HERO BANNER
@@ -1262,6 +1266,7 @@ export default class App extends Component {
                                       data={this.componentSelectorData()}
                                       
                                       hb_handleInput={this.handleInput}
+                                      hb_handleShdowInput={this.handleShdowInput}
                                       hb_updatePreview={this.updatePreview}
                                       hb_data={this.state.components[8].data}
 

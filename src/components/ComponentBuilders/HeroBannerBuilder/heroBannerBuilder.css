@@ -8,7 +8,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     align-items: left;
 }
 
@@ -45,28 +45,28 @@
     /* background: red; */
     width: auto;
     height: 100%;
+    padding: 0px 20px;
 }
 
 .ge_heroBannerPreview-textField-wrapper{
     /* background: green; */
+    width: 100%
 }
 
 .ge_heroBannerPreview-textField-container h1{
+    /* background: magenta; */
+    width: 100%;
     margin: 0px;
     padding: 0px;
     text-transform: uppercase;
 }
 
-.ge_heroBannerPreview-textField-container p:nth-child(2){
+.ge_heroBannerPreview-textField-container p{
+    /* background: cyan; */
+    width: 100%;
     margin: 0px;
     padding: 0px;
     text-transform: uppercase;
-}
-
-.ge_heroBannerPreview-textField-container p:nth-child(3){
-    margin: 0px;
-    padding: 0px;
-    text-transform: lowercase;
 }
 
 /*
@@ -85,9 +85,18 @@
 .ge_heroBannerInputs-wrapper{
     /* background: red; */
     padding: 0px;
-    margin: 5px 0px;
+    margin: 0px;
     display: flex;
     justify-content: left;
+    align-items: center;
+}
+
+.ge_hb-vis-toggle{
+    /* background: red; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -103,7 +112,7 @@
 
 .ge_hb-iw-container label{
     /* background: green; */
-    margin: 20px 0px 4px 0px;
+    margin: 8px 0px 4px 0px;
     font-size: 11px;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
@@ -134,4 +143,49 @@
     margin: 0px 0px 0px 10px;
     padding: 3px;
     border: solid 1px #000000;
+}
+
+.ge_hb-iw-container-shadow select{
+    margin: 0px 0px 0px 10px;
+}
+
+.ge_heroBannerInputs-textShadow{
+    /* background: red; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ge_heroBannerInputs-textShadow-wrapper{
+    background: rgb(230, 230, 230);
+    width: 97%;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.ge_hb-iw-container-sh{
+    /* background: green; */
+    width: 25%;
+    margin: 0px 10px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.ge_heroBannerInputs-textShadow-wrapper label{
+    margin: 0px 0px 4px 0px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.ge_heroBannerInputs-textShadow-wrapper input{
+    width: 95%;
+    padding: 0px;
 }

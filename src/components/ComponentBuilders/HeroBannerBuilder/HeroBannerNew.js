@@ -8,37 +8,51 @@ export default function HeroBannerNew(props) {
     const [dimensions, setDimensions] = useState({width: 0, height: 0});
     const imageDimensions = useRef();
 
+    const [headerTextVis, setHeaderTextVis] = useState('true');
+    const [subtextTextVis, setSubtextTextVis] = useState('true');
+    const [disclaimerTextVis, setDisclaimerTextVis] = useState('true');
+
     const [headerFontSize, setHeaderFontSize] = useState('');
     const [subtextFontSize, setSubtextFontSize] = useState('');
     const [disclaimerFontSize, setDisclaimerFontSize] = useState('');
 
+    const [headerAlign, setHeaderAlign] = useState('center');
+    const [subtextAlign, setSubtextAlign] = useState('center');
+    const [disclaimerAlign, setDisclaimerAlign] = useState('center');
+
     const [textSplit, setTextSplit] = useState('');
+    const [textFieldAlign, setTextFieldAlign] = useState('center');
 
     const textStyles = {
         header:{
+            display: headerTextVis === 'true' ? 'flex' : 'none',
+            justifyContent: props.hb_data.hb_header.textAlign,
             color: props.hb_data.hb_header.textColor,
-            fontSize: headerFontSize,
-            textAlign: props.hb_data.hb_header.textAlign,
-            textShadow: `${props.hb_data.hb_hShift} ${props.hb_data.hb_vShift} ${props.hb_data.hb_blur} ${props.hb_data.hb_color}`
+            fontSize: headerFontSize+'px',
+            textAlign: headerAlign,
+            textShadow: `${props.hb_data.hb_hShift}px ${props.hb_data.hb_vShift}px ${props.hb_data.hb_blur}px ${props.hb_data.hb_color}`
         },
         subtext:{
+            display: subtextTextVis === 'true' ? 'flex' : 'none',
+            justifyContent: props.hb_data.hb_subtext.textAlign,
             color: props.hb_data.hb_subtext.textColor,
-            fontSize: subtextFontSize,
-            textAlign: props.hb_data.hb_subtext.textAlign,
-            textShadow: `${props.hb_data.hb_hShift} ${props.hb_data.hb_vShift} ${props.hb_data.hb_blur} ${props.hb_data.hb_color}`
+            fontSize: subtextFontSize+'px',
+            textAlign: subtextAlign,
+            textShadow: `${props.hb_data.hb_hShift}px ${props.hb_data.hb_vShift}px ${props.hb_data.hb_blur}px ${props.hb_data.hb_color}`
         },
         disclaimer:{
+            display: disclaimerTextVis === 'true' ? 'flex' : 'none',
+            justifyContent: props.hb_data.hb_disclaimer.textAlign,
             color: props.hb_data.hb_disclaimer.textColor,
-            fontSize: disclaimerFontSize,
-            textAlign: props.hb_data.hb_disclaimer.textAlign,
-            textShadow: `${props.hb_data.hb_hShift} ${props.hb_data.hb_vShift} ${props.hb_data.hb_blur} ${props.hb_data.hb_color}`
+            fontSize: disclaimerFontSize+'px',
+            textAlign: disclaimerAlign,
+            textShadow: `${props.hb_data.hb_hShift}px ${props.hb_data.hb_vShift}px ${props.hb_data.hb_blur}px ${props.hb_data.hb_color}`
         },
         textField: {
             width: dimensions.width, 
             height: dimensions.height,
             display: 'flex',
-            justifyContent: props.hb_data.hb_textFieldAlign,
-            alignItems: 'center'
+            justifyContent: textFieldAlign
         },
         textContainer:{
             display: 'flex',
@@ -66,14 +80,14 @@ export default function HeroBannerNew(props) {
 
         function updateFontSize(){
             if(Math.floor(imageDimensions.current.offsetWidth) >= 678){
-                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)) + 'px');
-                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)) + 'px');
-                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 275)) + 'px');
+                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)));
+                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)));
+                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 275)));
                 setTextSplit('center');
             }else{
-                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 25)) + 'px');
-                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)) + 'px');
-                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)) + 'px');
+                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 25)));
+                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)));
+                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)));
                 setTextSplit('space-evenly');
             }
         }
@@ -82,18 +96,10 @@ export default function HeroBannerNew(props) {
         setDimensions(getImageDimensions());
         updateFontSize();
 
-        window.addEventListener('resize', ()=>{
+        window.onresize = ()=>{
             handleResize();
             setDimensions(getImageDimensions());
             updateFontSize();
-        });
-
-        return ()=> {
-            window.removeEventListener('readystatechange', ()=> {
-                handleResize();
-                setDimensions(getImageDimensions());
-                updateFontSize();
-            });
         }
     }, []);
 
@@ -111,7 +117,6 @@ export default function HeroBannerNew(props) {
                 />
 
                 <div className='ge_heroBannerPreview-textField' style={textStyles.textField}>
-
                     <div className='ge_heroBannerPreview-textField-container' style={textStyles.textContainer}>
 
                         <div className='ge_heroBannerPreview-textField-wrapper'>
@@ -130,7 +135,6 @@ export default function HeroBannerNew(props) {
                         </div>
 
                     </div>
-
                 </div>
 
             </div>
@@ -149,30 +153,48 @@ export default function HeroBannerNew(props) {
                 </div>
 
                 <div className='ge_heroBannerInputs-wrapper'>
+
                     <div className='ge_hb-iw-container'>
                         <label>Header:</label>
                         <input type="text" datatype='hb_header' className="ge_header-input" onChange={(e)=> props.hb_handleInput(e, 'text')}/>
-                        <label>font size:</label>
-                        <input type='range' datatype='hb_header' min='5' max='90' step='1' 
+                        <label>text color</label>
+                        <input type="color"
+                            datatype='hb_header' 
+                            value={props.hb_updatePreview('hb_header').textColor}
+                            onChange={(e)=>{
+                                props.hb_handleInput(e, 'textColor');
+                            }}
+                        />
+                        <label>font size: <span>{props.hb_updatePreview('hb_header').textSize}</span>px</label>
+                        <input type='range' datatype='hb_header' min='5' max='90' step='1'
+                                value={props.hb_updatePreview('hb_header').textSize} 
                                 onChange={(e)=> {
                                         props.hb_handleInput(e, 'textSize'); 
                                         setHeaderFontSize(props.hb_data.hb_header.textSize);
                                     }
                                 }
                         />
-                        <div>
-                            <label>text align:</label>
-                            <p></p>
-                        </div>
-                        <select name="" id="">
+                        <label>text align: <span>{props.hb_updatePreview('hb_header').textAlign}</span></label>
+                        <select datatype='hb_header' onChange={(e)=> {
+                                props.hb_handleInput(e, 'textAlign');
+                                setHeaderAlign(e.target.value);
+                        }}>
                             <option value="center">center</option>
                             <option value="left">left</option>
                             <option value="right">right</option>
                         </select>
+                        <label>visibility:</label>
+                        <select onChange={(e)=> setHeaderTextVis(e.target.value)}>
+                            <option value={true}>Show</option>
+                            <option value={false}>Hide</option>
+                        </select>
                     </div>
+
                     <div className='ge_hb-iw-container'>
                         <label>Subtext:</label>
                         <input type="text" datatype='hb_subtext' className="ge_subtext-input" onChange={(e)=> props.hb_handleInput(e, 'text')}/>
+                        <label>text color</label>
+                        <input type="color"/>
                         <label>font size</label>
                         <input type='range' datatype='hb_subtext' min='5' max='90' step='1' 
                                 onChange={(e)=> {
@@ -182,15 +204,27 @@ export default function HeroBannerNew(props) {
                                 }
                         />
                         <label>text align:</label>
-                        <select name="" id="">
+                        <select datatype='hb_subtext' onChange={(e)=> {
+                                props.hb_handleInput(e, 'textAlign');
+                                setSubtextAlign(e.target.value);
+                                console.log(e.target.value);
+                        }}>
                             <option value="center">center</option>
                             <option value="left">left</option>
                             <option value="right">right</option>
                         </select>
+                        <label>visibility:</label>
+                        <select onChange={(e)=> setSubtextTextVis(e.target.value)}>
+                            <option value={true}>Show</option>
+                            <option value={false}>Hide</option>
+                        </select>
                     </div>
+
                     <div className='ge_hb-iw-container'>
                         <label>Disclaimer:</label>
                         <input type="text" datatype='hb_disclaimer' className="ge_disclaimer-input" onChange={(e)=> props.hb_handleInput(e, 'text')}/>
+                        <label>text color</label>
+                        <input type="color"/>
                         <label>font size</label>
                         <input type='range' datatype='hb_disclaimer' min='5' max='90' step='1' 
                                 onChange={(e)=> {
@@ -200,12 +234,21 @@ export default function HeroBannerNew(props) {
                                 }
                         />
                         <label>text align:</label>
-                        <select name="" id="">
+                        <select datatype='hb_disclaimer' onChange={(e)=> {
+                                props.hb_handleInput(e, 'textAlign');
+                                setDisclaimerAlign(e.target.value);
+                        }}>
                             <option value="center">center</option>
                             <option value="left">left</option>
                             <option value="right">right</option>
                         </select>
+                        <label>visibility:</label>
+                        <select onChange={(e)=> setDisclaimerTextVis(e.target.value)}>
+                            <option value={true}>Show</option>
+                            <option value={false}>Hide</option>
+                        </select>
                     </div>
+
                 </div>
                 
                 <div className='ge_heroBannerInputs-wrapper'>
@@ -213,42 +256,70 @@ export default function HeroBannerNew(props) {
                         <label>Text Shadow:</label>
                         <input type="checkbox" className="ge_toggle-input" onChange={(e)=> setToggle(e.target.checked)}/>
                     </div>
+
+                    <div className='ge_hb-iw-container-shadow'>
+                        <label>Textfield Align:</label>
+                        <select datatype='hb_textFieldAlign' onChange={(e)=>{
+                            props.hb_handleInput(e);
+                            setTextFieldAlign(e.target.value);
+                            }
+                        }>
+                            <option value="center">Center</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                        </select>
+                    </div>
                 </div>
 
                 {toggle === true ? 
                     <div className='ge_heroBannerInputs-textShadow'>
-                        <input 
-                            type="range" 
-                            className="ge_hShift-input" 
-                            min="-10" 
-                            max="10" 
-                            step="1"
-                            onChange={(e)=> props.hb_updateDisclaimer(e.target.value)}
-                        />
-                        <input 
-                            type="range" 
-                            className="ge_vShift-input"
-                            min="-10" 
-                            max="10" 
-                            step="1"
-                            onChange={(e)=> props.hb_updateDisclaimer(e.target.value)}
-                        />
-                        <input 
-                            type="range" 
-                            className="ge_blur-input" 
-                            min="-10" 
-                            max="10" 
-                            step="1"
-                            onChange={(e)=> props.hb_updateDisclaimer(e.target.value)}
-                        />
-                        <input 
-                            type="color" 
-                            className="ge_color-input"
-                            min="-10" 
-                            max="10" 
-                            step="1"
-                            onChange={(e)=> props.hb_updateDisclaimer(e.target.value)}
-                        />
+                        <div className='ge_heroBannerInputs-textShadow-wrapper'>
+                            <div className='ge_hb-iw-container-sh'>
+                                <label>horizontal shift: <span>{props.hb_updatePreview('hb_hShift')}</span>px</label>
+                                <input 
+                                    type="range" 
+                                    className="ge_hShift-input" 
+                                    min="0" 
+                                    max="50" 
+                                    step="1"
+                                    value={props.hb_updatePreview('hb_hShift')}
+                                    onChange={(e)=> props.hb_handleShdowInput(e, 'hb_hShift')}
+                                />
+                            </div>
+                            <div className='ge_hb-iw-container-sh'>
+                                <label>vertical shift: <span>{props.hb_updatePreview('hb_vShift')}</span>px</label>
+                                <input 
+                                    type="range" 
+                                    className="ge_vShift-input"
+                                    min="0" 
+                                    max="50" 
+                                    step="1"
+                                    value={props.hb_updatePreview('hb_vShift')}
+                                    onChange={(e)=> props.hb_handleShdowInput(e, 'hb_vShift')}
+                                />
+                            </div>
+                            <div className='ge_hb-iw-container-sh'>
+                                <label>blur offset: <span>{props.hb_updatePreview('hb_blur')}</span>px</label>
+                                <input 
+                                    type="range" 
+                                    className="ge_blur-input" 
+                                    min="0" 
+                                    max="50" 
+                                    step="1"
+                                    value={props.hb_updatePreview('hb_blur')}
+                                    onChange={(e)=> props.hb_handleShdowInput(e, 'hb_blur')}
+                                />
+                            </div>
+                            <div className='ge_hb-iw-container-sh'>
+                                <label>color: <span>{props.hb_updatePreview('hb_color')}</span></label>
+                                <input 
+                                    type="color" 
+                                    className="ge_color-input"
+                                    value={props.hb_updatePreview('hb_color')}
+                                    onChange={(e)=> props.hb_handleShdowInput(e, 'hb_color')}
+                                />
+                            </div>
+                        </div>
                     </div>
                     : null
                 }
