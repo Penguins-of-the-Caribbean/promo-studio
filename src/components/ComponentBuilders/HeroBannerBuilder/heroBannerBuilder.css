@@ -34,17 +34,17 @@
 }
 
 .ge_heroBannerPreview-textField{
-    /* background: rgba(0, 0, 255, 0.5); */
+    background: rgba(0, 0, 255, 0.5);
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     margin: 0px;
     padding: 0px;
 }
 
 .ge_heroBannerPreview-textField-container{
-    /* background: red; */
+    background: red;
     width: auto;
-    height: 100%;
+    height: auto;
     padding: 0px 20px;
 }
 
