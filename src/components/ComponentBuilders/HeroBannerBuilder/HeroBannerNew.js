@@ -317,8 +317,9 @@ export default function HeroBannerNew(props) {
     const [textSplit, setTextSplit] = useState('');
     const [textFieldAlign, setTextFieldAlign] = useState('center');
 
-    const [inputToggle, setInputToggle] = useState(false);
-    const [validInput, setValidInput] = useState(false);
+    const [headerInputToggle, setHeaderInputToggle] = useState(false);
+    const [subtextInputToggle, setSubtextInputToggle] = useState(false);
+    const [disclaimerInputToggle, setDisclaimerInputToggle] = useState(false);
 
     function getImageDimensions(){
         return {
@@ -348,8 +349,8 @@ export default function HeroBannerNew(props) {
                 setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 275)));
                 setTextSplit('center');
             }else{
-                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 4) + (imageDimensions.current.offsetWidth / 25)));
-                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 4) + (imageDimensions.current.offsetWidth / 50)));
+                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 25)));
+                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)));
                 setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)));
                 setTextSplit('space-evenly');
             }
@@ -399,7 +400,6 @@ export default function HeroBannerNew(props) {
             alignItems: 'center',
         },
         text:{
-            // background: 'magenta',
             width: '100%',
         },
         header:{
@@ -456,17 +456,29 @@ export default function HeroBannerNew(props) {
             <div ref={imageDimensions} style={style.previewPanel}>
                 <div style={style.textField}>
                     <div style={style.text}>
-                        {inputToggle === false ? 
-                            <h1 onClick={(e)=> setInputToggle({status: true, content:e.target.innerText})} style={style.header}>
+                        {headerInputToggle === false ? 
+                            <h1 onClick={()=> setHeaderInputToggle(true)} style={style.header}>
                                 {props.hb_data.hb_header.text ? props.hb_data.hb_header.text : 'HEADER TEXT GOES HERE'}
                             </h1>
                             :
-                            <TextFieldEditor {...props} fontSize={headerFontSize} setInputToggle={setInputToggle}/>
+                            <TextFieldEditor {...props} type={'hb_header'} fontSize={headerFontSize} setInputToggle={setHeaderInputToggle}/>
                         }
-                        <p style={style.subtext}>{props.hb_data.hb_subtext.text ? props.hb_data.hb_subtext.text : 'SUBTEXT GOES HERE'}</p>
+                        {subtextInputToggle === false ? 
+                            <p onClick={()=> setSubtextInputToggle(true)} style={style.subtext}>
+                                {props.hb_data.hb_subtext.text ? props.hb_data.hb_subtext.text : 'SUBTEXT GOES HERE'}
+                            </p>
+                            :
+                            <TextFieldEditor {...props} type={'hb_subtext'} fontSize={subtextFontSize} setInputToggle={setSubtextInputToggle}/>
+                        }
                     </div>
                     <div style={style.text}>
-                        <p style={style.disclaimer}>{props.hb_data.hb_disclaimer.text ? props.hb_data.hb_disclaimer.text : 'Disclaimer goes here'}</p>
+                        {disclaimerInputToggle === false ? 
+                            <p onClick={()=> setDisclaimerInputToggle(true)} style={style.disclaimer}>
+                                {props.hb_data.hb_disclaimer.text ? props.hb_data.hb_disclaimer.text : 'Disclaimer goes here'}
+                            </p>
+                            :
+                            <TextFieldEditor {...props} type={'hb_disclaimer'} fontSize={disclaimerFontSize} setInputToggle={setDisclaimerInputToggle}/>
+                        }
                     </div>
                 </div>
             </div>

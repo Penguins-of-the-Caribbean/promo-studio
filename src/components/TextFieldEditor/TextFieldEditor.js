@@ -19,6 +19,16 @@ export default function TextFieldEditor(props) {
             fontSize: props.fontSize,
             textAlign: 'center',
             color: '#ffffff',
+            textTransform: 'uppercase',
+        },
+        disclaimerInput: {
+            background: 'transparent',
+            width: '100%',
+            height: 'auto',
+            border: 'none',
+            fontSize: props.fontSize,
+            textAlign: 'center',
+            color: '#ffffff',
         },
         button: {
             background: 'transparent',
@@ -39,9 +49,9 @@ export default function TextFieldEditor(props) {
     return (
         <div style={style.inputContainer}>
             <input
-                style={style.input} 
-                placeholder={props.hb_data.hb_header.text ? props.hb_data.hb_header.text : 'HEADER TEXT GOES HERE'} 
-                type="text" datatype='hb_header' 
+                style={props.type === 'hb_header' || props.type === 'hb_subtext' ? style.input : style.disclaimerInput} 
+                placeholder={props.hb_data[props.type].text ? props.hb_data[props.type].text : 'HEADER TEXT GOES HERE'} 
+                type="text" datatype={props.type}
                 onChange={(e)=> {props.hb_handleInput(e, 'text'); setValidInput(e.target.value.length >= 1 ? true : false)}}
             />
             <button style ={style.button} onClick={()=> props.setInputToggle(false)}>
