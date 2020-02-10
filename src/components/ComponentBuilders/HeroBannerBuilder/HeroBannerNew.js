@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './heroBannerBuilder.css';
-import HeroEditor from './HeroBannerEditor';
 import TextFieldEditor from '../../TextFieldEditor/TextFieldEditor';
 
 // export default function HeroBannerNew(props) {
@@ -484,7 +483,7 @@ export default function HeroBannerNew(props) {
             </div>
 
             <div className='ge_heroBanner-editor-panel'>
-                <HeroEditor></HeroEditor>
+                
             </div>
         </div>
     )
