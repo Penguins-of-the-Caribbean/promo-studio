@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './heroBannerBuilder.css';
 import HeroEditor from './HeroBannerEditor';
+import TextFieldEditor from '../../TextFieldEditor/TextFieldEditor';
 
 // export default function HeroBannerNew(props) {
 
@@ -309,6 +310,16 @@ export default function HeroBannerNew(props) {
     const [image, setImage] = useState('');
     const imageDimensions = useRef();
 
+    const [headerFontSize, setHeaderFontSize] = useState('');
+    const [subtextFontSize, setSubtextFontSize] = useState('');
+    const [disclaimerFontSize, setDisclaimerFontSize] = useState('');
+
+    const [textSplit, setTextSplit] = useState('');
+    const [textFieldAlign, setTextFieldAlign] = useState('center');
+
+    const [inputToggle, setInputToggle] = useState(false);
+    const [validInput, setValidInput] = useState(false);
+
     function getImageDimensions(){
         return {
             width: imageDimensions.current.offsetWidth,
@@ -329,10 +340,28 @@ export default function HeroBannerNew(props) {
                 setImage(props.hb_data.hb_mobileImage);
             }
         }
+
+        function updateFontSize(){
+            if(Math.floor(imageDimensions.current.offsetWidth) >= 678){
+                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 2) + (imageDimensions.current.offsetWidth / 50)));
+                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)));
+                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 275)));
+                setTextSplit('center');
+            }else{
+                setHeaderFontSize(Math.floor((parseInt(props.hb_data.hb_header.textSize) / 4) + (imageDimensions.current.offsetWidth / 25)));
+                setSubtextFontSize(Math.floor((parseInt(props.hb_data.hb_subtext.textSize) / 4) + (imageDimensions.current.offsetWidth / 50)));
+                setDisclaimerFontSize(Math.floor((parseInt(props.hb_data.hb_disclaimer.textSize) / 2) + (imageDimensions.current.offsetWidth / 100)));
+                setTextSplit('space-evenly');
+            }
+        }
+
         handleImage();
+        updateFontSize();
+        setDimensions(getImageDimensions());
 
         window.onresize = ()=>{
-            handleImage()
+            handleImage();
+            updateFontSize();
             setDimensions(getImageDimensions());
         }
     }, []);
@@ -366,7 +395,7 @@ export default function HeroBannerNew(props) {
             padding: '0px 0px',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: textSplit, //split the text field here
             alignItems: 'center',
         },
         text:{
@@ -376,14 +405,48 @@ export default function HeroBannerNew(props) {
         header:{
             padding: '5px 50px',
             margin: '0px',
+            fontSize: headerFontSize,
+            textTransform : 'uppercase',
         },
         subtext:{
             padding: '5px 50px',
             margin: '0px',
+            fontSize: subtextFontSize,
+            textTransform : 'uppercase',
         },
         disclaimer:{
             padding: '5px 50px',
             margin: '0px',
+            fontSize: disclaimerFontSize,
+        },
+        inputContainer:{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        input: {
+            background: 'transparent',
+            width: '100%',
+            height: 'auto',
+            border: 'none',
+            fontSize: headerFontSize,
+            textAlign: 'center',
+            color: '#ffffff',
+        },
+        button: {
+            background: 'transparent',
+            margin: '0px',
+            padding: '0px',
+            border: 'none',
+            zIndex: '999',
+            cursor: 'pointer',
+        },
+        check: {
+            color: '#7CFC00',
+        },
+        close: {
+            color: 'red',
         }
     }
 
@@ -393,7 +456,13 @@ export default function HeroBannerNew(props) {
             <div ref={imageDimensions} style={style.previewPanel}>
                 <div style={style.textField}>
                     <div style={style.text}>
-                        <h1 style={style.header}>{props.hb_data.hb_header.text ? props.hb_data.hb_header.text : 'HEADER TEXT GOES HERE'}</h1>
+                        {inputToggle === false ? 
+                            <h1 onClick={(e)=> setInputToggle({status: true, content:e.target.innerText})} style={style.header}>
+                                {props.hb_data.hb_header.text ? props.hb_data.hb_header.text : 'HEADER TEXT GOES HERE'}
+                            </h1>
+                            :
+                            <TextFieldEditor {...props} fontSize={headerFontSize} setInputToggle={setInputToggle}/>
+                        }
                         <p style={style.subtext}>{props.hb_data.hb_subtext.text ? props.hb_data.hb_subtext.text : 'SUBTEXT GOES HERE'}</p>
                     </div>
                     <div style={style.text}>
