@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef} from 'react';
-import './heroBannerBuilder.css';
 import TextFieldEditor from '../../TextFieldEditor/TextFieldEditor';
 
 // export default function HeroBannerNew(props) {
