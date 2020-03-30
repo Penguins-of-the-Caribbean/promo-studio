@@ -12,7 +12,59 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      paths: {
+        components:{
+          create: 'http://localhost:4000/component/create', 
+          read: 'http://localhost:4000/component/read',
+          update: 'http://localhost:4000/component/update',
+          delete: 'http://localhost:4000/component/delete',
+        },
+        experiences:{
+          create: 'http://localhost:4000/experience/create', 
+          read: 'http://localhost:4000/experience/read',
+          update: 'http://localhost:4000/experience/update',
+          delete: 'http://localhost:4000/experience/delete',
+        },
+        markets:{
+          create: 'http://localhost:4000/market/create', 
+          read: 'http://localhost:4000/market/read',
+          update: 'http://localhost:4000/market/update',
+          delete: 'http://localhost:4000/market/delete',
+        },
+        offers:{
+          create: 'http://localhost:4000/offer/create', 
+          read: 'http://localhost:4000/offer/read',
+          update: 'http://localhost:4000/offer/update',
+          delete: 'http://localhost:4000/offer/delete',
+        },
+        ports:{
+          create: 'http://localhost:4000/port/create', 
+          read: 'http://localhost:4000/port/read',
+          update: 'http://localhost:4000/port/update',
+          delete: 'http://localhost:4000/port/delete',
+        },
+        ships:{
+          create: 'http://localhost:4000/ship/create', 
+          read: 'http://localhost:4000/ship/read',
+          update: 'http://localhost:4000/ship/update',
+          delete: 'http://localhost:4000/ship/delete',
+        },
+        terms:{
+          create: 'http://localhost:4000/terms/create', 
+          read: 'http://localhost:4000/terms/read',
+          update: 'http://localhost:4000/terms/update',
+          delete: 'http://localhost:4000/terms/delete',
+        },
+        users:{
+          create: 'http://localhost:4000/user/create', 
+          read: 'http://localhost:4000/user/read',
+          update: 'http://localhost:4000/user/update',
+          delete: 'http://localhost:4000/user/delete',
+          login: 'http://localhost:4000/user/login',
+        }
+      }
+    }
 
     this.loginUser = this.loginUser.bind(this);
     //this.fetchExperienceData = this.fetchExperienceData.bind(this);
@@ -23,24 +75,11 @@ export default class App extends Component {
     return {headers: {"Authorization": `Bearer ${sessionStorage.getItem('psAuth_token')}`}}
   }
 
-  // fetchExperienceData(){
-  //   axios.get('http://localhost:4000/experience/read', this.authConfig())
-  //     .then((res)=>{
-  //       //console.log('app: ', res.data);
-  //       let experiencesClone = {...this.state.experiences};
-  //       experiencesClone = res.data;
-  //       this.setState({experiences: experiencesClone});
-  //     }) 
-  //     .catch((error)=>{
-  //       console.log(error);
-  //     })
-  // }
-
   loginUser(email, password){
 
     if(email && password){
 
-      axios.post('http://localhost:4000/user/login', {email: email, password: password})
+      axios.post(this.state.paths.users.login, {email: email, password: password})
       .then((res)=>{
 
         if(res.data.auth === true){

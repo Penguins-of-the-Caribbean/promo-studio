@@ -1,0 +1,10 @@
+.navbar{
+    background: #ffffff;
+    width: 250px;
+    height: 100%;
+    float: left;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    padding: 25px;
+}
