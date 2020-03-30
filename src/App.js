@@ -15,25 +15,25 @@ export default class App extends Component {
     this.state = {}
 
     this.loginUser = this.loginUser.bind(this);
+    //this.fetchExperienceData = this.fetchExperienceData.bind(this);
 
   }
 
   authConfig(){
-    return {Authorization: `Bearer ${sessionStorage.getItem('psAuth_token')}`}
+    return {headers: {"Authorization": `Bearer ${sessionStorage.getItem('psAuth_token')}`}}
   }
 
   // fetchExperienceData(){
-
-  //   componentWillMount(){
-  //     axios.get('/experince/read', this.authConfig())
-  //       .then((res)=>{
-  //         console.log(res.data);
-  //       }) 
-  //       .catch((error)=>{
-  //         console.log(error);
-  //       })
-  //   }
-
+  //   axios.get('http://localhost:4000/experience/read', this.authConfig())
+  //     .then((res)=>{
+  //       //console.log('app: ', res.data);
+  //       let experiencesClone = {...this.state.experiences};
+  //       experiencesClone = res.data;
+  //       this.setState({experiences: experiencesClone});
+  //     }) 
+  //     .catch((error)=>{
+  //       console.log(error);
+  //     })
   // }
 
   loginUser(email, password){
@@ -102,7 +102,11 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" render={()=> this.authUser('/dashboard')}></Route>
             <Route exact path="/logout" render={()=> this.logoutUser()}></Route>
-            <Route exact path="/dashboard" render={()=> this.checkToken() === true ? <Dashboard/> : <Redirect to="/"/>}></Route>
+            <Route exact path="/dashboard" render={()=> 
+              this.checkToken() === true ? 
+              <Dashboard config={this.authConfig()} /*getExpData={this.fetchExperienceData} expData={this.state.experiences}*//> : 
+              <Redirect to="/"/>}>
+            </Route>
             <Route render={NotFound}></Route>
           </Switch>
         </Router>
