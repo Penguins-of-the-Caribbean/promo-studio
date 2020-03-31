@@ -50,12 +50,12 @@ export default class App extends Component {
           update: 'http://localhost:4000/ship/update',
           delete: 'http://localhost:4000/ship/delete',
         },
-        terms:{
-          create: 'http://localhost:4000/terms/create', 
-          read: 'http://localhost:4000/terms/read',
-          update: 'http://localhost:4000/terms/update',
-          delete: 'http://localhost:4000/terms/delete',
-        },
+        // terms:{
+        //   create: 'http://localhost:4000/terms/create', 
+        //   read: 'http://localhost:4000/terms/read',
+        //   update: 'http://localhost:4000/terms/update',
+        //   delete: 'http://localhost:4000/terms/delete',
+        // },
         users:{
           create: 'http://localhost:4000/user/create', 
           read: 'http://localhost:4000/user/read',
@@ -67,15 +67,18 @@ export default class App extends Component {
     }
 
     this.loginUser = this.loginUser.bind(this);
-    //this.fetchExperienceData = this.fetchExperienceData.bind(this);
 
+  }
+
+  getData(){
+    return this.state.data;
   }
 
   authConfig(){
     return {headers: {"Authorization": `Bearer ${sessionStorage.getItem('psAuth_token')}`}}
   }
 
-  loginUser(email, password){
+  loginUser(email, password, cb){
 
     if(email && password){
 
@@ -142,9 +145,10 @@ export default class App extends Component {
             <Route exact path="/" render={()=> this.authUser('/dashboard')}></Route>
             <Route exact path="/logout" render={()=> this.logoutUser()}></Route>
             <Route exact path="/dashboard" render={()=> 
-              this.checkToken() === true ? 
-              <Dashboard config={this.authConfig()} /*getExpData={this.fetchExperienceData} expData={this.state.experiences}*//> : 
-              <Redirect to="/"/>}>
+              this.checkToken() === true ? <Dashboard paths={this.state.paths} config={this.authConfig()}/> : <Redirect to="/"/>}>
+            </Route>
+            <Route exact path="/experiences" render={()=> 
+              this.checkToken() === true ? <Dashboard paths={this.state.paths} config={this.authConfig()}/> : <Redirect to="/"/>}>
             </Route>
             <Route render={NotFound}></Route>
           </Switch>

@@ -1,0 +1,286 @@
+/**************************************************************************
+* AVATAR STYLES
+**************************************************************************/
+.avatar{
+    width: 72px;
+    height: 72px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/**************************************************************************
+* HEADING STYLES
+**************************************************************************/
+.header{
+    margin: 0px;
+    padding: 0px;
+}
+
+.para{
+    margin: 0px;
+    padding: 3px;
+}
+
+/**************************************************************************
+* FONT SIZE STYLES
+**************************************************************************/
+.fnt-s{
+    font-size: 9px;
+}
+
+.fnt-m{
+    font-size: 12px;
+}
+
+.fnt-xm{
+    font-size: 16px;
+}
+
+.fnt-l{
+    font-size: 18px;
+}
+
+.fnt-xl{
+    font-size: 22px;
+}
+
+.fnt-xxl{
+    font-size: 32px;
+}
+
+.fnt-bah{
+    font-size: 42px
+}
+
+.bld-xs{
+    font-weight: 100;
+}
+
+.bld-s{
+    font-weight: 200;
+}
+
+.bld-m{
+    font-weight: 400;
+}
+
+.bld-l{
+    font-weight: 600
+}
+
+.bld-xl{
+    font-weight: 800;
+}
+
+/**************************************************************************
+* TEXT CAPS STYLES
+**************************************************************************/
+.uppercase{
+    text-transform: uppercase;
+}
+
+.lowercase{
+    text-transform: lowercase;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+
+/**************************************************************************
+* TEXT COLOR STYLES
+**************************************************************************/
+.light-gray-txt{
+    color: #80939c;
+}
+
+.dark-gray-txt{
+    color: #263238;
+}
+
+.off-white-txt{
+    color: #f7f7f7;
+}
+
+.gray-blue-txt{
+    color: #546e7a;
+}
+
+.purple-txt{
+    color: #3f51b5;
+}
+
+.red-txt{
+    color: #e53935;
+}
+
+.green-txt{
+    color: #2b6a30;
+}
+
+.blue-txt{
+    color: #1e88e5;
+}
+
+.orange-txt{
+    color: #fb8c00;
+}
+
+/**************************************************************************
+* BACKGROUND COLOR STYLES
+**************************************************************************/
+.light-gray-bg{
+    color: #80939c;
+}
+
+.dark-gray-bg{
+    background: #263238;
+}
+
+.off-white-bg{
+    background: #ffffff;
+}
+
+.gray-blue-bg{
+    background: #546e7a;
+}
+
+.purple-bg{
+    background: #3f51b5;
+}
+
+.red-bg{
+    background: #e53935;
+}
+
+.green-bg{
+    background: #2b6a30;
+}
+
+.blue-bg{
+    background: #1e88e5;
+}
+
+.orange-bg{
+    background: #fb8c00;
+}
+
+/**************************************************************************
+* CARD STYLES
+**************************************************************************/
+.card-s{
+    width: 150px;
+}
+
+.card-m{
+    width: 250px;
+}
+
+.card-l{
+    width: 350px;
+}
+
+.card-xl{
+    width: 450px;
+}
+
+.card-xxl{
+    width: 550px;
+}
+
+.card{
+    background: white;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    border-radius: 4px;
+    color: #263238;
+    padding: 20px;
+}
+
+.card-alt{
+    background: #3f51b5;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.card-dark{
+    background: #323a46;
+    border-radius: 4px;
+    color: #f7f7f7;
+}
+
+/**************************************************************************
+* ENVELOPE STYLES
+**************************************************************************/
+.envelope-even{
+    /* background: red; */
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.envelope-between{
+    /* background: red; */
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.envelope-left{
+    background: blue;
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    justify-content: left;
+    align-items: center;
+}
+
+.envelope-right{
+    /* background: green; */
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    justify-content: right;
+    align-items: center;
+}
+
+.envelope-right-col{
+    /* background: green; */
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+
+/**************************************************************************
+* BUTTONS STYLES
+**************************************************************************/
+.btn-round{
+    background: transparent;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.7s;
+}
+
+.btn-round:hover{
+    background: #e5e5e5;
+}
