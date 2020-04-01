@@ -10,18 +10,15 @@ export default function Board(props) {
                 <div className="promo-calendar-placeholder">
                     PROMO CALENDAR
                 </div>
-                <div className="envelope-even">
-                    OFFER AND EXPERIENCES CARDS
+                <div className="envelope-left">
                     {props.offers}
                     {props.experiences}
                 </div>
                 <div className="envelope-even">
-                    TERMS AND COMPONENTS CARDS
                     {props.terms}
                     {props.components}
                 </div>
                 <div className="envelope-even">
-                    MARKETS, PORTS, AND SHIPS CARDS
                     {props.markets}
                     {props.ports}
                     {props.ships}

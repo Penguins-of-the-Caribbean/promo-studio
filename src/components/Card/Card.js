@@ -5,7 +5,7 @@ import '../../Theme/Theme.css'
 export default function Card(props) {
 
     return (
-        <div className='card card-m'>
+        <div className='card-m card'>
            <div className="envelope-between">
                 <h1 className="header fnt-xl">{props.header}</h1>
                 <NavLink className="dark-gray-txt btn-round" to={props.link} >{props.menu}</NavLink>

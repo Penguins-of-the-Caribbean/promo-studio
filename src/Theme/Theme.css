@@ -4,7 +4,7 @@
 .avatar{
     width: 72px;
     height: 72px;
-    border-radius: 50px;
+    border-radius: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,23 +172,23 @@
 * CARD STYLES
 **************************************************************************/
 .card-s{
-    width: 150px;
+    width: 150px !important;
 }
 
 .card-m{
-    width: 250px;
+    width: 250px !important;
 }
 
 .card-l{
-    width: 350px;
+    width: 350px !important;
 }
 
 .card-xl{
-    width: 450px;
+    width: 450px !important;
 }
 
 .card-xxl{
-    width: 550px;
+    width: 550px !important;
 }
 
 .card{
@@ -199,6 +199,7 @@
     border-radius: 4px;
     color: #263238;
     padding: 20px;
+    margin: 15px;
 }
 
 .card-alt{
@@ -208,17 +209,28 @@
     box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
     border-radius: 4px;
     color: #ffffff;
+    margin: 15px;
 }
 
 .card-dark{
     background: #323a46;
     border-radius: 4px;
     color: #f7f7f7;
+    margin: 15px;
 }
 
 /**************************************************************************
 * ENVELOPE STYLES
 **************************************************************************/
+.envelope-center{
+    /* background: red; */
+    height: auto;
+    display: flex;
+    margin: 15px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
 .envelope-even{
     /* background: red; */
     height: auto;
@@ -238,10 +250,10 @@
 }
 
 .envelope-left{
-    background: blue;
     height: auto;
-    display: flex;
     margin: 15px 0px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
 }
@@ -249,8 +261,8 @@
 .envelope-right{
     /* background: green; */
     height: auto;
-    display: flex;
     margin: 15px 0px;
+    display: flex;
     justify-content: right;
     align-items: center;
 }
@@ -258,8 +270,8 @@
 .envelope-right-col{
     /* background: green; */
     height: auto;
-    display: flex;
     margin: 15px 0px;
+    display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: flex-end;
