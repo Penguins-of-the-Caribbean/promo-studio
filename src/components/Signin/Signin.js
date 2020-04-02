@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react';
 
 export default function Signin(props) {
 
@@ -8,13 +8,9 @@ export default function Signin(props) {
   return (
     <div>
       <h1>SING IN</h1>
-      <form onSubmit={(e)=>{
-        e.preventDefault();
-        props.signin(email, password)}}>
-        <input type="email" placeholder="email" onChange={(e)=> setEmail(e.target.value)}/>
-        <input type="password" placeholder="password" onChange={(e)=> setPassword(e.target.value)}/>
-        <button type="submit">Sing in</button>
-      </form>
+      <input type="email" placeholder="email" onChange={(e)=> setEmail(e.target.value)}/>
+      <input type="password" placeholder="password" onChange={(e)=> setPassword(e.target.value)}/>
+      <button onClick={()=>  props.loginUser(email, password)}>Sing in</button>
     </div>
   )
 }

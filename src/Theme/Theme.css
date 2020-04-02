@@ -10,6 +10,15 @@
     align-items: center;
 }
 
+.avatar *{
+    width: 72px;
+    height: 72px;
+    border-radius: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /**************************************************************************
 * HEADING STYLES
 **************************************************************************/
@@ -199,7 +208,6 @@
     border-radius: 4px;
     color: #263238;
     padding: 20px;
-    margin: 15px;
 }
 
 .card-alt{
@@ -209,14 +217,12 @@
     box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
     border-radius: 4px;
     color: #ffffff;
-    margin: 15px;
 }
 
 .card-dark{
     background: #323a46;
     border-radius: 4px;
     color: #f7f7f7;
-    margin: 15px;
 }
 
 /**************************************************************************
@@ -226,7 +232,6 @@
     /* background: red; */
     height: auto;
     display: flex;
-    margin: 15px 0px;
     justify-content: center;
     align-items: center;
 }
@@ -235,7 +240,6 @@
     /* background: red; */
     height: auto;
     display: flex;
-    margin: 15px 0px;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -244,14 +248,12 @@
     /* background: red; */
     height: auto;
     display: flex;
-    margin: 15px 0px;
     justify-content: space-between;
     align-items: center;
 }
 
 .envelope-left{
     height: auto;
-    margin: 15px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -261,7 +263,6 @@
 .envelope-right{
     /* background: green; */
     height: auto;
-    margin: 15px 0px;
     display: flex;
     justify-content: right;
     align-items: center;
@@ -270,13 +271,68 @@
 .envelope-right-col{
     /* background: green; */
     height: auto;
-    margin: 15px 0px;
     display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: flex-end;
 }
 
+/**************************************************************************
+* GRID STYLES
+**************************************************************************/
+.grid-container{
+    /* background: blue; */
+    margin: 30px 0px;
+    display: grid; 
+    grid-gap: 30px;
+    grid-template-columns: auto auto auto auto;
+    align-content: space-between;
+}
+
+@media only screen and (max-width: 1470px) {
+    .grid-container{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 1170px) {
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .grid-container{
+        grid-template-columns: auto;
+    }
+}
+
+/**************************************************************************
+* MARGINS STYLES
+**************************************************************************/
+.mrgn-all-s{
+    margin: 5px;
+}
+
+.mrgn-all-m{
+    margin: 10px;
+}
+
+.mrgn-all-l{
+    margin: 15px;
+}
+
+.mrgn-top-btm-s{
+    margin: 5px 0px;
+}
+
+.mrgn-top-btm-m{
+    margin: 10px 0px;
+}
+
+.mrgn-top-btm-l{
+    margin: 15px 0px;
+} 
 
 /**************************************************************************
 * BUTTONS STYLES

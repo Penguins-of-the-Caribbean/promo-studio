@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Navbar from '../Navbar/Navbar';
 import Board from '../Board/Board';
 import Card from '../Card/Card';
 import axios from 'axios';
+import {DataContext, PathsContext} from '../../Store';
 
 import './Dashboard.css';
 import '../../Theme/Theme.css';
 
 export default function Dashboard(props) {
     
-    const [data, setData] = useState(undefined);
+    const paths = useContext(PathsContext)
+    const [data, setData] = useContext(DataContext);
 
     useEffect(()=>{
         fetchData();
@@ -32,7 +34,7 @@ export default function Dashboard(props) {
                 markets: markets.data,
                 ports: ports.data,
                 ships: ships.data
-            })
+            });
         }))
         .catch((error)=> {
             console.log(error);
