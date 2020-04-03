@@ -1,7 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react'
+import fetchData from '../../utils/fetch/FetchData';
 import Navbar from '../Navbar/Navbar';
 import Item from '../Item/Item';
 import { DataContext } from '../../Store';
+import './ExperienceList.css'
 import '../../Theme/Theme.css';
 
 export default function ExperienceList(props) {
@@ -10,19 +12,24 @@ export default function ExperienceList(props) {
 
     console.log(data);
 
+    useEffect(()=>{
+        if(!data){
+            fetchData().fetchExperienceData.read(setData);
+        }
+    },[])
+
     function buildExpList(){
-        console.log('from list item', data.experiences);
-        if(data.ExperienceList){
+        if(data && data.experiences){
             return data.experiences.map((exp, i)=>{
                 return  <Item 
                             key={i}
+                            id={exp._id}
                             name={exp.name}
                             status={exp.status}
-                            author={exp.author}
+                            author={exp.author.name}
                             dateCreated={exp.dateCreated}
                             dateModified={exp.dateModified}
-                            edit={<i class="fas fa-pen-square purple-txt"></i>}
-                            delte={<i className="fas fa-minus-circle purple-txt"></i>} 
+                            edit={<i className="fas fa-pen-square purple-txt"></i>}
                         ></Item>
             })
         }else{
@@ -33,10 +40,10 @@ export default function ExperienceList(props) {
     }
 
     return (
-        <div>
+        <div className="exp-container">
             <Navbar></Navbar>
-            <div>
-                <div className="card">
+            <div className="exp-wrapper">
+                <div className="card exp-list">
                     {buildExpList()}
                 </div>
             </div>

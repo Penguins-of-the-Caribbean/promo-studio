@@ -1,0 +1,22 @@
+.exp-container{
+    /* background: red; */
+    width: 100%;
+    height: auto;
+}
+
+.exp-wrapper{
+    /* background: blue; */
+    width: auto;
+    height: auto;
+    margin: 0px 0px 0px 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.exp-list{
+    width: 95%;
+    height: auto;
+}

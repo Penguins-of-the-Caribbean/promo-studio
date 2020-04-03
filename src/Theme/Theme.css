@@ -260,6 +260,15 @@
     align-items: center;
 }
 
+.envelope-left-col{
+    background: green;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .envelope-right{
     /* background: green; */
     height: auto;
@@ -351,4 +360,24 @@
 
 .btn-round:hover{
     background: #e5e5e5;
+}
+
+
+/**************************************************************************
+* LISTE ITEM STYLES
+**************************************************************************/
+.list-item{
+    /* background: red; */
+    width: 100%;
+    height: auto;
+    border-top: solid 1px #e5e5e5;
+    border-bottom: solid 1px #e5e5e5;
+}
+
+.indicator{
+    background: orange;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin: 0px 10px;
 }

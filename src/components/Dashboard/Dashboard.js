@@ -2,44 +2,27 @@ import React, {useState, useContext, useEffect} from 'react';
 import Navbar from '../Navbar/Navbar';
 import Board from '../Board/Board';
 import Card from '../Card/Card';
-import axios from 'axios';
-import {DataContext, PathsContext} from '../../Store';
+import {DataContext} from '../../Store';
+import fetchData from '../../utils/fetch/FetchData';
 
 import './Dashboard.css';
 import '../../Theme/Theme.css';
 
 export default function Dashboard(props) {
     
-    const paths = useContext(PathsContext)
     const [data, setData] = useContext(DataContext);
 
     useEffect(()=>{
-        fetchData();
+        if( !data.components  || 
+            !data.experiences || 
+            !data.offers      ||
+            !data.markets     || 
+            !data.ships       || 
+            !data.ports
+        ){
+            fetchData().fetchAllData(setData);
+        }
     }, []);
-
-    function fetchData(){
-        axios.all([
-            axios.get(props.paths.offers.read, props.config),
-            axios.get(props.paths.experiences.read, props.config),
-            axios.get(props.paths.components.read, props.config),
-            axios.get(props.paths.markets.read, props.config),
-            axios.get(props.paths.ports.read, props.config),
-            axios.get(props.paths.ships.read, props.config)
-        ])
-        .then(axios.spread((offers, experiences, components, markets, ports, ships)=>{
-            setData({
-                offers: offers.data,
-                experiences: experiences.data,
-                components: components.data,
-                markets: markets.data,
-                ports: ports.data,
-                ships: ships.data
-            });
-        }))
-        .catch((error)=> {
-            console.log(error);
-        });
-    }
 
     function offersCard(){
         if(data && data.offers){
@@ -64,7 +47,7 @@ export default function Dashboard(props) {
     }
 
     function experincesCard(){
-        if(data && data.experiences.length){
+        if(data && data.experiences){
             return  <Card
                         header="Experiences"
                         icon={<i className="fas fa-bars fa-2x off-white-txt"></i>}
@@ -86,7 +69,7 @@ export default function Dashboard(props) {
     }
 
     function termsCard(){
-        if(data && data.terms.length){
+        if(data && data.terms){
             return <Card
                         header="Terms &amp; Conditions"
                         icon={<i className="fas fa-asterisk fa-2x off-white-txt"></i>}
@@ -108,7 +91,7 @@ export default function Dashboard(props) {
     }
 
     function componentsCard(){
-        if(data && data.components.length){
+        if(data && data.components){
             return  <Card
                         header="Components"
                         icon={<i className="fas fa-code fa-2x off-white-txt"></i>}
@@ -130,12 +113,12 @@ export default function Dashboard(props) {
     }
 
     function marketsCard(){
-        if(data && data.markets.length){
+        if(data && data.markets){
             return  <Card
                         header="Markets"
                         icon={<i className="fas fa-globe fa-2x off-white-txt"></i>}
                         stat={data.markets.length}
-                        label="saved components"
+                        label="saved markets"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
                         link="/experiences"
                     ></Card>
@@ -152,12 +135,12 @@ export default function Dashboard(props) {
     }
 
     function portsCard(){
-        if(data && data.ports.length){
+        if(data && data.ports){
             return  <Card
                         header="Ports"
                         icon={<i className="fas fa-anchor fa-2x off-white-txt"></i>}
                         stat={data.ports.length}
-                        label="saved components"
+                        label="saved ports"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
                         link="/experiences"
                     ></Card>
@@ -174,12 +157,12 @@ export default function Dashboard(props) {
     }
 
     function shipsCard(){
-        if(data && data.ships.length){
+        if(data && data.ships){
             return  <Card
                         header="Ships"
                         icon={<i className="fas fa-ship fa-2x off-white-txt"></i>}
                         stat={data.ships.length}
-                        label="saved components"
+                        label="saved ships"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
                         link="/experiences"
                     ></Card>

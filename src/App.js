@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
+import { Store } from './Store';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
-import axios from 'axios';
+import fetchData from './utils/fetch/FetchData';
 import jwt from 'jsonwebtoken';
 
-import {Store, DataContext, PathsContext} from './Store';
 import NotFound from './components/RouteNotFound/RouteNotFound';
 import Singin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -12,28 +12,13 @@ import ExperienceList from './components/ExperienceList/ExperienceList';
 
 export default function App(props) {
   
-  const paths = useContext(PathsContext);
-  const data = useContext(DataContext);
   const [auth, setAuth] = useState(false);
 
-  function authConfig(){
-    return {headers: {"Authorization": `Bearer ${sessionStorage.getItem('psAuth_token')}`}}
-  }
-
   function loginUser(email, password){
-    if(email && password){
-      axios.post(paths.users.login, {email: email, password: password})
-      .then((res)=>{
-        if(res.data.auth === true){
-          sessionStorage.setItem('psAuth_token', res.data.token);
-          authUser('/dashboard');
-          setAuth(true);
-        }
-      })
-      .catch((err)=>{
-        console.log(err);
+      fetchData().fetchUserData.login({email: email, password: password}, ()=>{
+        authUser('/dashboard');
+        setAuth(true);
       });
-    }
   }
 
   function logoutUser(){
@@ -76,10 +61,14 @@ export default function App(props) {
             <Route exact path="/logout" component={()=> logoutUser()}></Route>
 
             <Route exact path="/dashboard" component={()=> 
-              checkToken() === true ? <Dashboard paths={paths} config={authConfig()}/> : <Redirect to="/"/>}>
+              checkToken() === true ? <Dashboard/> : <Redirect to="/"/>}>
             </Route>
 
             <Route exact path="/experiences" component={()=> 
+              checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
+            </Route>
+
+            <Route exact path="/experiences/:id" component={()=> 
               checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
             </Route>
 
