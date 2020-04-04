@@ -23,6 +23,7 @@ export default function App(props) {
 
   function logoutUser(){
     sessionStorage.removeItem('psAuth_token');
+    setAuth(false);
     return <Redirect to="/"/>
   }
 
@@ -69,6 +70,10 @@ export default function App(props) {
             </Route>
 
             <Route exact path="/experiences/:id" component={()=> 
+              checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
+            </Route>
+
+            <Route exact path="/experiences/builder" component={()=> 
               checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
             </Route>
 

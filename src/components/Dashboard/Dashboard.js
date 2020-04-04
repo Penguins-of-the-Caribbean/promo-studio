@@ -25,7 +25,7 @@ export default function Dashboard(props) {
     }, []);
 
     function offersCard(){
-        if(data && data.offers){
+        if(data && data.offers && data.offers.length){
             return <Card
                         header="Offers"
                         icon={<i className="fab fa-buffer fa-2x off-white-txt"></i>}
@@ -47,7 +47,7 @@ export default function Dashboard(props) {
     }
 
     function experincesCard(){
-        if(data && data.experiences){
+        if(data && data.experiences && data.experiences.length){
             return  <Card
                         header="Experiences"
                         icon={<i className="fas fa-bars fa-2x off-white-txt"></i>}
@@ -69,7 +69,7 @@ export default function Dashboard(props) {
     }
 
     function termsCard(){
-        if(data && data.terms){
+        if(data && data.terms  && data.terms.length){
             return <Card
                         header="Terms &amp; Conditions"
                         icon={<i className="fas fa-asterisk fa-2x off-white-txt"></i>}
@@ -91,7 +91,7 @@ export default function Dashboard(props) {
     }
 
     function componentsCard(){
-        if(data && data.components){
+        if(data && data.components  && data.components.length){
             return  <Card
                         header="Components"
                         icon={<i className="fas fa-code fa-2x off-white-txt"></i>}
@@ -113,7 +113,7 @@ export default function Dashboard(props) {
     }
 
     function marketsCard(){
-        if(data && data.markets){
+        if(data && data.markets && data.markets.length){
             return  <Card
                         header="Markets"
                         icon={<i className="fas fa-globe fa-2x off-white-txt"></i>}
@@ -135,7 +135,7 @@ export default function Dashboard(props) {
     }
 
     function portsCard(){
-        if(data && data.ports){
+        if(data && data.ports && data.ports.length){
             return  <Card
                         header="Ports"
                         icon={<i className="fas fa-anchor fa-2x off-white-txt"></i>}
@@ -157,7 +157,7 @@ export default function Dashboard(props) {
     }
 
     function shipsCard(){
-        if(data && data.ships){
+        if(data && data.ships && data.ships.length){
             return  <Card
                         header="Ships"
                         icon={<i className="fas fa-ship fa-2x off-white-txt"></i>}

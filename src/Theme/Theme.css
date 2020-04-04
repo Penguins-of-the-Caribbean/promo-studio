@@ -217,6 +217,7 @@
     box-shadow: 0px 1px 4px 0px rgba(177, 177, 177, 1);
     border-radius: 4px;
     color: #ffffff;
+    padding: 20px;
 }
 
 .card-dark{
@@ -261,7 +262,7 @@
 }
 
 .envelope-left-col{
-    background: green;
+    /* background: green; */
     height: auto;
     display: flex;
     flex-direction: column;
@@ -362,6 +363,23 @@
     background: #e5e5e5;
 }
 
+.btn-long{
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-long:hover{
+    cursor: pointer;
+}
+
+.btn-long:active{
+    transform: scale3d(-0.80, -0.80, 0.80);
+}
+
 
 /**************************************************************************
 * LISTE ITEM STYLES
@@ -380,4 +398,37 @@
     height: 10px;
     border-radius: 5px;
     margin: 0px 10px;
+}
+
+/**************************************************************************
+* LISTE ITEM STYLES
+**************************************************************************/
+.input{
+    background: transparent;
+    height: 25px;
+    border: none;
+    border-bottom: solid 1px #e5e5e5;
+    font-size: 16px;
+    color: #263238;
+    outline-width: 0;
+    padding: 5px 0px;
+}
+
+.input::placeholder{
+    color: #8698a0;
+    font-size: 16px;
+}
+
+.input:active{
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #e5e5e5;
+    outline: none;
+}
+
+.input:focus{
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #e5e5e5;
+    outline: none;
 }

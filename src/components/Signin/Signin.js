@@ -1,4 +1,6 @@
 import React, { useState} from 'react';
+import './Signin.css';
+import '../../Theme/Theme.css';
 
 export default function Signin(props) {
 
@@ -6,11 +8,15 @@ export default function Signin(props) {
   const [password, setPassword] = useState('');
 
   return (
-    <div>
-      <h1>SING IN</h1>
-      <input type="email" placeholder="email" onChange={(e)=> setEmail(e.target.value)}/>
-      <input type="password" placeholder="password" onChange={(e)=> setPassword(e.target.value)}/>
-      <button onClick={()=>  props.loginUser(email, password)}>Sing in</button>
+    <div className="sign-in-container">
+      <div className="card-alt">
+        <h1 className="header fnt-xxl ps-header">PROMO STUDIO</h1>
+      </div>
+      <div className="card sign-in-container">
+        <input className="input" type="email"  placeholder="email" onChange={(e)=> setEmail(e.target.value)}/>
+        <input className="input" type="password"  placeholder="password" onChange={(e)=> setPassword(e.target.value)}/>
+        <button className="btn-long purple-bg bld-xl off-white-txt fnt-m uppercase" onClick={()=>  props.loginUser(email, password)}>Sing in</button>
+      </div>
     </div>
   )
 }

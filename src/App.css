@@ -1,7 +1,12 @@
 html, body, #root, .App{
   background: #f4f6f8;
+  width: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .ge_promo-studio-link-a{

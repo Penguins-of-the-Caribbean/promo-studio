@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import fetchData from '../../utils/fetch/FetchData';
 import Navbar from '../Navbar/Navbar';
+import ActionBar from '../ActionBar/ActionBar';
 import Item from '../Item/Item';
 import { DataContext } from '../../Store';
 import './ExperienceList.css'
@@ -43,6 +44,7 @@ export default function ExperienceList(props) {
         <div className="exp-container">
             <Navbar></Navbar>
             <div className="exp-wrapper">
+                <ActionBar link={"/experiences/builder"}></ActionBar>
                 <div className="card exp-list">
                     {buildExpList()}
                 </div>
