@@ -377,7 +377,7 @@
 }
 
 .btn-long:active{
-    transform: scale3d(-0.80, -0.80, 0.80);
+    transform: scale3d(0.95, 0.95, 0.95);
 }
 
 

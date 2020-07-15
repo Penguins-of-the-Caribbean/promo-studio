@@ -18,7 +18,8 @@ export default function Dashboard(props) {
             !data.offers      ||
             !data.markets     || 
             !data.ships       || 
-            !data.ports
+            !data.ports       ||
+            !data.terms
         ){
             fetchData().fetchAllData(setData);
         }
@@ -188,6 +189,7 @@ export default function Dashboard(props) {
                 markets={marketsCard()}
                 ports={portsCard()}
                 ships={shipsCard()}
+                terms={termsCard()}
             ></Board>
         </div>
     )

@@ -1,9 +1,0 @@
-.ge_promo-studio-view{
-    width: 100%;
-    min-height: 700px;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}

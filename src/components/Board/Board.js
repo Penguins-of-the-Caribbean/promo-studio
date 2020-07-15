@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '../Card/Card'
 import './Board.css'
 import '../../Theme/Theme.css'
 

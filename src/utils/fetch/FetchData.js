@@ -401,9 +401,12 @@ export default function (){
                       if(res.data.auth === true){
                         sessionStorage.setItem('psAuth_token', res.data.token);
                         cb();
+                      }else if(res.data.auth === false){
+                        console.log(res.data.message);
                       }
                     })
                     .catch((error)=>{
+                        console.log(error.message)
                       return error;
                     });
                   }else{
