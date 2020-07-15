@@ -13,14 +13,15 @@ export default function (){
                 axios.get('http://localhost:4000/port/read', tokenConfig()),
                 axios.get('http://localhost:4000/ship/read', tokenConfig())
             ])
-            .then(axios.spread((components, experiences, markets, offers, ports, ships)=>{
+            .then(axios.spread((components, experiences, markets, offers, ports, ships, terms)=>{
                 cb({
                     components: components.data,
                     experiences: experiences.data,
                     markets: markets.data,
                     offers: offers.data,
                     ports: ports.data,
-                    ships: ships.data
+                    ships: ships.data,
+                    terms: terms.data,
                 });
             }))
             .catch((error)=> {

@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Navbar from '../Navbar/Navbar';
 import Board from '../Board/Board';
 import Card from '../Card/Card';
@@ -23,7 +23,7 @@ export default function Dashboard(props) {
         ){
             fetchData().fetchAllData(setData);
         }
-    }, []);
+    }, [data.components, data.experiences, data.offers, data.markets, data.ships, data.ports, data.terms, setData]);
 
     function offersCard(){
         if(data && data.offers && data.offers.length){
