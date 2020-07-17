@@ -10,7 +10,7 @@ export default function Board(props) {
                     PROMO CALENDAR
                 </div>
                 <div className="grid-container">
-                    {props.offers}
+                    {props.promos}
                     {props.experiences}
                     {props.terms}
                     {props.components}

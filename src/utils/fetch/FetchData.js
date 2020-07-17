@@ -9,16 +9,16 @@ export default function (){
                 axios.get('http://localhost:4000/component/read', tokenConfig()),
                 axios.get('http://localhost:4000/experience/read', tokenConfig()),
                 axios.get('http://localhost:4000/market/read', tokenConfig()),
-                axios.get('http://localhost:4000/offer/read', tokenConfig()),
+                axios.get('http://localhost:4000/promo/read', tokenConfig()),
                 axios.get('http://localhost:4000/port/read', tokenConfig()),
                 axios.get('http://localhost:4000/ship/read', tokenConfig())
             ])
-            .then(axios.spread((components, experiences, markets, offers, ports, ships, terms)=>{
+            .then(axios.spread((components, experiences, markets, promos, ports, ships, terms)=>{
                 cb({
                     components: components.data,
                     experiences: experiences.data,
                     markets: markets.data,
-                    offers: offers.data,
+                    promos: promos.data,
                     ports: ports.data,
                     ships: ships.data,
                     terms: terms.data,
@@ -170,9 +170,9 @@ export default function (){
                 })
             }
         },
-        fetchOfferData: {
+        fetchPromoData: {
             create: (data)=> {
-                axios.post('http://localhost:4000/offer/create', tokenConfig(), data)
+                axios.post('http://localhost:4000/promo/create', tokenConfig(), data)
                 .then((res)=>{
                     return res.data;
                 })
@@ -181,7 +181,7 @@ export default function (){
                 })
             },
             read: ()=> {
-                axios.get('http://localhost:4000/offer/read', tokenConfig())
+                axios.get('http://localhost:4000/promo/read', tokenConfig())
                 .then((res)=>{
                     return res.data;
                 })
@@ -190,7 +190,7 @@ export default function (){
                 })
             },
             readSingle: (id)=> {
-                axios.get('http://localhost:4000/offer/read/'+id, tokenConfig())
+                axios.get('http://localhost:4000/promo/read/'+id, tokenConfig())
                 .then((res)=>{
                     return res.data;
                 })
@@ -199,7 +199,7 @@ export default function (){
                 })
             },
             update: (data)=> {
-                axios.post('http://localhost:4000/offer/update', tokenConfig(), data)
+                axios.post('http://localhost:4000/promo/update', tokenConfig(), data)
                 .then((res)=>{
                     return res.data;
                 })
@@ -208,7 +208,7 @@ export default function (){
                 })
             },
             delete: (data)=> {
-                axios.delete('http://localhost:4000/offer/delete', tokenConfig(), data)
+                axios.delete('http://localhost:4000/promo/delete', tokenConfig(), data)
                 .then((res)=>{
                     return res.data;
                 })

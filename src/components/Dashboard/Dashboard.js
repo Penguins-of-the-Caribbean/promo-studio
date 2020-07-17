@@ -15,7 +15,7 @@ export default function Dashboard(props) {
     useEffect(()=>{
         if( !data.components  || 
             !data.experiences || 
-            !data.offers      ||
+            !data.promos      ||
             !data.markets     || 
             !data.ships       || 
             !data.ports       ||
@@ -23,21 +23,21 @@ export default function Dashboard(props) {
         ){
             fetchData().fetchAllData(setData);
         }
-    }, [data.components, data.experiences, data.offers, data.markets, data.ships, data.ports, data.terms, setData]);
+    }, [data.components, data.experiences, data.promos, data.markets, data.ships, data.ports, data.terms, setData]);
 
-    function offersCard(){
-        if(data && data.offers && data.offers.length){
+    function promosCard(){
+        if(data && data.promos && data.promos.length){
             return <Card
-                        header="Offers"
+                        header="Promos"
                         icon={<i className="fab fa-buffer fa-2x off-white-txt"></i>}
                         stat={data.offers.length}
-                        label="saved offers"
+                        label="saved promos"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
                         link="/experiences"
                     ></Card>
         }else{
             return  <Card
-                        header="Offers"
+                        header="Promos"
                         icon={<i className="fab fa-buffer fa-2x off-white-txt"></i>}
                         stat="0"
                         label="Nothing found"
@@ -183,7 +183,7 @@ export default function Dashboard(props) {
         <div className="dash-container">
             <Navbar/>
             <Board 
-                offers={offersCard()}
+                promos={promosCard()}
                 experiences={experincesCard()}
                 components={componentsCard()}
                 markets={marketsCard()}
