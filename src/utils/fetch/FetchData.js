@@ -11,7 +11,8 @@ export default function (){
                 axios.get('http://localhost:4000/market/read', tokenConfig()),
                 axios.get('http://localhost:4000/promo/read', tokenConfig()),
                 axios.get('http://localhost:4000/port/read', tokenConfig()),
-                axios.get('http://localhost:4000/ship/read', tokenConfig())
+                axios.get('http://localhost:4000/ship/read', tokenConfig()),
+                axios.get('http://localhost:4000/terms/read', tokenConfig())
             ])
             .then(axios.spread((components, experiences, markets, promos, ports, ships, terms)=>{
                 cb({
@@ -227,10 +228,10 @@ export default function (){
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/port/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
