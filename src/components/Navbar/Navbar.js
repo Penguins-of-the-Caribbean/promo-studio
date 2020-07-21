@@ -13,6 +13,7 @@ export default function Navbar() {
         <div className="navbar-container">
             <div className="navbar-wrapper">
                 <NavLink className={classes.logout} to="/logout">log out</NavLink>
+                <NavLink className={classes.logout} to="/">Dashboard</NavLink>
             </div>
         </div>
     )

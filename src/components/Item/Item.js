@@ -5,7 +5,7 @@ import '../../Theme/Theme.css'
 
 export default function Item(props) {
 
-    const {name, id, status, author, dateCreated, dateModified, edit} = props;
+    const {name, id, status, author, dateCreated, dateModified, edit, link} = props;
 
     console.log(id);
 
@@ -23,7 +23,7 @@ export default function Item(props) {
         <div className="item-container">
 
             <div className="item-actions-container">
-                <NavLink to={`/experiences/${id}`}>{edit}</NavLink>
+                <NavLink to={`/${link}/${id}`}>{edit}</NavLink>
             </div>
 
             <div className="item-details-container">

@@ -11,13 +11,11 @@ export default function ExperienceList(props) {
 
     const [data, setData] = useContext(DataContext);
 
-    console.log(data);
-
     useEffect(()=>{
         if(!data){
             fetchData().fetchExperienceData.read(setData);
         }
-    },[])
+    },[data, setData]);
 
     function buildExpList(){
         if(data && data.experiences){
@@ -31,12 +29,11 @@ export default function ExperienceList(props) {
                             dateCreated={exp.dateCreated}
                             dateModified={exp.dateModified}
                             edit={<i className="fas fa-pen-square purple-txt"></i>}
+                            link="experiences"
                         ></Item>
             })
         }else{
-            return  <Item 
-                        name="No experiences found"
-                    ></Item>
+            return  <div>No experiences found</div>
         }
     }
 

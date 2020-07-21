@@ -181,10 +181,10 @@ export default function (){
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/promo/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;

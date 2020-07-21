@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Navbar from '../Navbar/Navbar';
 import Board from '../Board/Board';
 import Card from '../Card/Card';
@@ -26,7 +26,7 @@ export default function Dashboard(props) {
                         stat={data.offers.length}
                         label="saved promos"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
-                        link="/experiences"
+                        link="/promos"
                     ></Card>
         }else{
             return  <Card
@@ -35,7 +35,7 @@ export default function Dashboard(props) {
                         stat="0"
                         label="Nothing found"
                         menu={<i className="fas fa-ellipsis-v fa-xs"></i>}
-                        link="/experiences"
+                        link="/promos"
                     ></Card>
         }
     }

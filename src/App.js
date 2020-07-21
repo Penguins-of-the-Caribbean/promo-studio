@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import { Store } from './Store';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import fetchData from './utils/fetch/FetchData';
 import jwt from 'jsonwebtoken';
 
@@ -9,6 +9,7 @@ import NotFound from './components/RouteNotFound/RouteNotFound';
 import Singin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
 import ExperienceList from './components/ExperienceList/ExperienceList';
+import PromosList from './components/PromosList/PromosList';
 
 export default function App(props) {
   
@@ -74,6 +75,14 @@ export default function App(props) {
             </Route>
 
             <Route exact path="/experiences/builder" component={()=> 
+              checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
+            </Route>
+
+            <Route exact path="/promos" component={()=> 
+              checkToken() === true ? <PromosList/> : <Redirect to="/"/>}>
+            </Route>
+
+            <Route exact path="/promos/:id" component={()=> 
               checkToken() === true ? <ExperienceList/> : <Redirect to="/"/>}>
             </Route>
 
