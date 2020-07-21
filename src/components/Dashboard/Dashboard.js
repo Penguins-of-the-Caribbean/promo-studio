@@ -18,8 +18,6 @@ export default function Dashboard(props) {
         }
     }, [data, setData]);
 
-    console.log(data);
-
     function promosCard(){
         if(data && data.promos && data.promos.length){
             return <Card
