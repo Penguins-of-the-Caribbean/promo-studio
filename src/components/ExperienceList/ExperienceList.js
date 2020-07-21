@@ -17,7 +17,7 @@ export default function ExperienceList(props) {
         }
     },[data, setData]);
 
-    function buildExpList(){
+    const buildExpList = ()=>{
         if(data && data.experiences){
             return data.experiences.map((exp, i)=>{
                 return  <Item 
