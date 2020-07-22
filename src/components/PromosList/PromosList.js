@@ -38,11 +38,11 @@ export default function PromosList(props) {
     }
 
     return (
-        <div class="promo-container">
+        <div className="promo-container">
             <Navbar></Navbar>
-            <div class="promo-wrapper">
+            <div className="promo-wrapper">
                 <ActionBar link={"/promos/builder"}></ActionBar>
-                <div class="card promo-list">
+                <div className="card promo-list">
                     {buildPromosList()}
                 </div>
             </div>

@@ -1,8 +1,8 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Board from '../Board/Board';
 import Card from '../Card/Card';
-import {DataContext} from '../../Store';
+import { DataContext } from '../../Store';
 import fetchData from '../../utils/fetch/FetchData';
 
 import './Dashboard.css';

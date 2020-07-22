@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './Navbar.css';
 import '../../Theme/Theme.css';
@@ -14,6 +14,7 @@ export default function Navbar() {
             <div className="navbar-wrapper">
                 <NavLink className={classes.logout} to="/logout">log out</NavLink>
                 <NavLink className={classes.logout} to="/">Dashboard</NavLink>
+                <NavLink className={classes.logout} to='/promos'>Promos</NavLink>
             </div>
         </div>
     )

@@ -1,0 +1,23 @@
+.promo-builder-container{
+    /* background: red; */
+    width: 100%;
+    height: auto;
+}
+
+.promo-builder-wrapper{
+    /* background: blue; */
+    width: auto;
+    height: auto;
+    margin: 0px 0px 0px 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.promo-action-bar{
+    background: red;
+    width: 95%;
+    min-height: 100px;
+}

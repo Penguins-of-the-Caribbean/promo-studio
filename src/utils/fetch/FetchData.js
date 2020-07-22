@@ -134,10 +134,10 @@ export default function (){
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/market/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -275,10 +275,10 @@ export default function (){
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/ship/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
