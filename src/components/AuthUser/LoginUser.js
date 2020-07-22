@@ -1,10 +1,7 @@
-import React from 'react'
-import { BrowserRouter as Redirect} from 'react-router-dom';
-import fetchData from '../../utils/fetch/FetchData';
+import fetchData from '../../utils/fetch/FetchData'
 
-
-export default function LoginUser(email, password){
+export default function loginUser(email, password, history){
     fetchData().fetchUserData.login({email: email, password: password}, ()=>{
-      return(<Redirect to="/dashboard"/>)
+        history.push('/dashboard');
     });
 }
