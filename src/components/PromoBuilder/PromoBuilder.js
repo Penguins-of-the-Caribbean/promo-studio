@@ -7,11 +7,13 @@ export default function PromoBuilder(props) {
 
     const [markets, setMarkets] = useState('');
     const [ships, setShips] = useState('');
+    const [ports, setPorts] = useState('');
 
     useEffect(()=> {
-        if(markets === '' || ships === ''){
+        if(markets === '' || ships === '' || ports === ''){
             fetchData().fetchMarketData.read(setMarkets);
             fetchData().fetchShipData.read(setShips);
+            fetchData().fetchPortData.read(setPorts);
         }
         
     }, [markets, setMarkets, ships, setShips]);
@@ -48,6 +50,9 @@ export default function PromoBuilder(props) {
                     <input type="text" name="value" placeholder='Promo value'/>
                     <select>
                         {createOptionsList(ships, 'Select a ship')}
+                    </select>
+                    <select>
+                        {createOptionsList(ports, 'Select a port')}
                     </select>
                 </div>
             </div>
