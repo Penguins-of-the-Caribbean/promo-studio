@@ -30,46 +30,46 @@ export default function (){
             });
         },
         fetchComponentData: {
-            create: (data)=>{
+            create: (data, cb)=>{
                 axios.post('http://localhost:4000/component/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/component/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/component/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/component/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/component/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error
@@ -77,10 +77,10 @@ export default function (){
             }
         },
         fetchExperienceData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/experince/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -96,28 +96,28 @@ export default function (){
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/experience/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/experience/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=>{
+            delete: (data, cb)=>{
                 axios.delete('http://localhost:4000/experience/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error
@@ -125,10 +125,10 @@ export default function (){
             }
         },
         fetchMarketData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/market/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -143,28 +143,28 @@ export default function (){
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/market/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/market/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/market/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -172,10 +172,10 @@ export default function (){
             }
         },
         fetchPromoData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/promo/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -190,28 +190,28 @@ export default function (){
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/promo/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/promo/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/promo/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -219,10 +219,10 @@ export default function (){
             }
         },
         fetchPortData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/port/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -237,28 +237,28 @@ export default function (){
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/port/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/port/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/port/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -266,10 +266,10 @@ export default function (){
             }
         },
         fetchShipData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/ship/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -284,28 +284,28 @@ export default function (){
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/ship/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/ship/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/ship/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -313,46 +313,46 @@ export default function (){
             }
         },
         fetchTermsData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/terms/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/terms/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            readSingle: (id)=> {
+            readSingle: (id, cb)=> {
                 axios.get('http://localhost:4000/terms/read/'+id, tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/terms/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/terms/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
@@ -360,37 +360,37 @@ export default function (){
             }
         },
         fetchUserData: {
-            create: (data)=> {
+            create: (data, cb)=> {
                 axios.post('http://localhost:4000/user/create', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            read: ()=> {
+            read: (cb)=> {
                 axios.get('http://localhost:4000/user/read', tokenConfig())
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            update: (data)=> {
+            update: (data, cb)=> {
                 axios.post('http://localhost:4000/user/update', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
                 })
             },
-            delete: (data)=> {
+            delete: (data, cb)=> {
                 axios.delete('http://localhost:4000/user/delete', tokenConfig(), data)
                 .then((res)=>{
-                    return res.data;
+                    cb(res.data);
                 })
                 .catch((error)=>{
                     return error;
