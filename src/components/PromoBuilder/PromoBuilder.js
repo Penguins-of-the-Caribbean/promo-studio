@@ -16,7 +16,7 @@ export default function PromoBuilder(props) {
             fetchData().fetchPortData.read(setPorts);
         }
         
-    }, [markets, setMarkets, ships, setShips]);
+    }, [markets, setMarkets, ships, setShips, ports, setPorts]);
 
     const createOptionsList = (data, defaultOptionText)=> {
         if(data && data.length  > 0){
